@@ -20,6 +20,8 @@
 
   --bg-primary: #fff;
 
+  --font-family: "YS Text", Arial, sans-serif;
+
   --text-primary: #000;
   --text-secondary: #7f8285;
   --text-meta: var(--grey-650);
