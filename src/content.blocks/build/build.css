@@ -1,0 +1,68 @@
+.build {
+  height: 68px;
+  padding: var(--space-s) var(--space-xl) var(--space-s) var(--space-xxl);
+  box-sizing: border-box;
+  box-shadow: var(--box-shadow-normal);
+  border-radius: var(--border-radius-card);
+  font-family: var(--font-family);
+
+  display: flex;
+  justify-content: space-between;
+
+  background-size: 22px;
+  background-position: var(--space-xl) var(--space-s);
+  background-repeat: no-repeat;
+}
+
+.build_type_success {
+  background-image: url("./images/success.svg");
+}
+
+.build_type_running {
+  background-image: url("./images/run.svg");
+}
+
+.build_type_failed {
+  background-image: url("./images/fail.svg");
+}
+
+.build__content {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.build__number {
+  font-size: var(--font-size-l);
+  font-weight: 500;
+  line-height: var(--line-height-m);
+  margin-right: var(--space-xxxs);
+
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.build_type_success .build__number {
+  color: var(--status-success);
+}
+
+.build_type_running .build__number {
+  color: var(--status-running);
+}
+
+.build_type_failed .build__number {
+  color: var(--status-failed);
+}
+
+.build__message {
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--text-primary);
+
+  flex-grow: 1;
+}
+
+.build__meta {
+  flex-shrink: 0;
+}
