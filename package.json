@@ -1,0 +1,27 @@
+{
+  "name": "ci-server",
+  "version": "1.0.0",
+  "description": "UI for CI server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sadullaeva/ci-server.git"
+  },
+  "keywords": [],
+  "author": "Marina Lazarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sadullaeva/ci-server/issues"
+  },
+  "homepage": "https://github.com/sadullaeva/ci-server#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@storybook/html": "^5.3.14",
+    "babel-loader": "^8.0.6"
+  }
+}
