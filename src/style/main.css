@@ -4,3 +4,6 @@
 
 /* base.blocks */
 @import "../base.blocks/button/button.css";
+
+/* content.blocks */
+@import "../content.blocks/header/header.css";

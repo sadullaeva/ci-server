@@ -58,4 +58,6 @@
 
   --footer-bg: #f0f2f3;
   --log-bg: var(--grey-50);
+
+  --content-width-l: 824px;
 }
