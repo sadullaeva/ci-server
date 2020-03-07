@@ -1,0 +1,41 @@
+:root {
+  --bg-primary: #fff;
+
+  --text-primary: #000;
+  --text-secondary: #7f8285;
+
+  --font-size-xs: 13px;
+  --font-size-s: 13px;
+  --font-size-m: 15px;
+  --font-size-l: 18px;
+  --font-size-xl: 24px;
+
+  --line-height-xs: 16px;
+  --line-height-s: 18px;
+  --line-height-m: 20px;
+  --line-height-l: 22px;
+  --line-height-xl: 28px;
+
+  --padding-xs: 8px;
+  --padding-s: 12px;
+  --padding-m: 16px;
+  --padding-l: 20px;
+  --padding-xl: 24px;
+  --padding-xxl: 56px;
+
+  --btn-primary: #ffcc00;
+  --btn-secondary: #e6e6e6;
+
+  --status-success: #00bB341;
+  --status-running: #ff9a00;
+  --status-failed: #ff3333;
+
+  --border-radius-card: 6px;
+  --border-radius-interactive-elem: 4px;
+
+  --interactive-elem-size-small: 28px;
+  --interactive-elem-size-large: 36px;
+
+  --footer-bg: #f0f2f3;
+  --log-bg: #f2f2f2;
+}
