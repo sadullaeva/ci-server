@@ -1,8 +1,28 @@
 :root {
+  --yellow-500: #ffcc00;
+  --yellow-530: #f2c200;
+  --yellow-650: #b38f00;
+
+  --grey-50: #f2f2f2;
+  --grey-100: #e6e6e6;
+  --grey-140: #dbdbdb;
+  --grey-150: #d9d9d9;
+  --grey-270: #b9b9b9;
+  --grey-300: #b3b3b3;
+  --grey-650: #595959;
+
+  --transition: all 150ms ease-in;
+
+  --border-width: 2px;
+
+  --box-shadow-normal: 0 1px 1px rgba(67, 68, 69, 0.3), 0 0 1px rgba(67, 68, 69, 0.3);
+  --box-shadow-hover: 0 2px 8px rgba(67, 68, 69, 0.3), 0 0 1px rgba(67, 68, 69, 0.3);
+
   --bg-primary: #fff;
 
   --text-primary: #000;
   --text-secondary: #7f8285;
+  --text-meta: var(--grey-650);
 
   --font-size-xs: 13px;
   --font-size-s: 13px;
@@ -23,10 +43,7 @@
   --padding-xl: 24px;
   --padding-xxl: 56px;
 
-  --btn-primary: #ffcc00;
-  --btn-secondary: #e6e6e6;
-
-  --status-success: #00bB341;
+  --status-success: #00b341;
   --status-running: #ff9a00;
   --status-failed: #ff3333;
 
@@ -37,5 +54,5 @@
   --interactive-elem-size-large: 36px;
 
   --footer-bg: #f0f2f3;
-  --log-bg: #f2f2f2;
+  --log-bg: var(--grey-50);
 }
