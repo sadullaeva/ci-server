@@ -54,3 +54,50 @@
 .button_type_secondary:focus {
   border-color: var(--grey-300);
 }
+
+.button_size_s {
+  padding: 0 var(--padding-s);
+  height: var(--interactive-elem-size-small);
+}
+
+.button_icon {
+  padding-left: var(--padding-xl);
+  background-size: 12px;
+  background-position: 6px center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.button_icon::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: var(--text-primary);
+}
+
+.button_icon_settings::before {
+  mask: url("./images/settings.svg");
+}
+
+.button_icon_play::before {
+  mask: url("./images/play.svg");
+}
+
+.button_icon_repeat::before {
+  mask: url("./images/repeat.svg");
+}
+
+.button_icon:disabled::before {
+  background-color: var(--grey-270);
+}
+
+.button_size_xs {
+  padding: 0;
+  width: var(--interactive-elem-size-small);
+  height: var(--interactive-elem-size-small);
+}
