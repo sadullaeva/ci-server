@@ -38,12 +38,13 @@
   --line-height-l: 22px;
   --line-height-xl: 28px;
 
-  --padding-xs: 8px;
-  --padding-s: 12px;
-  --padding-m: 16px;
-  --padding-l: 20px;
-  --padding-xl: 24px;
-  --padding-xxl: 56px;
+  --space-xxs: 8px;
+  --space-xs: 10px;
+  --space-s: 12px;
+  --space-m: 16px;
+  --space-l: 20px;
+  --space-xl: 24px;
+  --space-xxl: 56px;
 
   --status-success: #00b341;
   --status-running: #ff9a00;

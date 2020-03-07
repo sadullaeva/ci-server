@@ -1,7 +1,7 @@
 .button {
   width: auto;
   height: var(--interactive-elem-size-large);
-  padding: 0 var(--padding-l);
+  padding: 0 var(--space-l);
   box-sizing: border-box;
   color: var(--text-primary);
   font-size: var(--font-size-xs);
@@ -56,12 +56,12 @@
 }
 
 .button_size_s {
-  padding: 0 var(--padding-s);
+  padding: 0 var(--space-s);
   height: var(--interactive-elem-size-small);
 }
 
 .button_icon {
-  padding-left: var(--padding-xl);
+  padding-left: var(--space-xl);
   background-size: 12px;
   background-position: 6px center;
   background-repeat: no-repeat;
