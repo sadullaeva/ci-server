@@ -62,9 +62,6 @@
 
 .button_icon {
   padding-left: var(--space-xl);
-  background-size: 12px;
-  background-position: 6px center;
-  background-repeat: no-repeat;
   position: relative;
 }
 
