@@ -12,7 +12,7 @@
 .header .content-box {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .header_type_primary {
@@ -39,6 +39,8 @@
 
 .header__extra a {
   display: flex;
+  text-decoration: none;
+  color: unset;
 }
 
 @media screen and (max-width: 856px) {
@@ -47,7 +49,7 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .header {
     font-size: var(--font-size-l);
     line-height: var(--line-height-l);

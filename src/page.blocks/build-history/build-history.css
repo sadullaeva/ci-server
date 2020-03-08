@@ -36,7 +36,7 @@
   box-shadow: var(--box-shadow-hover)
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .build-history__show-more {
     width: 100%;
     height: var(--interactive-elem-size-large);

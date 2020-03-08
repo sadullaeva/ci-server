@@ -118,7 +118,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .build {
     padding: var(--space-m) var(--space-s) var(--space-m) var(--space-xxl);
     background-size: 14px;
@@ -156,4 +156,13 @@
     width: 100%;
   }
 
+  .build__content {
+    display: block;
+  }
+
+  .build__message {
+    white-space: unset;
+    overflow: unset;
+    text-overflow: unset;
+  }
 }

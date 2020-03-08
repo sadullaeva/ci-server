@@ -65,6 +65,6 @@
   visibility: hidden;
 }
 
-.text-field_clearable .text-field__reset {
+.text-field_clearable .text-field__input:not(:placeholder-shown) + .text-field__reset {
   visibility: visible;
 }
