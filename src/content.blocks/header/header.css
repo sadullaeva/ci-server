@@ -1,5 +1,5 @@
 .header {
-  padding: var(--space-xs) calc(50% - var(--content-width-l) / 2);
+  padding: var(--space-xs) 0;
   display: flex;
   justify-content: space-between;
   font-family: var(--font-family);
@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 856px) {
   .header {
-    padding: var(--space-s) var(--space-m);
+    padding: var(--space-s) 0;
   }
 }
 
