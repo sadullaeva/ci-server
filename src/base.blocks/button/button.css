@@ -72,20 +72,25 @@
   top: calc(50% - 6px);
   width: 12px;
   height: 12px;
+  -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
+  -webkit-mask-position: center;
   mask-position: center;
   background-color: var(--text-primary);
 }
 
 .button_icon_settings::before {
+  -webkit-mask-box-image: url("./images/settings.svg");
   mask: url("./images/settings.svg");
 }
 
 .button_icon_play::before {
+  -webkit-mask-box-image: url("./images/play.svg");
   mask: url("./images/play.svg");
 }
 
 .button_icon_repeat::before {
+  -webkit-mask-box-image: url("./images/repeat.svg");
   mask: url("./images/repeat.svg");
 }
 

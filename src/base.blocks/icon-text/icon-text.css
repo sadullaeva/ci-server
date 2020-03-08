@@ -14,7 +14,9 @@
   top: 0;
   width: 16px;
   height: 16px;
+  -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
+  -webkit-mask-position: center;
   mask-position: center;
 }
 
@@ -35,17 +37,21 @@
 }
 
 .icon-text_icon_calendar::before {
+  -webkit-mask-box-image: url("./images/calendar.svg");
   mask: url("./images/calendar.svg");
 }
 
 .icon-text_icon__stopwatch::before {
+  -webkit-mask-box-image: url("./images/stopwatch.svg");
   mask: url("./images/stopwatch.svg");
 }
 
 .icon-text_icon_commit::before {
+  -webkit-mask-box-image: url("./images/commit.svg");
   mask: url("./images/commit.svg");
 }
 
 .icon-text_icon_user::before {
+  -webkit-mask-box-image: url("./images/user.svg");
   mask: url("./images/user.svg");
 }
