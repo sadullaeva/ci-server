@@ -12,6 +12,8 @@
   --grey-300: #b3b3b3;
   --grey-650: #595959;
 
+  --blue-grey-50: #f0f2f3;
+
   --transition: all 150ms ease-in;
 
   --border-width: 2px;
@@ -46,7 +48,8 @@
   --space-m: 16px;
   --space-l: 20px;
   --space-xl: 24px;
-  --space-xxl: 56px;
+  --space-xxl: 36px;
+  --space-xxxl: 56px;
 
   --status-success: #00b341;
   --status-running: #ff9a00;
@@ -58,7 +61,7 @@
   --interactive-elem-size-small: 28px;
   --interactive-elem-size-large: 36px;
 
-  --footer-bg: #f0f2f3;
+  --footer-bg: var(--blue-grey-50);
   --log-bg: var(--grey-50);
 
   --content-width-l: 824px;
