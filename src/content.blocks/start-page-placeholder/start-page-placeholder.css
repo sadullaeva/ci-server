@@ -1,0 +1,21 @@
+.start-page-placeholder {
+  width: 264px;
+  height: 248px;
+  background: url("./images/placeholder.svg") top center no-repeat;
+  background-size: 124px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  color: var(--text-primary);
+}
+
+.start-page-placeholder__text {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  padding: 0 var(--space-xxl);
+  box-sizing: border-box;
+}
