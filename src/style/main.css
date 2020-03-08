@@ -17,3 +17,4 @@
 
 /* page.blocks */
 @import "../page.blocks/index/index.css";
+@import "../page.blocks/settings/settings.css";
