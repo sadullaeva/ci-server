@@ -2,6 +2,7 @@
   font-family: var(--font-family);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
+  letter-spacing: 0.06px;
   transition: var(--transition);
   text-decoration: none;
   outline: none;
