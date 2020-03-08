@@ -1,0 +1,20 @@
+.link {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  transition: var(--transition);
+  text-decoration: none;
+  outline: none;
+}
+
+.link:hover {
+  color: var(--red-600);
+}
+
+.link_type_primary {
+  color: var(--text-primary);
+}
+
+.link_type_secondary {
+  color: var(--text-secondary);
+}
