@@ -11,7 +11,14 @@ export const Default = () => `
       <div class="build__number">#1368</div>
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
-    <div class="build__meta"></div>
+    <div class="build__meta build__meta_horizontal">
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
+    </div>
+    <div class="build__meta build__meta_vertical">
+      <div class="icon-text icon-text_type_secondary icon-text_icon_calendar">21 янв, 03:06</div>
+      <div class="icon-text icon-text_type_secondary icon-text_icon__stopwatch">1 ч 20 мин</div>
+    </div>
   </div>
 
   <h2>Running build</h2>
@@ -20,7 +27,14 @@ export const Default = () => `
       <div class="build__number">#1368</div>
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
-    <div class="build__meta"></div>
+    <div class="build__meta build__meta_horizontal">
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
+    </div>
+    <div class="build__meta build__meta_vertical">
+      <div class="icon-text icon-text_type_secondary icon-text_icon_calendar">21 янв, 03:06</div>
+      <div class="icon-text icon-text_type_secondary icon-text_icon__stopwatch">1 ч 20 мин</div>
+    </div>
   </div>
 
   <h2>Failed build</h2>
@@ -29,6 +43,13 @@ export const Default = () => `
       <div class="build__number">#1368</div>
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
-    <div class="build__meta"></div>
+    <div class="build__meta build__meta_horizontal">
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
+    </div>
+    <div class="build__meta build__meta_vertical">
+      <div class="icon-text icon-text_type_secondary icon-text_icon_calendar">21 янв, 03:06</div>
+      <div class="icon-text icon-text_type_secondary icon-text_icon__stopwatch">1 ч 20 мин</div>
+    </div>
   </div>
 `;
