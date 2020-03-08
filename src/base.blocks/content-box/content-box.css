@@ -1,0 +1,10 @@
+.content-box {
+  width: 100%;
+  max-width: var(--content-width-l);
+}
+
+@media screen and (max-width: 856px) {
+  .content-box {
+    padding: 0 var(--space-m);
+  }
+}
