@@ -14,3 +14,6 @@
 @import "../content.blocks/footer/footer.css";
 @import "../content.blocks/header/header.css";
 @import "../content.blocks/start-page-placeholder/start-page-placeholder.css";
+
+/* page.blocks */
+@import "../page.blocks/index/index.css";
