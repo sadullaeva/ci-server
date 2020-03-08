@@ -12,7 +12,7 @@
 .header .content-box {
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
 }
 
 .header_type_primary {
@@ -35,6 +35,10 @@
 
 .header__extra > *:first-child {
   margin-left: 0;
+}
+
+.header__extra a {
+  display: flex;
 }
 
 @media screen and (max-width: 856px) {
