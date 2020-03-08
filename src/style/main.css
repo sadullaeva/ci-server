@@ -16,6 +16,7 @@
 @import "../content.blocks/start-page-placeholder/start-page-placeholder.css";
 
 /* page.blocks */
+@import "../page.blocks/build-details/build-details.css";
 @import "../page.blocks/build-history/build-history.css";
 @import "../page.blocks/index/index.css";
 @import "../page.blocks/settings/settings.css";
