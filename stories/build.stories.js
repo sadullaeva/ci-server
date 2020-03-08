@@ -12,7 +12,10 @@ export const Default = () => `
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
     <div class="build__meta build__meta_horizontal">
-      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">
+        master
+        <span class="build__commit">9c9f0b9</span>
+      </div>
       <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
     </div>
     <div class="build__meta build__meta_vertical">
@@ -28,7 +31,10 @@ export const Default = () => `
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
     <div class="build__meta build__meta_horizontal">
-      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">
+        master
+        <span class="build__commit">9c9f0b9</span>
+      </div>
       <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
     </div>
     <div class="build__meta build__meta_vertical">
@@ -44,7 +50,10 @@ export const Default = () => `
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
     <div class="build__meta build__meta_horizontal">
-      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">
+        master
+        <span class="build__commit">9c9f0b9</span>
+      </div>
       <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
     </div>
     <div class="build__meta build__meta_vertical">
@@ -60,7 +69,10 @@ export const Default = () => `
       <div class="build__message">add documentation for postgres scaler</div>
     </div>
     <div class="build__meta build__meta_horizontal">
-      <div class="icon-text icon-text_type_primary icon-text_icon_commit">master</div>
+      <div class="icon-text icon-text_type_primary icon-text_icon_commit">
+        master
+        <span class="build__commit">9c9f0b9</span>
+      </div>
       <div class="icon-text icon-text_type_primary icon-text_icon_user">Philip Kirkorov</div>
     </div>
     <div class="build__meta build__meta_horizontal">

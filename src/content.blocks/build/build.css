@@ -66,6 +66,11 @@
   text-overflow: ellipsis;
 }
 
+.build__commit {
+  color: var(--text-secondary);
+  margin-left: var(--space-xxxs);
+}
+
 .build__meta {
   display: flex;
 }
