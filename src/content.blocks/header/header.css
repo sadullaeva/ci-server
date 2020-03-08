@@ -1,7 +1,5 @@
 .header {
   padding: var(--space-xs) 0;
-  display: flex;
-  justify-content: space-between;
   font-family: var(--font-family);
   font-size: var(--font-size-xl);
   font-weight: 500;
@@ -9,6 +7,12 @@
   letter-spacing: 0.25px;
   word-break: break-word;
   box-sizing: border-box;
+}
+
+.header .content-box {
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .header_type_primary {
