@@ -1,0 +1,51 @@
+.icon-text {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  letter-spacing: 0.06px;
+  padding-left: var(--space-l);
+  position: relative;
+}
+
+.icon-text::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.icon-text_type_primary {
+  color: var(--text-primary);
+}
+
+.icon-text_type_primary::before {
+  background-color: var(--grey-300);
+}
+
+.icon-text_type_secondary {
+  color: var(--text-meta);
+}
+
+.icon-text_type_secondary::before {
+  background-color: var(--grey-190);
+}
+
+.icon-text_icon_calendar::before {
+  mask: url("./images/calendar.svg");
+}
+
+.icon-text_icon__stopwatch::before {
+  mask: url("./images/stopwatch.svg");
+}
+
+.icon-text_icon_commit::before {
+  mask: url("./images/commit.svg");
+}
+
+.icon-text_icon_user::before {
+  mask: url("./images/user.svg");
+}
