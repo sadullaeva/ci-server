@@ -17,6 +17,11 @@
   flex: 1 0 auto;
 }
 
+.settings .header a {
+  text-decoration: none;
+  color: unset;
+}
+
 .settings__content .content-box {
   margin-bottom: var(--space-l);
 }

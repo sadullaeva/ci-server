@@ -17,6 +17,11 @@
   flex: 1 0 auto;
 }
 
+.build-details .header a {
+  text-decoration: none;
+  color: unset;
+}
+
 .build-details__content .content-box {
   padding-top: var(--space-xxs);
 }
