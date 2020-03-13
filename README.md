@@ -6,6 +6,8 @@ Run `npm install` to install project dependencies.
 
 Run `npm run storybook` to run storybook and look at existing components.
 
+Run `npm run server` to run server on port 3000.
+
 ## Project structure
 
 The repository includes both client and server parts.
