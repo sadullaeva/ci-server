@@ -18,7 +18,11 @@
     "url": "https://github.com/sadullaeva/ci-server/issues"
   },
   "homepage": "https://github.com/sadullaeva/ci-server#readme",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@storybook/html": "^5.3.14",
