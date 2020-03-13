@@ -26,6 +26,11 @@
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@storybook/html": "^5.3.14",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "prettier": "^1.19.1"
+  },
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.4"
   }
 }
