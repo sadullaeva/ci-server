@@ -3,11 +3,13 @@ const url = require('url');
 const getCommitAuthorName = require('../utils/getCommitAuthorName');
 const getCommitMessage = require('../utils/getCommitMessage');
 
-const getBuilds = require('../services/getBuilds');
-const getBuild = require('../services/getBuild');
-const postBuild = require('../services/postBuild');
-const getBuildLog = require('../services/getBuildLog');
-const getSettings = require('../services/getSettings');
+const {
+  getBuilds,
+  getBuild,
+  postBuild,
+  getBuildLog,
+  getSettings,
+} = require('../services/storageMethods');
 
 exports.getBuilds = (req, res, next) => {
   const { search } = url.parse(req.url, true);
