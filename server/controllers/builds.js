@@ -1,4 +1,5 @@
 const url = require('url');
+const buildEmitter = require('../utils/buildEmitter');
 
 const getCommitAuthorName = require('../utils/getCommitAuthorName');
 const getCommitMessage = require('../utils/getCommitMessage');
@@ -24,27 +25,24 @@ exports.getBuilds = (req, res, next) => {
 
 exports.postBuild = async (req, res, next) => {
   const { commitHash } = req.params;
-  let authorName;
-  let commitMessage;
-  let branchName;
+  try {
+    const responses = await Promise.all([
+      getSettings(),
+      getCommitAuthorName(commitHash),
+      getCommitMessage(commitHash),
+    ]);
+    const branchName = responses[0].data.data.mainBranch;
+    const authorName = responses[1];
+    const commitMessage = responses[2];
 
-  await Promise.all([getSettings(), getCommitAuthorName(commitHash), getCommitMessage(commitHash)])
-    .then(response => {
-      branchName = response[0].data.data.mainBranch;
-      authorName = response[1];
-      commitMessage = response[2];
-    })
-    .catch(err => {
-      next(err);
-    });
+    const response = await postBuild({ commitMessage, commitHash, branchName, authorName });
 
-  postBuild({ commitMessage, commitHash, branchName, authorName })
-    .then(response => {
-      res.send(response.data);
-    })
-    .catch(err => {
-      next(err);
-    });
+    // TODO:
+    // buildEmitter.emit('request', buildId);
+    res.send(response.data);
+  } catch (err) {
+    next(err);
+  }
 };
 
 exports.getBuild = (req, res, next) => {
