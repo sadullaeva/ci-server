@@ -4,7 +4,9 @@ const getCommitAuthorName = require('../utils/getCommitAuthorName');
 const getCommitMessage = require('../utils/getCommitMessage');
 
 const getBuilds = require('../services/getBuilds');
+const getBuild = require('../services/getBuild');
 const postBuild = require('../services/postBuild');
+const getBuildLog = require('../services/getBuildLog');
 const getSettings = require('../services/getSettings');
 
 exports.getBuilds = (req, res, next) => {
@@ -35,6 +37,28 @@ exports.postBuild = async (req, res, next) => {
     });
 
   postBuild({ commitMessage, commitHash, branchName, authorName })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      next(err);
+    });
+};
+
+exports.getBuild = (req, res, next) => {
+  const { buildId } = req.params;
+  getBuild(`?buildId=${buildId}`)
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      next(err);
+    });
+};
+
+exports.getBuildLogs = (req, res, next) => {
+  const { buildId } = req.params;
+  getBuildLog(`?buildId=${buildId}`)
     .then(response => {
       res.send(response.data);
     })
