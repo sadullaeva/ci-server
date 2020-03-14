@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getSettings, postSettings } = require('./settings');
+const { getSettings, postSettings } = require('../controllers/settings');
 
 router.get('/settings', getSettings);
 router.post('/settings', postSettings);

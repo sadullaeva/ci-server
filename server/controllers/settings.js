@@ -1,9 +1,9 @@
-const axios = require('./axios');
-const cloneRepo = require('./services/cloneRepo');
+const getSettings = require('../services/getSettings');
+const postSettings = require('../services/postSettings');
+const cloneRepo = require('../services/cloneRepo');
 
 exports.getSettings = (req, res, next) => {
-  axios
-    .get(`/conf`)
+  getSettings()
     .then(response => {
       res.send(response.data);
     })
@@ -16,8 +16,7 @@ exports.postSettings = (req, res, next) => {
   const { repoName, mainBranch } = req.body;
   cloneRepo(repoName, mainBranch);
 
-  axios
-    .post(`/conf`, req.body)
+  postSettings(req.body)
     .then(response => {
       res.send(response.data);
     })
