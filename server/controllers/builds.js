@@ -3,6 +3,8 @@ const url = require('url');
 const getCommitAuthorName = require('../utils/getCommitAuthorName');
 const getCommitMessage = require('../utils/getCommitMessage');
 
+const { cacheLog, getFromCache } = require('../services/cacheLog');
+
 const {
   getBuilds,
   getBuild,
@@ -55,11 +57,17 @@ exports.getBuild = (req, res, next) => {
 
 exports.getBuildLogs = (req, res, next) => {
   const { buildId } = req.params;
-  getBuildLog(`?buildId=${buildId}`)
-    .then(response => {
-      res.send(response.data);
-    })
-    .catch(err => {
-      next(err);
-    });
+  const log = getFromCache(buildId);
+  if (log) {
+    res.send(log);
+  } else {
+    getBuildLog(`?buildId=${buildId}`)
+      .then(response => {
+        cacheLog(buildId, response.data);
+        res.send(response.data);
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
 };
