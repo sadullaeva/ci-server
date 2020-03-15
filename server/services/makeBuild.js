@@ -9,10 +9,11 @@ const { getSettings } = require('../services/storageMethods');
 // NOTE: This function is not used at the moment
 module.exports = async buildId => {
   try {
-    const cwd = path.resolve(__dirname, '..');
+    const cwd = path.resolve(__dirname, '../ci-repo');
+    const startTime = new Date();
     const startParams = {
       buildId,
-      dateTime: new Date().toISOString(),
+      dateTime: startTime.toISOString(),
     };
     await startBuild(startParams);
     console.log('START BUILD');
@@ -25,22 +26,20 @@ module.exports = async buildId => {
     const settings = await getSettings();
     const { buildCommand } = settings.data.data;
     const { stdout, stderr } = await exec(buildCommand, { cwd });
-    stdout.on('data', data => {
-      finishParams.buildLog = data;
-      finishParams.duration = new Date() - startParams.dateTime;
+    if (stdout) {
+      finishParams.buildLog = stdout;
+      finishParams.duration = new Date() - startTime;
       finishParams.success = true;
-      console.log('ON DATA');
-    });
-    stderr.on('data', data => {
-      console.log(data);
-      console.log('ON ERROR');
-    });
+    } else {
+      console.log('STDERR:', stderr);
+    }
+
     if (finishParams.success) {
       console.log('FINISH BUILD', finishParams);
-      finishBuild(finishParams);
+      await finishBuild(finishParams);
     } else {
       console.log('CANCEL BUILD');
-      cancelBuild({ buildId });
+      await cancelBuild({ buildId });
     }
   } catch (e) {
     console.log(e);

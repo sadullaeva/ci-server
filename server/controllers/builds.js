@@ -1,5 +1,4 @@
 const url = require('url');
-const buildEmitter = require('../utils/buildEmitter');
 
 const getCommitAuthorName = require('../utils/getCommitAuthorName');
 const getCommitMessage = require('../utils/getCommitMessage');
@@ -37,8 +36,6 @@ exports.postBuild = async (req, res, next) => {
 
     const response = await postBuild({ commitMessage, commitHash, branchName, authorName });
 
-    // TODO:
-    // buildEmitter.emit('request', buildId);
     res.send(response.data);
   } catch (err) {
     next(err);
