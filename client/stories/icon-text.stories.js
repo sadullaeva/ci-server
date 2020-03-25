@@ -1,4 +1,4 @@
-import "../src/style/main.css";
+import "../style/main.css";
 
 export default {
   title: 'Icon text',
