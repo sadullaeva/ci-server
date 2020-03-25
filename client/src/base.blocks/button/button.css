@@ -19,39 +19,39 @@
   pointer-events: none;
 }
 
-.button_type_primary {
+.button_kind_primary {
   background-color: var(--yellow-500);
 }
 
-.button_type_primary:hover {
+.button_kind_primary:hover {
   background-color: var(--yellow-530);
   border-color: var(--yellow-530);
 }
 
-.button_type_primary:active {
+.button_kind_primary:active {
   background-color: var(--yellow-650);
   border-color: var(--yellow-650);
 }
 
-.button_type_primary:focus {
+.button_kind_primary:focus {
   border-color: var(--yellow-650);
 }
 
-.button_type_secondary {
+.button_kind_secondary {
   background-color: var(--grey-100);
 }
 
-.button_type_secondary:hover {
+.button_kind_secondary:hover {
   background-color: var(--grey-140);
   border-color: var(--grey-140);
 }
 
-.button_type_secondary:active {
+.button_kind_secondary:active {
   background-color: var(--grey-300);
   border-color: var(--grey-300);
 }
 
-.button_type_secondary:focus {
+.button_kind_secondary:focus {
   border-color: var(--grey-300);
 }
 
@@ -80,18 +80,18 @@
 }
 
 .button_icon_settings::before {
-  -webkit-mask-box-image: url("./images/settings.svg");
-  mask: url("./images/settings.svg");
+  -webkit-mask-box-image: url("images/settings.svg");
+  mask: url("images/settings.svg");
 }
 
 .button_icon_play::before {
-  -webkit-mask-box-image: url("./images/play.svg");
-  mask: url("./images/play.svg");
+  -webkit-mask-box-image: url("images/play.svg");
+  mask: url("images/play.svg");
 }
 
 .button_icon_repeat::before {
-  -webkit-mask-box-image: url("./images/repeat.svg");
-  mask: url("./images/repeat.svg");
+  -webkit-mask-box-image: url("images/repeat.svg");
+  mask: url("images/repeat.svg");
 }
 
 .button_icon:disabled::before {
