@@ -52,24 +52,12 @@ export const Default = () => (
 
     <h2>Small icon button</h2>
     <h3>Normal</h3>
-    <Button kind={'secondary'} size={'xs'} icon={'settings'}>
-      Settings
-    </Button>
-    <Button kind={'secondary'} size={'xs'} icon={'play'}>
-      Run build
-    </Button>
-    <Button kind={'secondary'} size={'xs'} icon={'repeat'}>
-      Rebuild
-    </Button>
+    <Button kind={'secondary'} size={'xs'} icon={'settings'} />
+    <Button kind={'secondary'} size={'xs'} icon={'play'} />
+    <Button kind={'secondary'} size={'xs'} icon={'repeat'} />
     <h3>Disabled</h3>
-    <Button kind={'secondary'} size={'xs'} icon={'settings'} disabled>
-      Settings
-    </Button>
-    <Button kind={'secondary'} size={'xs'} icon={'play'} disabled>
-      Run build
-    </Button>
-    <Button kind={'secondary'} size={'xs'} icon={'repeat'} disabled>
-      Rebuild
-    </Button>
+    <Button kind={'secondary'} size={'xs'} icon={'settings'} disabled />
+    <Button kind={'secondary'} size={'xs'} icon={'play'} disabled />
+    <Button kind={'secondary'} size={'xs'} icon={'repeat'} disabled />
   </>
 );
