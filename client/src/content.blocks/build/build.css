@@ -22,15 +22,15 @@
 }
 
 .build_type_success {
-  background-image: url("./images/success.svg");
+  background-image: url("images/success.svg");
 }
 
 .build_type_running {
-  background-image: url("./images/run.svg");
+  background-image: url("images/run.svg");
 }
 
 .build_type_failed {
-  background-image: url("./images/fail.svg");
+  background-image: url("images/fail.svg");
 }
 
 .build__content {

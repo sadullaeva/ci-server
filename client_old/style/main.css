@@ -10,7 +10,7 @@
 @import "../../client/src/base.blocks/textField/textField.css";
 
 /* content.blocks */
-@import "../content.blocks/build/build.css";
+@import "../../client/src/content.blocks/build/build.css";
 @import "../content.blocks/footer/footer.css";
 @import "../content.blocks/header/header.css";
 @import "../content.blocks/start-page-placeholder/start-page-placeholder.css";
