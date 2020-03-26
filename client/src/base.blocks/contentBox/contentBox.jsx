@@ -8,7 +8,7 @@ import './contentBox.css';
 const ContentBox = props => {
   const { className = '', children } = props;
   const contentBox = cn('content-box');
-  const classes = clsx(contentBox, className);
+  const classes = clsx(contentBox(), className);
   return <div className={classes}>{children}</div>;
 };
 

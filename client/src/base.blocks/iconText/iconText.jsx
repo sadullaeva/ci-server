@@ -8,7 +8,7 @@ import './iconText.css';
 const IconText = props => {
   const { className = '', children, icon, type = 'primary', ...other } = props;
   const iconText = cn('icon-text');
-  const classes = clsx(iconText, icon && iconText({ icon }), iconText({ type }));
+  const classes = clsx(iconText(), className, icon && iconText({ icon }), iconText({ type }));
   return (
     <div className={classes} {...other}>
       {children}

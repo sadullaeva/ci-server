@@ -8,7 +8,7 @@ import './link.css';
 const Link = props => {
   const { className = '', children, href, type = 'primary', ...other } = props;
   const link = cn('link');
-  const classes = clsx(link, className, link({ type }));
+  const classes = clsx(link(), className, link({ type }));
   return (
     <a href={href} className={classes} {...other}>
       {children}

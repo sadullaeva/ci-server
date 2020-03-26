@@ -9,7 +9,7 @@ const Button = props => {
   const { className = '', type = 'button', kind, size, icon, ...other } = props;
   const button = cn('button');
   const classes = clsx(
-    button,
+    button(),
     className,
     kind && button({ kind }),
     size && button({ size }),
