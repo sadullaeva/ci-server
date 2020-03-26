@@ -7,7 +7,7 @@
 @import "../../client/src/base.blocks/contentBox/contentBox.css";
 @import "../../client/src/base.blocks/iconText/iconText.css";
 @import "../../client/src/base.blocks/link/link.css";
-@import "../base.blocks/text-field/text-field.css";
+@import "../../client/src/base.blocks/textField/textField.css";
 
 /* content.blocks */
 @import "../content.blocks/build/build.css";
