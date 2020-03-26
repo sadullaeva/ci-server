@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { cn } from '@bem-react/classname';
+import { cn } from 'utils/bem';
 
 import './contentBox.css';
 
