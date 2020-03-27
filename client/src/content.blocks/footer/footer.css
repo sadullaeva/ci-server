@@ -11,11 +11,11 @@
   align-items: center;
 }
 
-.footer__content > * {
+.footer__content .link {
   margin-right: var(--space-s);
 }
 
-.footer__content > *:last-child {
+.footer__content .link:last-child {
   margin-right: 0;
 }
 
