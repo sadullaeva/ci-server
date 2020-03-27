@@ -1,28 +1,11 @@
-.settings-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: var(--font-family);
-}
-
-.settings-page .header {
-  flex: 0 0 auto;
-}
-
-.settings-page .footer {
-  flex: 0 0 auto;
-}
-
-.settings-page__content {
-  flex: 1 0 auto;
-}
+.settings-page {}
 
 .settings-page .header a {
   text-decoration: none;
   color: unset;
 }
 
-.settings-page__content .content-box {
+.settings-page__content.content-box {
   margin-bottom: var(--space-l);
 }
 
