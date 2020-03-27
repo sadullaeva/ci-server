@@ -6,12 +6,19 @@ import * as serviceWorker from './serviceWorker';
 
 import StartPage from 'pages/startPage/startPage';
 import SettingsPage from 'pages/settingsPage/settingsPage';
+import HistoryPage from './pages/historyPage/historyPage';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route exact path={'/'} render={props => (props.settings ? 'build list' : <StartPage />)} />
+        <Route
+          exact
+          path={'/'}
+          render={props =>
+            props.settings ? <HistoryPage heading={'philip1967/my-awesome-repo'} /> : <StartPage />
+          }
+        />
         <Route path={'/settings'}>
           <SettingsPage />
         </Route>
