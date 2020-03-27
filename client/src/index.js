@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+import StartPage from 'pages/startPage/startPage';
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route exact path={'/'} render={props => (props.settings ? 'build list' : 'empty page')} />
+        <Route exact path={'/'} render={props => (props.settings ? 'build list' : <StartPage />)} />
         <Route path={'/settings'}>{'Settings'}</Route>
         <Route path={'/build/:number'}>{'Build'}</Route>
         <Route>{'404'}</Route>
