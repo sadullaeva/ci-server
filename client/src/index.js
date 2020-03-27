@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* TODO */}
+    <Router>
+      <Switch>
+        <Route exact path={'/'} render={props => (props.settings ? 'build list' : 'empty page')} />
+        <Route path={'/settings'}>{'Settings'}</Route>
+        <Route path={'/build/:number'}>{'Build'}</Route>
+        <Route>{'404'}</Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
