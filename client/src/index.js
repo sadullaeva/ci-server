@@ -5,13 +5,16 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 import StartPage from 'pages/startPage/startPage';
+import SettingsPage from 'pages/settingsPage/settingsPage';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
         <Route exact path={'/'} render={props => (props.settings ? 'build list' : <StartPage />)} />
-        <Route path={'/settings'}>{'Settings'}</Route>
+        <Route path={'/settings'}>
+          <SettingsPage />
+        </Route>
         <Route path={'/build/:number'}>{'Build'}</Route>
         <Route>{'404'}</Route>
       </Switch>
