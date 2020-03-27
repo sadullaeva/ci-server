@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import StartPage from 'pages/startPage/startPage';
 import SettingsPage from 'pages/settingsPage/settingsPage';
 import HistoryPage from './pages/historyPage/historyPage';
+import BuildPage from './pages/buildPage/buildPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,13 +17,27 @@ ReactDOM.render(
           exact
           path={'/'}
           render={props =>
-            props.settings ? <HistoryPage heading={'philip1967/my-awesome-repo'} /> : <StartPage />
+            !props.settings ? <HistoryPage heading={'philip1967/my-awesome-repo'} /> : <StartPage />
           }
         />
         <Route path={'/settings'}>
           <SettingsPage />
         </Route>
-        <Route path={'/build/:number'}>{'Build'}</Route>
+        <Route path={'/build/:number'}>
+          <BuildPage
+            heading={'philip1967/my-awesome-repo'}
+            build={{
+              status: 'success',
+              buildNumber: 1368,
+              message: 'add documentation for postgres scaler',
+              branch: 'master',
+              commit: '9c9f0b9',
+              author: 'Philip Kirkorov',
+              date: '21 янв, 03:06',
+              duration: '1 ч 20 мин',
+            }}
+          />
+        </Route>
         <Route>{'404'}</Route>
       </Switch>
     </Router>
