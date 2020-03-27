@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import Button from 'base.blocks/button/button';
@@ -9,7 +10,6 @@ import Build from 'content.blocks/build/build';
 import Placeholder from 'content.blocks/placeholder/placeholder';
 
 import './historyPage.css';
-import clsx from 'clsx';
 
 const HistoryPage = props => {
   const { heading, builds = [] } = props;
