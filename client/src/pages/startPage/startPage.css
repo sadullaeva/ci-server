@@ -1,6 +1,6 @@
 .start-page {}
 
-.start-page__content {
+.start-page .layout__content {
   height: 100%;
   display: flex;
   align-items: center;

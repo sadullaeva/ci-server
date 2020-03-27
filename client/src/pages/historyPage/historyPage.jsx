@@ -8,6 +8,7 @@ import Button from 'base.blocks/button/button';
 import Layout from 'template.blocks/layout/layout';
 import Build from 'content.blocks/build/build';
 import Placeholder from 'content.blocks/placeholder/placeholder';
+import ContentBox from 'base.blocks/contentBox/contentBox';
 
 import './historyPage.css';
 
@@ -31,30 +32,30 @@ const HistoryPage = props => {
         </>
       ),
     },
-    contentProps: {
-      className: historyPage('content'),
-    },
   };
   return (
     <Layout {...layoutProps}>
       {!isEmpty ? (
-        builds.map(build => {
-          const { type, buildNumber, message, branch, commit, author, date, duration } = build;
-          return (
-            <Build
-              meta={{
-                buildNumber,
-                message,
-                branch,
-                commit,
-                author,
-                date,
-                duration,
-              }}
-              type={type}
-            />
-          );
-        })
+        <ContentBox className={historyPage('content')}>
+          {builds.map(build => {
+            const { type, buildNumber, message, branch, commit, author, date, duration } = build;
+            return (
+              <Build
+                meta={{
+                  buildNumber,
+                  message,
+                  branch,
+                  commit,
+                  author,
+                  date,
+                  duration,
+                }}
+                type={type}
+              />
+            );
+          })}
+          <Button kind={'secondary'} size={'s'} className={historyPage('show-more')} />
+        </ContentBox>
       ) : (
         <Placeholder
           action={{

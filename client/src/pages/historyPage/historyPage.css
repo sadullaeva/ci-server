@@ -1,6 +1,6 @@
 .history-page {}
 
-.history-page_empty .history-page__content {
+.history-page_empty .layout__content {
   height: 100%;
   display: flex;
   justify-content: center;

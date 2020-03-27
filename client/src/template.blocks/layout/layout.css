@@ -12,6 +12,6 @@
   flex: 0 0 auto;
 }
 
-.layout .content-box {
+.layout__content {
   flex: 1 0 auto;
 }

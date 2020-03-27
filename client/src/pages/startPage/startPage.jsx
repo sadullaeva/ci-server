@@ -25,9 +25,6 @@ const StartPage = props => {
         </Link>
       ),
     },
-    contentProps: {
-      className: startPage('content'),
-    },
   };
   const placeholderProps = {
     children: 'Configure repository connection and synchronization settings',
