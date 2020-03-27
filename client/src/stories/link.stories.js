@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'src/base.blocks/link/link';
+import Link from 'base.blocks/link/link';
 
 export default {
   title: 'Link',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
-import ContentBox from 'src/base.blocks/contentBox/contentBox';
+import ContentBox from 'base.blocks/contentBox/contentBox';
 
 import './header.css';
 

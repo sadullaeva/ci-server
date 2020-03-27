@@ -3,9 +3,9 @@ import PropTypes, { object } from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
-import Header from 'src/content.blocks/header/header';
-import ContentBox from 'src/base.blocks/contentBox/contentBox';
-import Footer from 'src/content.blocks/footer/footer';
+import Header from 'content.blocks/header/header';
+import ContentBox from 'base.blocks/contentBox/contentBox';
+import Footer from 'content.blocks/footer/footer';
 
 import './layout.css';
 

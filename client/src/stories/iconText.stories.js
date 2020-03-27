@@ -1,5 +1,5 @@
 import React from 'react';
-import IconText from 'src/base.blocks/iconText/iconText';
+import IconText from 'base.blocks/iconText/iconText';
 
 export default {
   title: 'Icon text',

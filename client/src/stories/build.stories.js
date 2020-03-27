@@ -1,5 +1,5 @@
 import React from 'react';
-import Build from 'src/content.blocks/build/build';
+import Build from 'content.blocks/build/build';
 
 export default {
   title: 'Build',

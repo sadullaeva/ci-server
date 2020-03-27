@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
-import ContentBox from 'src/base.blocks/contentBox/contentBox';
-import Link from 'src/base.blocks/link/link';
+import ContentBox from 'base.blocks/contentBox/contentBox';
+import Link from 'base.blocks/link/link';
 
 import './footer.css';
 

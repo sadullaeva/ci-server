@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TextField from 'src/base.blocks/textField/textField';
+import TextField from 'base.blocks/textField/textField';
 
 export default {
   title: 'Text field',

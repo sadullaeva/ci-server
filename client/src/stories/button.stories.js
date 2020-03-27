@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'src/base.blocks/button/button';
+import Button from 'base.blocks/button/button';
 
 export default {
   title: 'Button',

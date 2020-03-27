@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
-import IconText from 'src/base.blocks/iconText/iconText';
+import IconText from 'base.blocks/iconText/iconText';
 
 import './build.css';
 

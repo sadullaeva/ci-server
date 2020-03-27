@@ -1,6 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import Placeholder from 'src/content.blocks/placeholder/placeholder';
+import Placeholder from 'content.blocks/placeholder/placeholder';
 
 export default {
   title: 'Placeholder',

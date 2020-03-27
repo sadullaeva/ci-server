@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
-import Button from 'src/base.blocks/button/button';
+import Button from 'base.blocks/button/button';
 
 import './placeholder.css';
 

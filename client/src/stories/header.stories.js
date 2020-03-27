@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from 'src/content.blocks/header/header';
-import Button from 'src/base.blocks/button/button';
+import Header from 'content.blocks/header/header';
+import Button from 'base.blocks/button/button';
 
 export default {
   title: 'Header',
