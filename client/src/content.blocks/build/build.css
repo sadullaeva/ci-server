@@ -21,15 +21,15 @@
   height: 101px;
 }
 
-.build_type_success {
+.build_status_success {
   background-image: url("images/success.svg");
 }
 
-.build_type_running {
+.build_status_running {
   background-image: url("images/run.svg");
 }
 
-.build_type_failed {
+.build_status_failed {
   background-image: url("images/fail.svg");
 }
 
@@ -45,15 +45,15 @@
   margin-right: var(--space-xxxs);
 }
 
-.build_type_success .build__number {
+.build_status_success .build__number {
   color: var(--status-success);
 }
 
-.build_type_running .build__number {
+.build_status_running .build__number {
   color: var(--status-running);
 }
 
-.build_type_failed .build__number {
+.build_status_failed .build__number {
   color: var(--status-failed);
 }
 

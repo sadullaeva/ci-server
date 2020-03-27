@@ -8,9 +8,9 @@ import IconText from 'base.blocks/iconText/iconText';
 import './build.css';
 
 const Build = props => {
-  const { className = '', type, size, meta } = props;
+  const { className = '', status, size, meta } = props;
   const build = cn('build');
-  const classes = clsx(build(), className, type && build({ type }), size && build({ size }));
+  const classes = clsx(build(), className, status && build({ status }), size && build({ size }));
   return (
     <div className={classes}>
       <div className={build('content')}>
@@ -40,7 +40,7 @@ const Build = props => {
 
 Build.propTypes = {
   className: PropTypes.string,
-  type: PropTypes.oneOf(['success', 'running', 'failed']),
+  status: PropTypes.oneOf(['success', 'running', 'failed']),
   size: PropTypes.oneOf(['l']),
   meta: PropTypes.exact({
     buildNumber: PropTypes.number,
