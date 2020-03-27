@@ -6,7 +6,7 @@ import { cn } from 'utils/bem';
 import './button.css';
 
 const Button = props => {
-  const { className = '', type = 'button', kind, size, icon, ...other } = props;
+  const { className = '', type = 'button', kind, size, icon, children, ...other } = props;
   const button = cn('button');
   const classes = clsx(
     button(),
@@ -16,7 +16,11 @@ const Button = props => {
     icon && button({ icon: true }),
     icon && button({ icon })
   );
-  return <button className={classes} type={type} {...other} />;
+  return (
+    <button className={classes} type={type} {...other}>
+      <span className={button('content')}>{children}</span>
+    </button>
+  );
 };
 
 Button.propTypes = {

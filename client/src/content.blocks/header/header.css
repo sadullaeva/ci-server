@@ -54,13 +54,4 @@
     font-size: var(--font-size-l);
     line-height: var(--line-height-l);
   }
-
-  .header__extra .button_icon.button_size_s .header__button-text {
-    display: none;
-  }
-
-  .header__extra .button_icon.button_size_s {
-    padding: 0;
-    width: var(--interactive-elem-size-small);
-  }
 }

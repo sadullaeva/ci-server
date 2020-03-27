@@ -103,3 +103,18 @@
   width: var(--interactive-elem-size-small);
   height: var(--interactive-elem-size-small);
 }
+
+.button_size_xs .button__content {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .button_size_s {
+    padding: 0;
+    width: var(--interactive-elem-size-small);
+  }
+
+  .button_size_s .button__content {
+    display: none;
+  }
+}
