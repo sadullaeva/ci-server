@@ -12,7 +12,7 @@
 /* content.blocks */
 @import "../../client/src/content.blocks/build/build.css";
 @import "../../client/src/content.blocks/footer/footer.css";
-@import "../content.blocks/header/header.css";
+@import "../../client/src/content.blocks/header/header.css";
 @import "../content.blocks/start-page-placeholder/start-page-placeholder.css";
 
 /* page.blocks */
