@@ -32,6 +32,18 @@ export const Default = () => {
 
       <h2>Just text field</h2>
       <TextField id={'textField3'} defaultValue={'Hello!'} />
+
+      <h2>Text field invalid</h2>
+      <TextField id={'textField4'} label={'Build command'} required clearable invalid />
+
+      <h2>Text field invalid with error</h2>
+      <TextField
+        id={'textField5'}
+        label={'Build command'}
+        required
+        clearable
+        error={'This field should not be empty'}
+      />
     </>
   );
 };
