@@ -8,7 +8,7 @@ const requestSettings = () => ({
 export const RECEIVE_SETTINGS = 'getSettings/receive';
 const receiveSettings = payload => ({
   type: RECEIVE_SETTINGS,
-  payload,
+  payload: payload.data,
 });
 
 export const REJECT_SETTINGS = 'getSettings/reject';
