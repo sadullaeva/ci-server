@@ -10,7 +10,7 @@ export const Default = () => (
   <>
     <h2>Success build</h2>
     <Build
-      type={'success'}
+      status={'success'}
       meta={{
         buildNumber: 1368,
         message: 'add documentation for postgres scaler',
@@ -24,7 +24,7 @@ export const Default = () => (
 
     <h2>Running build</h2>
     <Build
-      type={'running'}
+      status={'running'}
       meta={{
         buildNumber: 1368,
         message: 'add documentation for postgres scaler',
@@ -38,7 +38,7 @@ export const Default = () => (
 
     <h2>Failed build</h2>
     <Build
-      type={'failed'}
+      status={'failed'}
       meta={{
         buildNumber: 1368,
         message: 'add documentation for postgres scaler',
@@ -52,7 +52,7 @@ export const Default = () => (
 
     <h2>Build size L</h2>
     <Build
-      type={'success'}
+      status={'success'}
       size={'l'}
       meta={{
         buildNumber: 1368,
