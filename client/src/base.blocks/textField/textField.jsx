@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
@@ -19,7 +19,6 @@ const TextField = props => {
     ...other
   } = props;
   const ref = createRef();
-  const [hasValue, setHasValue] = useState(props.value || props.defaultValue);
 
   const clear = () => {
     const input = ref && ref.current && ref.current.querySelector('input');
@@ -31,18 +30,11 @@ const TextField = props => {
     }
   };
 
-  const onChange = evt => {
-    setHasValue(!!evt.target.value);
-    if (props.onChange) {
-      props.onChange(evt);
-    }
-  };
-
   const textField = cn('text-field');
   const classes = clsx(
     textField(),
     className,
-    clearable && hasValue && textField({ clearable: true }),
+    clearable && textField({ clearable: true }),
     required && textField({ required: true }),
     (invalid || error) && textField({ invalid: true })
   );
@@ -60,7 +52,6 @@ const TextField = props => {
           type={'text'}
           placeholder={placeholder}
           className={textField('input')}
-          onChange={onChange}
           {...other}
         />
         {clearable && <button type={'button'} className={textField('reset')} onClick={clear} />}
