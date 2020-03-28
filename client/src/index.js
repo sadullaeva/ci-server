@@ -1,46 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import store from './store/store';
 
-import StartPage from 'pages/startPage/startPage';
-import SettingsPage from 'pages/settingsPage/settingsPage';
-import HistoryPage from './pages/historyPage/historyPage';
+import PrivateRoute from './template.blocks/privateRoute/privateRoute';
+
+import SettingsPage from './pages/settingsPage/settingsPage';
 import BuildPage from './pages/buildPage/buildPage';
+import MainPage from './pages/mainPage/mainPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path={'/'}
-          render={props =>
-            !props.settings ? <HistoryPage heading={'philip1967/my-awesome-repo'} /> : <StartPage />
-          }
-        />
-        <Route path={'/settings'}>
-          <SettingsPage />
-        </Route>
-        <Route path={'/build/:number'}>
-          <BuildPage
-            heading={'philip1967/my-awesome-repo'}
-            build={{
-              status: 'success',
-              buildNumber: 1368,
-              message: 'add documentation for postgres scaler',
-              branch: 'master',
-              commit: '9c9f0b9',
-              author: 'Philip Kirkorov',
-              date: '21 янв, 03:06',
-              duration: '1 ч 20 мин',
-            }}
-          />
-        </Route>
-        <Route>{'404'}</Route>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path={'/'}>
+            <MainPage />
+          </Route>
+          <Route path={'/settings'}>
+            <SettingsPage />
+          </Route>
+          <PrivateRoute path={'/build/:number'}>
+            <BuildPage
+              heading={'philip1967/my-awesome-repo'}
+              build={{
+                status: 'success',
+                buildNumber: 1368,
+                message: 'add documentation for postgres scaler',
+                branch: 'master',
+                commit: '9c9f0b9',
+                author: 'Philip Kirkorov',
+                date: '21 янв, 03:06',
+                duration: '1 ч 20 мин',
+              }}
+            />
+          </PrivateRoute>
+          <Route>{'404'}</Route>
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
