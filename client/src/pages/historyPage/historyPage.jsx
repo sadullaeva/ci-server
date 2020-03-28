@@ -11,16 +11,19 @@ import Placeholder from 'content.blocks/placeholder/placeholder';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 
 import './historyPage.css';
+import { useSelector } from 'react-redux';
 
 const HistoryPage = props => {
-  const { heading, builds = [] } = props;
+  const { builds = [] } = props;
   const isEmpty = !builds || !builds.length;
+  const repoName = useSelector(state => state.settings.settings?.repoName || 'Builds history');
+
   const historyPage = cn('history-page');
   const layoutProps = {
     className: clsx(historyPage(), historyPage({ empty: isEmpty })),
     headerProps: {
       type: 'primary',
-      heading,
+      heading: repoName,
       extra: (
         <>
           <Button kind={'secondary'} size={'s'} icon={'play'}>
@@ -73,7 +76,6 @@ const HistoryPage = props => {
 };
 
 HistoryPage.propTypes = {
-  heading: PropTypes.string,
   builds: PropTypes.arrayOf(PropTypes.object),
 };
 
