@@ -1,4 +1,5 @@
 import { REQUEST_SETTINGS, RECEIVE_SETTINGS, REJECT_SETTINGS } from './getSettings';
+import { REJECT_UPDATE, RECEIVE_UPDATE, REQUEST_UPDATE } from './updateSettings';
 
 const initState = {
   loading: false,
@@ -21,6 +22,25 @@ export default (state = initState, action) => {
       };
     }
     case REJECT_SETTINGS: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+    case REQUEST_UPDATE: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case RECEIVE_UPDATE: {
+      return {
+        ...state,
+        settings: action.payload,
+        loading: false,
+      };
+    }
+    case REJECT_UPDATE: {
       return {
         ...state,
         loading: false,

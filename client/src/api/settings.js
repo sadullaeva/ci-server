@@ -1,7 +1,10 @@
 import axios from 'utils/axios';
 
-const getSettings = async () => axios.get('/api/settings');
+const getSettings = () => axios.get('/api/settings');
+
+const postSettings = settings => axios.post('/api/settings', settings);
 
 export default {
   getSettings,
+  postSettings,
 };

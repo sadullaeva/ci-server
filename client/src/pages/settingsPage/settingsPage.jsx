@@ -1,15 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link, withRouter } from 'react-router-dom';
 import { cn } from 'utils/bem';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from 'base.blocks/button/button';
 import Layout from 'template.blocks/layout/layout';
 import TextField from 'base.blocks/textField/textField';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 
+import { updateSettings, validateSettings } from 'store/settings/updateSettings';
+import { msToMins } from 'utils/date';
+
 import './settingsPage.css';
 
 const SettingsPage = props => {
+  const { history } = props;
+  const dispatch = useDispatch();
+  const settings = useSelector(state => state.settings.settings);
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState(true);
+
   const settingsPage = cn('settings-page');
   const layoutProps = {
     className: settingsPage(),
@@ -19,6 +30,40 @@ const SettingsPage = props => {
     },
   };
 
+  const onSumbit = evt => {
+    evt.preventDefault();
+    if (evt.target && evt.target.elements) {
+      const { repoName, buildCommand, mainBranch, period } = evt.target.elements;
+      const settings = {
+        repoName: repoName.value,
+        buildCommand: buildCommand.value,
+        mainBranch: mainBranch.value,
+        period: period.value,
+      };
+      const [valid, err] = validateSettings(settings);
+      if (valid) {
+        dispatch(updateSettings(settings));
+      } else {
+        setErrors(err);
+        setValid(false);
+      }
+    }
+  };
+
+  const onFocus = evt => {
+    if (evt.target.tagName === 'INPUT') {
+      setErrors({});
+      setValid(true);
+    }
+  };
+
+  const onCancel = () => {
+    history.push('/');
+  };
+
+  const { repoName = '', buildCommand = '', mainBranch = '' } = settings || {};
+  const period = settings?.period ? msToMins(settings.period).toString() : '';
+
   return (
     <Layout {...layoutProps}>
       <ContentBox className={settingsPage('content')}>
@@ -26,11 +71,13 @@ const SettingsPage = props => {
         <div className={settingsPage('description')}>
           Configure repository connection and synchronization settings.
         </div>
-        <form>
+        <form onSubmit={onSumbit} onFocus={onFocus}>
           <TextField
             id={'repoName'}
             label={'GitHub repository'}
             placeholder={'user-name/repo-name'}
+            defaultValue={repoName}
+            error={errors.repoName}
             required
             clearable
           />
@@ -38,18 +85,36 @@ const SettingsPage = props => {
             id={'buildCommand'}
             label={'Build command'}
             placeholder={'npm run build'}
+            defaultValue={buildCommand}
+            error={errors.buildCommand}
+            required
             clearable
           />
-          <TextField id={'mainBranch'} label={'Main branch'} placeholder={'master'} clearable />
+          <TextField
+            id={'mainBranch'}
+            label={'Main branch'}
+            placeholder={'master'}
+            defaultValue={mainBranch}
+            error={errors.mainBranch}
+            clearable
+          />
           <div className={settingsPage('sync')}>
-            <TextField id={'sync'} label={'Synchronize every'} placeholder={'5'} />
+            <TextField
+              id={'period'}
+              label={'Synchronize every'}
+              placeholder={'5'}
+              defaultValue={period}
+              error={errors.period}
+            />
             minutes
           </div>
           <div className={settingsPage('controls')}>
-            <Button type={'submit'} kind={'primary'}>
+            <Button type={'submit'} kind={'primary'} disabled={!valid}>
               Save
             </Button>
-            <Button kind={'secondary'}>Cancel</Button>
+            <Button kind={'secondary'} onClick={onCancel}>
+              Cancel
+            </Button>
           </div>
         </form>
       </ContentBox>
@@ -57,6 +122,8 @@ const SettingsPage = props => {
   );
 };
 
-SettingsPage.propTypes = {};
+SettingsPage.propTypes = {
+  history: PropTypes.object,
+};
 
-export default SettingsPage;
+export default withRouter(SettingsPage);
