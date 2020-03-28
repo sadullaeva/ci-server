@@ -6,15 +6,9 @@ const requestSettings = () => ({
 });
 
 export const RECEIVE_SETTINGS = 'getSettings/receive';
-const receiveSettings = ({ id, repoName, buildCommand, mainBranch, period }) => ({
+const receiveSettings = payload => ({
   type: RECEIVE_SETTINGS,
-  payload: {
-    id,
-    repoName,
-    buildCommand,
-    mainBranch,
-    period,
-  },
+  payload,
 });
 
 export const REJECT_SETTINGS = 'getSettings/reject';

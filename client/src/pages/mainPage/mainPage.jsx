@@ -16,7 +16,7 @@ const MainPage = () => {
     }
   }, [settings, dispatch]);
 
-  return !!settings ? <HistoryPage heading={settings.repoName} /> : <StartPage />;
+  return !!settings ? <HistoryPage /> : <StartPage />;
 };
 
 export default MainPage;

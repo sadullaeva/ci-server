@@ -16,7 +16,7 @@ export default (state = initState, action) => {
     case RECEIVE_SETTINGS: {
       return {
         ...state,
-        settings: action.payload !== {} ? action.payload : null,
+        settings: action.payload.id ? action.payload : null,
         loading: false,
       };
     }

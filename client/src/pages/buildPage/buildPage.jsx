@@ -48,7 +48,7 @@ const BuildPage = props => {
 };
 
 BuildPage.propTypes = {
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   build: PropTypes.exact({
     status: PropTypes.oneOf(['success', 'running', 'failed']),
     buildNumber: PropTypes.number,

@@ -73,7 +73,7 @@ const HistoryPage = props => {
 };
 
 HistoryPage.propTypes = {
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   builds: PropTypes.arrayOf(PropTypes.object),
 };
 
