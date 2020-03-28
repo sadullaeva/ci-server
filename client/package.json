@@ -19,8 +19,7 @@
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addons": "^5.3.17",
     "@storybook/preset-create-react-app": "^2.1.1",
-    "@storybook/react": "^5.3.17",
-    "prettier": "^2.0.2"
+    "@storybook/react": "^5.3.17"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.4"
   }
 }
