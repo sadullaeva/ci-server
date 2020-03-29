@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { cn } from 'utils/bem';
@@ -11,6 +11,8 @@ import ContentBox from 'base.blocks/contentBox/contentBox';
 import Loader from 'base.blocks/loader/loader';
 
 import { updateSettings, setValidity } from 'store/settings/updateSettings';
+import { clearValidation } from 'store/settings/clearState';
+
 import { msToMins } from 'utils/date';
 
 import './settingsPage.css';
@@ -19,6 +21,12 @@ const SettingsPage = props => {
   const { history } = props;
   const dispatch = useDispatch();
   const { settings, loading, valid, errors } = useSelector(state => state.settings);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearValidation());
+    };
+  }, [dispatch]);
 
   const settingsPage = cn('settings-page');
   const layoutProps = {

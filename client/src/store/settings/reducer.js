@@ -1,6 +1,7 @@
 import { REQUEST_SETTINGS, RECEIVE_SETTINGS, REJECT_SETTINGS } from './getSettings';
 import { REJECT_UPDATE, RECEIVE_UPDATE, REQUEST_UPDATE } from './updateSettings';
 import { SET_VALIDITY } from './updateSettings';
+import { CLEAR_VALIDATION } from './clearState';
 
 const initState = {
   loading: false,
@@ -59,6 +60,13 @@ export default (state = initState, action) => {
         ...state,
         valid: action.payload.valid,
         errors: action.payload.errors,
+      };
+    }
+    case CLEAR_VALIDATION: {
+      return {
+        ...state,
+        valid: true,
+        errors: {},
       };
     }
     default: {
