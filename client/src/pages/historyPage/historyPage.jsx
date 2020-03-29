@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -10,13 +10,19 @@ import Layout from 'template.blocks/layout/layout';
 import Build from 'content.blocks/build/build';
 import Placeholder from 'content.blocks/placeholder/placeholder';
 import ContentBox from 'base.blocks/contentBox/contentBox';
+import RunBuildDialog from 'containers/runBuildDialog/runBuildDialog';
 
 import './historyPage.css';
 
 const HistoryPage = props => {
   const { builds = [] } = props;
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   const isEmpty = !builds || !builds.length;
   const repoName = useSelector(state => state.settings.settings?.repoName || 'Builds history');
+
+  const onClickRunBuild = () => setDialogOpen(true);
+  const onCancelRunBuild = () => setDialogOpen(false);
 
   const historyPage = cn('history-page');
   const layoutProps = {
@@ -26,7 +32,7 @@ const HistoryPage = props => {
       heading: repoName,
       extra: (
         <>
-          <Button kind={'secondary'} size={'s'} icon={'play'}>
+          <Button kind={'secondary'} size={'s'} icon={'play'} onClick={onClickRunBuild}>
             Run build
           </Button>
           <Link to={'/settings'}>
@@ -36,6 +42,7 @@ const HistoryPage = props => {
       ),
     },
   };
+
   return (
     <Layout {...layoutProps}>
       {!isEmpty ? (
@@ -63,14 +70,13 @@ const HistoryPage = props => {
         <Placeholder
           action={{
             content: 'Run build',
-            onClick: () => {
-              /* todo: open popup */
-            },
+            onClick: onClickRunBuild,
           }}
         >
           Here are no builds yet. Run the first one
         </Placeholder>
       )}
+      <RunBuildDialog open={dialogOpen} onClose={onCancelRunBuild} />
     </Layout>
   );
 };
