@@ -10,6 +10,8 @@ import ContentBox from 'base.blocks/contentBox/contentBox';
 import BuildLog from 'containers/buildLog/buildLog';
 
 import { getBuild } from 'store/builds/getBuild';
+import { cleanReducer } from 'store/builds/cleanReducer';
+
 import { getBuildStatus } from 'utils/build';
 
 import './buildPage.css';
@@ -22,6 +24,10 @@ const BuildPage = () => {
 
   useEffect(() => {
     dispatch(getBuild(id));
+
+    return () => {
+      dispatch(cleanReducer());
+    };
   }, [id, dispatch]);
 
   const buildPage = cn('build-page');
@@ -56,7 +62,7 @@ const BuildPage = () => {
                 branch: build.branchName,
                 commit: build.commitHash,
                 author: build.authorName,
-                date: build.date,
+                date: build.start,
                 duration: build.duration,
               }}
             />

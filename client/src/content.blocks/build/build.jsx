@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import prettyMilliseconds from 'pretty-ms';
+import dayjs from 'dayjs';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -9,6 +11,9 @@ import './build.css';
 
 const Build = props => {
   const { className = '', size, status, meta } = props;
+  const duration = meta.duration ? prettyMilliseconds(meta.duration) : '';
+  const date = meta.date ? dayjs(meta.date).format('D MMM, HH:mm') : '';
+
   const build = cn('build');
   const classes = clsx(build(), className, status && build({ status }), size && build({ size }));
   return (
@@ -27,14 +32,14 @@ const Build = props => {
         </IconText>
       </div>
       <div className={build('meta', size ? { horizontal: true } : { vertical: true })}>
-        {meta.date && (
+        {date && (
           <IconText type={size ? 'primary' : 'secondary'} icon={'calendar'}>
-            {meta.date}
+            {date}
           </IconText>
         )}
-        {meta.duration && (
+        {duration && (
           <IconText type={size ? 'primary' : 'secondary'} icon={'stopwatch'}>
-            {meta.duration}
+            {duration}
           </IconText>
         )}
       </div>
@@ -53,7 +58,7 @@ Build.propTypes = {
     commit: PropTypes.string,
     author: PropTypes.string,
     date: PropTypes.string,
-    duration: PropTypes.string,
+    duration: PropTypes.number,
   }).isRequired,
 };
 

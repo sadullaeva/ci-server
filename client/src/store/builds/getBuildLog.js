@@ -23,8 +23,7 @@ export const getBuildLog = id => {
     return buildsAPI
       .getBuildLog(id)
       .then(response => {
-        const { data } = response.data;
-        dispatch(receiveBuildLog(data));
+        dispatch(receiveBuildLog(response.data));
       })
       .catch(err => {
         console.log("Couldn't get build log", err);

@@ -12,6 +12,8 @@ import ContentBox from 'base.blocks/contentBox/contentBox';
 import RunBuildDialog from 'containers/runBuildDialog/runBuildDialog';
 
 import { getBuilds } from 'store/builds/getBuilds';
+import { cleanReducer } from 'store/builds/cleanReducer';
+
 import { getBuildStatus } from 'utils/build';
 
 import './historyPage.css';
@@ -25,10 +27,12 @@ const HistoryPage = () => {
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
 
   useEffect(() => {
-    if (isEmpty) {
-      dispatch(getBuilds());
-    }
-  }, [isEmpty, dispatch]);
+    dispatch(getBuilds());
+
+    return () => {
+      dispatch(cleanReducer());
+    };
+  }, [dispatch]);
 
   const onClickRunBuild = () => setDialogOpen(true);
   const onCancelRunBuild = () => setDialogOpen(false);
@@ -67,7 +71,7 @@ const HistoryPage = () => {
                     branch: build.branchName,
                     commit: build.commitHash,
                     author: build.authorName,
-                    date: build.date,
+                    date: build.start,
                     duration: build.duration,
                   }}
                 />
