@@ -6,6 +6,7 @@ import { CLEAN_REDUCER } from './cleanReducer';
 
 const initState = {
   loading: false,
+  logLoading: false,
   builds: [],
   build: null,
   log: null,
@@ -72,20 +73,20 @@ export default (state = initState, action) => {
     case REQUEST_BUILD_LOG: {
       return {
         ...state,
-        loading: true,
+        logLoading: true,
       };
     }
     case RECEIVE_BUILD_LOG: {
       return {
         ...state,
-        loading: false,
+        logLoading: false,
         log: action.payload,
       };
     }
     case REJECT_BUILD_LOG: {
       return {
         ...state,
-        loading: false,
+        logLoading: false,
       };
     }
     case CLEAN_REDUCER: {

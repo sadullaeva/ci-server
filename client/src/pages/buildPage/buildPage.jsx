@@ -8,6 +8,7 @@ import Layout from 'template.blocks/layout/layout';
 import Build from 'content.blocks/build/build';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 import BuildLog from 'containers/buildLog/buildLog';
+import Loader from 'base.blocks/loader/loader';
 
 import { getBuild } from 'store/builds/getBuild';
 import { cleanReducer } from 'store/builds/cleanReducer';
@@ -19,7 +20,7 @@ import './buildPage.css';
 const BuildPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const build = useSelector(state => state.builds.build);
+  const { build, loading, logLoading } = useSelector(state => state.builds);
   const repoName = useSelector(state => state.settings.settings?.repoName || 'Build details');
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const BuildPage = () => {
           <BuildLog buildId={id} />
         </ContentBox>
       </div>
+      <Loader show={loading || logLoading} />
     </Layout>
   );
 };

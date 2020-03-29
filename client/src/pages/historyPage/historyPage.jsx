@@ -10,6 +10,7 @@ import Build from 'content.blocks/build/build';
 import Placeholder from 'content.blocks/placeholder/placeholder';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 import RunBuildDialog from 'containers/runBuildDialog/runBuildDialog';
+import Loader from 'base.blocks/loader/loader';
 
 import { getBuilds } from 'store/builds/getBuilds';
 import { cleanReducer } from 'store/builds/cleanReducer';
@@ -23,7 +24,7 @@ const HistoryPage = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const repoName = useSelector(state => state.settings.settings?.repoName || 'Builds history');
-  const builds = useSelector(state => state.builds.builds);
+  const { builds, loading } = useSelector(state => state.builds);
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
 
   useEffect(() => {
@@ -93,6 +94,7 @@ const HistoryPage = () => {
         </Placeholder>
       )}
       <RunBuildDialog open={dialogOpen} onClose={onCancelRunBuild} />
+      <Loader show={loading} />
     </Layout>
   );
 };

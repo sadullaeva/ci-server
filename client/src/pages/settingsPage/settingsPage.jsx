@@ -8,6 +8,7 @@ import Button from 'base.blocks/button/button';
 import Layout from 'template.blocks/layout/layout';
 import TextField from 'base.blocks/textField/textField';
 import ContentBox from 'base.blocks/contentBox/contentBox';
+import Loader from 'base.blocks/loader/loader';
 
 import { updateSettings, setValidity } from 'store/settings/updateSettings';
 import { msToMins } from 'utils/date';
@@ -17,7 +18,7 @@ import './settingsPage.css';
 const SettingsPage = props => {
   const { history } = props;
   const dispatch = useDispatch();
-  const { settings, valid, errors } = useSelector(state => state.settings);
+  const { settings, loading, valid, errors } = useSelector(state => state.settings);
 
   const settingsPage = cn('settings-page');
   const layoutProps = {
@@ -110,6 +111,7 @@ const SettingsPage = props => {
           </div>
         </form>
       </ContentBox>
+      <Loader show={loading} disableTimeout />
     </Layout>
   );
 };
