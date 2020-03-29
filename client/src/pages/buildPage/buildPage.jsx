@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, useParams, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { cn } from 'utils/bem';
 
@@ -12,12 +13,13 @@ import Loader from 'base.blocks/loader/loader';
 
 import { getBuild } from 'store/builds/getBuild';
 import { cleanReducer } from 'store/builds/cleanReducer';
+import { runBuild } from 'store/builds/runBuild';
 
 import { getBuildStatus } from 'utils/build';
 
 import './buildPage.css';
 
-const BuildPage = () => {
+const BuildPage = props => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { build, loading, logLoading } = useSelector(state => state.builds);
@@ -31,6 +33,12 @@ const BuildPage = () => {
     };
   }, [id, dispatch]);
 
+  const rebuild = () => {
+    if (build) {
+      dispatch(runBuild(build.commitHash, props.history));
+    }
+  };
+
   const buildPage = cn('build-page');
   const layoutProps = {
     className: buildPage(),
@@ -39,7 +47,7 @@ const BuildPage = () => {
       heading: <Link to={'/'}>{repoName}</Link>,
       extra: (
         <>
-          <Button kind={'secondary'} size={'s'} icon={'repeat'}>
+          <Button kind={'secondary'} size={'s'} icon={'repeat'} onClick={rebuild}>
             Rebuild
           </Button>
           <Link to={'/settings'}>
@@ -78,4 +86,8 @@ const BuildPage = () => {
   );
 };
 
-export default BuildPage;
+BuildPage.propTypes = {
+  history: PropTypes.object,
+};
+
+export default withRouter(BuildPage);
