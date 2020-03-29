@@ -33,7 +33,7 @@ const HistoryPage = () => {
     return () => {
       dispatch(clearState());
     };
-  }, [dispatch, getBuilds]);
+  }, [dispatch, loadBuilds]);
 
   const loadBuilds = useCallback(() => {
     dispatch(getBuilds());
