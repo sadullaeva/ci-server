@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
@@ -24,15 +24,19 @@ const HistoryPage = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const repoName = useSelector(state => state.settings.settings?.repoName || 'Builds history');
-  const { builds, loading } = useSelector(state => state.builds);
+  const { builds, loading, hasMore } = useSelector(state => state.builds);
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
 
   useEffect(() => {
-    dispatch(getBuilds());
+    loadBuilds();
 
     return () => {
       dispatch(clearState());
     };
+  }, [dispatch, getBuilds]);
+
+  const loadBuilds = useCallback(() => {
+    dispatch(getBuilds());
   }, [dispatch]);
 
   const onClickRunBuild = () => setDialogOpen(true);
@@ -79,9 +83,16 @@ const HistoryPage = () => {
               </Link>
             );
           })}
-          <Button kind={'secondary'} size={'s'} className={historyPage('show-more')}>
-            Show more
-          </Button>
+          {hasMore && (
+            <Button
+              kind={'secondary'}
+              size={'s'}
+              className={historyPage('show-more')}
+              onClick={loadBuilds}
+            >
+              Show more
+            </Button>
+          )}
         </ContentBox>
       ) : (
         <Placeholder

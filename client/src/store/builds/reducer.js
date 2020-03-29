@@ -7,6 +7,9 @@ import { CLEAR_STATE } from './clearState';
 const initState = {
   loading: false,
   logLoading: false,
+  limit: 20,
+  offset: 0,
+  hasMore: true,
   builds: [],
   build: null,
   log: null,
@@ -39,10 +42,15 @@ export default (state = initState, action) => {
       };
     }
     case RECEIVE_BUILDS: {
+      const { payload: builds = [] } = action;
+      const hasMore = builds.length === state.limit;
+      const offset = state.offset + builds.length;
       return {
         ...state,
         loading: false,
-        builds: action.payload,
+        builds: [...state.builds, ...builds],
+        hasMore,
+        offset,
       };
     }
     case REJECT_BUILDS: {

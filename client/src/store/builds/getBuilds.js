@@ -18,17 +18,21 @@ const rejectBuilds = () => ({
 });
 
 export const getBuilds = () => {
-  return dispatch => {
-    dispatch(requestBuilds());
-    return buildsAPI
-      .getBuilds({ limit: 20, offset: 0 })
-      .then(response => {
-        const { data } = response.data;
-        dispatch(receiveBuilds(data));
-      })
-      .catch(err => {
-        console.log("Couldn't get builds", err);
-        dispatch(rejectBuilds());
-      });
+  return (dispatch, getState) => {
+    const { builds } = getState();
+    const { limit, offset, hasMore } = builds;
+    if (hasMore) {
+      dispatch(requestBuilds());
+      return buildsAPI
+        .getBuilds({ limit, offset })
+        .then(response => {
+          const { data = [] } = response.data;
+          dispatch(receiveBuilds(data));
+        })
+        .catch(err => {
+          console.log("Couldn't get builds", err);
+          dispatch(rejectBuilds());
+        });
+    }
   };
 };
