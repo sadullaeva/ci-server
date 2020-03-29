@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { cn } from 'utils/bem';
@@ -9,7 +9,7 @@ import Layout from 'template.blocks/layout/layout';
 import TextField from 'base.blocks/textField/textField';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 
-import { updateSettings, validateSettings } from 'store/settings/updateSettings';
+import { updateSettings, setValidity } from 'store/settings/updateSettings';
 import { msToMins } from 'utils/date';
 
 import './settingsPage.css';
@@ -17,9 +17,7 @@ import './settingsPage.css';
 const SettingsPage = props => {
   const { history } = props;
   const dispatch = useDispatch();
-  const settings = useSelector(state => state.settings.settings);
-  const [errors, setErrors] = useState({});
-  const [valid, setValid] = useState(true);
+  const { settings, valid, errors } = useSelector(state => state.settings);
 
   const settingsPage = cn('settings-page');
   const layoutProps = {
@@ -40,20 +38,13 @@ const SettingsPage = props => {
         mainBranch: mainBranch.value,
         period: period.value,
       };
-      const [valid, err] = validateSettings(settings);
-      if (valid) {
-        dispatch(updateSettings(settings));
-      } else {
-        setErrors(err);
-        setValid(false);
-      }
+      dispatch(updateSettings(settings));
     }
   };
 
   const onFocus = evt => {
     if (evt.target.tagName === 'INPUT') {
-      setErrors({});
-      setValid(true);
+      dispatch(setValidity([true, {}]));
     }
   };
 
@@ -72,6 +63,7 @@ const SettingsPage = props => {
           Configure repository connection and synchronization settings.
         </div>
         <form onSubmit={onSumbit} onFocus={onFocus}>
+          {errors.general && <div className={settingsPage('general-error')}>{errors.general}</div>}
           <TextField
             id={'repoName'}
             label={'GitHub repository'}

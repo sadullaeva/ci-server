@@ -25,6 +25,12 @@
   margin-bottom: var(--space-l);
 }
 
+.settings-page__general-error {
+  color: var(--red-500);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+}
+
 .settings-page .text-field {
   padding: var(--space-xs) 0 var(--space-xxs);
 }

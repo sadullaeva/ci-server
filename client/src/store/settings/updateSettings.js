@@ -18,7 +18,13 @@ const rejectUpdate = () => ({
   error: true,
 });
 
-export const validateSettings = settings => {
+export const SET_VALIDITY = 'updateSettings/setValidity';
+export const setValidity = ([valid, errors]) => ({
+  type: SET_VALIDITY,
+  payload: { valid, errors },
+});
+
+const validateSettings = settings => {
   let valid = true;
   let errors = {};
 
@@ -53,16 +59,21 @@ export const normalizeSettings = settings => {
 
 export const updateSettings = settings => {
   return dispatch => {
-    const normalizedSettings = normalizeSettings(settings);
-    dispatch(requestUpdate());
-    return settingsAPI
-      .postSettings(normalizedSettings)
-      .then(response => {
-        dispatch(receiveUpdate(normalizedSettings));
-      })
-      .catch(err => {
-        console.log("Couldn't update settings", err);
-        dispatch(rejectUpdate());
-      });
+    const [valid, errors] = validateSettings(settings);
+    if (valid) {
+      const normalizedSettings = normalizeSettings(settings);
+      dispatch(requestUpdate());
+      return settingsAPI
+        .postSettings(normalizedSettings)
+        .then(response => {
+          dispatch(receiveUpdate(normalizedSettings));
+        })
+        .catch(err => {
+          console.log("Couldn't update settings", err);
+          dispatch(rejectUpdate());
+        });
+    } else {
+      dispatch(setValidity([valid, errors]));
+    }
   };
 };

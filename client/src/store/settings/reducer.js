@@ -1,9 +1,12 @@
 import { REQUEST_SETTINGS, RECEIVE_SETTINGS, REJECT_SETTINGS } from './getSettings';
 import { REJECT_UPDATE, RECEIVE_UPDATE, REQUEST_UPDATE } from './updateSettings';
+import { SET_VALIDITY } from './updateSettings';
 
 const initState = {
   loading: false,
   settings: null,
+  valid: true,
+  errors: {},
 };
 
 export default (state = initState, action) => {
@@ -44,6 +47,18 @@ export default (state = initState, action) => {
       return {
         ...state,
         loading: false,
+        valid: false,
+        errors: {
+          general:
+            'Could not update settings. Please make sure you have the correct access rights and the repository exists.',
+        },
+      };
+    }
+    case SET_VALIDITY: {
+      return {
+        ...state,
+        valid: action.payload.valid,
+        errors: action.payload.errors,
       };
     }
     default: {
