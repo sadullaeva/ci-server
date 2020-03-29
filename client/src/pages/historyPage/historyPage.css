@@ -7,7 +7,8 @@
   align-items: center;
 }
 
-.history-page a {
+.history-page .header a,
+.history-page__content a {
   text-decoration: none;
   color: unset;
 }
