@@ -27,6 +27,7 @@
   --box-shadow-hover: 0 2px 8px rgba(67, 68, 69, 0.3), 0 0 1px rgba(67, 68, 69, 0.3);
 
   --bg-primary: #fff;
+  --bg-overlay: rgba(0, 0, 0, 0.4);
 
   --font-family: "YS Text", Arial, sans-serif;
 
