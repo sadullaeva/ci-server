@@ -2,7 +2,7 @@ import { REQUEST_RUN_BUILD, RECEIVE_RUN_BUILD, REJECT_RUN_BUILD } from './runBui
 import { REQUEST_BUILDS, RECEIVE_BUILDS, REJECT_BUILDS } from './getBuilds';
 import { REQUEST_BUILD, RECEIVE_BUILD, REJECT_BUILD } from './getBuild';
 import { REQUEST_BUILD_LOG, RECEIVE_BUILD_LOG, REJECT_BUILD_LOG } from './getBuildLog';
-import { CLEAN_REDUCER } from './cleanReducer';
+import { CLEAR_STATE } from './clearState';
 
 const initState = {
   loading: false,
@@ -89,7 +89,7 @@ export default (state = initState, action) => {
         logLoading: false,
       };
     }
-    case CLEAN_REDUCER: {
+    case CLEAR_STATE: {
       return {
         ...initState,
       };

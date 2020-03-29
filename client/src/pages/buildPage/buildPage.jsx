@@ -12,7 +12,7 @@ import BuildLog from 'containers/buildLog/buildLog';
 import Loader from 'base.blocks/loader/loader';
 
 import { getBuild } from 'store/builds/getBuild';
-import { cleanReducer } from 'store/builds/cleanReducer';
+import { clearState } from 'store/builds/clearState';
 import { runBuild } from 'store/builds/runBuild';
 
 import { getBuildStatus } from 'utils/build';
@@ -29,7 +29,7 @@ const BuildPage = props => {
     dispatch(getBuild(id));
 
     return () => {
-      dispatch(cleanReducer());
+      dispatch(clearState());
     };
   }, [id, dispatch]);
 

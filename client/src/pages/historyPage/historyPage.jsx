@@ -13,7 +13,7 @@ import RunBuildDialog from 'containers/runBuildDialog/runBuildDialog';
 import Loader from 'base.blocks/loader/loader';
 
 import { getBuilds } from 'store/builds/getBuilds';
-import { cleanReducer } from 'store/builds/cleanReducer';
+import { clearState } from 'store/builds/clearState';
 
 import { getBuildStatus } from 'utils/build';
 
@@ -31,7 +31,7 @@ const HistoryPage = () => {
     dispatch(getBuilds());
 
     return () => {
-      dispatch(cleanReducer());
+      dispatch(clearState());
     };
   }, [dispatch]);
 
