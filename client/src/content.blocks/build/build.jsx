@@ -8,15 +8,8 @@ import IconText from 'base.blocks/iconText/iconText';
 import './build.css';
 
 const Build = props => {
-  const { className = '', size, meta } = props;
+  const { className = '', size, status, meta } = props;
   const build = cn('build');
-  const status = {
-    Waiting: 'waiting',
-    InProgress: 'running',
-    Success: 'success',
-    Fail: 'failed',
-    Canceled: 'cancelled',
-  }[props.status];
   const classes = clsx(build(), className, status && build({ status }), size && build({ size }));
   return (
     <div className={classes}>

@@ -7,7 +7,6 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
 
-import PrivateRoute from './template.blocks/privateRoute/privateRoute';
 import RouterWrapper from './template.blocks/routerWrapper/routerWrapper';
 
 import SettingsPage from './pages/settingsPage/settingsPage';
@@ -26,21 +25,9 @@ ReactDOM.render(
             <Route path={'/settings'}>
               <SettingsPage />
             </Route>
-            <PrivateRoute path={'/build/:number'}>
-              <BuildPage
-                heading={'philip1967/my-awesome-repo'}
-                build={{
-                  status: 'success',
-                  buildNumber: 1368,
-                  message: 'add documentation for postgres scaler',
-                  branch: 'master',
-                  commit: '9c9f0b9',
-                  author: 'Philip Kirkorov',
-                  date: '21 янв, 03:06',
-                  duration: '1 ч 20 мин',
-                }}
-              />
-            </PrivateRoute>
+            <Route path={'/build/:id'}>
+              <BuildPage />
+            </Route>
             <Route>{'404'}</Route>
           </Switch>
         </Router>

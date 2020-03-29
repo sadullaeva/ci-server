@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
@@ -13,6 +12,7 @@ import ContentBox from 'base.blocks/contentBox/contentBox';
 import RunBuildDialog from 'containers/runBuildDialog/runBuildDialog';
 
 import { getBuilds } from 'store/builds/getBuilds';
+import { getBuildStatus } from 'utils/build';
 
 import './historyPage.css';
 
@@ -60,7 +60,7 @@ const HistoryPage = () => {
             return (
               <Link to={`/build/${build.id}`} key={build.id}>
                 <Build
-                  status={build.status}
+                  status={getBuildStatus(build.status)}
                   meta={{
                     buildNumber: build.buildNumber,
                     message: build.commitMessage,
