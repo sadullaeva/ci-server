@@ -8,8 +8,15 @@ import IconText from 'base.blocks/iconText/iconText';
 import './build.css';
 
 const Build = props => {
-  const { className = '', status, size, meta } = props;
+  const { className = '', size, meta } = props;
   const build = cn('build');
+  const status = {
+    Waiting: 'waiting',
+    InProgress: 'running',
+    Success: 'success',
+    Fail: 'failed',
+    Canceled: 'cancelled',
+  }[props.status];
   const classes = clsx(build(), className, status && build({ status }), size && build({ size }));
   return (
     <div className={classes}>
@@ -20,19 +27,23 @@ const Build = props => {
       <div className={build('meta', { horizontal: true })}>
         <IconText type={'primary'} icon={'commit'}>
           {meta.branch}
-          <span className={build('commit')}>{meta.commit}</span>
+          <span className={build('commit')}>{meta.commit.slice(0, 7)}</span>
         </IconText>
         <IconText type={'primary'} icon={'user'}>
           {meta.author}
         </IconText>
       </div>
       <div className={build('meta', size ? { horizontal: true } : { vertical: true })}>
-        <IconText type={size ? 'primary' : 'secondary'} icon={'calendar'}>
-          {meta.date}
-        </IconText>
-        <IconText type={size ? 'primary' : 'secondary'} icon={'stopwatch'}>
-          {meta.duration}
-        </IconText>
+        {meta.date && (
+          <IconText type={size ? 'primary' : 'secondary'} icon={'calendar'}>
+            {meta.date}
+          </IconText>
+        )}
+        {meta.duration && (
+          <IconText type={size ? 'primary' : 'secondary'} icon={'stopwatch'}>
+            {meta.duration}
+          </IconText>
+        )}
       </div>
     </div>
   );
@@ -40,7 +51,7 @@ const Build = props => {
 
 Build.propTypes = {
   className: PropTypes.string,
-  status: PropTypes.oneOf(['success', 'running', 'failed']),
+  status: PropTypes.oneOf(['waiting', 'running', 'success', 'failed', 'cancelled']),
   size: PropTypes.oneOf(['l']),
   meta: PropTypes.exact({
     buildNumber: PropTypes.number,

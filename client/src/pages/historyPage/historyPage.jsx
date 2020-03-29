@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -12,14 +12,23 @@ import Placeholder from 'content.blocks/placeholder/placeholder';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 import RunBuildDialog from 'containers/runBuildDialog/runBuildDialog';
 
+import { getBuilds } from 'store/builds/getBuilds';
+
 import './historyPage.css';
 
-const HistoryPage = props => {
-  const { builds = [] } = props;
+const HistoryPage = () => {
+  const dispatch = useDispatch();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const isEmpty = !builds || !builds.length;
   const repoName = useSelector(state => state.settings.settings?.repoName || 'Builds history');
+  const builds = useSelector(state => state.builds.builds);
+  const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
+
+  useEffect(() => {
+    if (isEmpty) {
+      dispatch(getBuilds());
+    }
+  }, [isEmpty]);
 
   const onClickRunBuild = () => setDialogOpen(true);
   const onCancelRunBuild = () => setDialogOpen(false);
@@ -48,23 +57,26 @@ const HistoryPage = props => {
       {!isEmpty ? (
         <ContentBox className={historyPage('content')}>
           {builds.map(build => {
-            const { type, buildNumber, message, branch, commit, author, date, duration } = build;
             return (
-              <Build
-                meta={{
-                  buildNumber,
-                  message,
-                  branch,
-                  commit,
-                  author,
-                  date,
-                  duration,
-                }}
-                type={type}
-              />
+              <Link to={`/build/${build.id}`} key={build.id}>
+                <Build
+                  status={build.status}
+                  meta={{
+                    buildNumber: build.buildNumber,
+                    message: build.commitMessage,
+                    branch: build.branchName,
+                    commit: build.commitHash,
+                    author: build.authorName,
+                    date: build.date,
+                    duration: build.duration,
+                  }}
+                />
+              </Link>
             );
           })}
-          <Button kind={'secondary'} size={'s'} className={historyPage('show-more')} />
+          <Button kind={'secondary'} size={'s'} className={historyPage('show-more')}>
+            Show more
+          </Button>
         </ContentBox>
       ) : (
         <Placeholder
@@ -79,10 +91,6 @@ const HistoryPage = props => {
       <RunBuildDialog open={dialogOpen} onClose={onCancelRunBuild} />
     </Layout>
   );
-};
-
-HistoryPage.propTypes = {
-  builds: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default HistoryPage;

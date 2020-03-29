@@ -1,7 +1,9 @@
 import { REQUEST_RUN_BUILD, RECEIVE_RUN_BUILD, REJECT_RUN_BUILD } from './runBuild';
+import { REQUEST_BUILDS, RECEIVE_BUILDS, REJECT_BUILDS } from './getBuilds';
 
 const initState = {
   loading: false,
+  builds: [],
 };
 
 export default (state = initState, action) => {
@@ -19,6 +21,25 @@ export default (state = initState, action) => {
       };
     }
     case REJECT_RUN_BUILD: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+    case REQUEST_BUILDS: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case RECEIVE_BUILDS: {
+      return {
+        ...state,
+        loading: false,
+        builds: action.payload,
+      };
+    }
+    case REJECT_BUILDS: {
       return {
         ...state,
         loading: false,

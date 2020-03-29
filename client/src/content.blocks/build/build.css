@@ -21,6 +21,10 @@
   height: 101px;
 }
 
+.build_status_waiting {
+  background-image: url("images/wait.svg");
+}
+
 .build_status_success {
   background-image: url("images/success.svg");
 }
@@ -31,6 +35,10 @@
 
 .build_status_failed {
   background-image: url("images/fail.svg");
+}
+
+.build_status_cancelled {
+  background-image: url("images/cancel.svg");
 }
 
 .build__content {
@@ -45,6 +53,10 @@
   margin-right: var(--space-xxxs);
 }
 
+.build_status_waiting .build__number {
+  color: var(--grey-650);
+}
+
 .build_status_success .build__number {
   color: var(--status-success);
 }
@@ -55,6 +67,10 @@
 
 .build_status_failed .build__number {
   color: var(--status-failed);
+}
+
+.build_status_cancelled .build__number {
+  color: var(--grey-650);
 }
 
 .build__message {

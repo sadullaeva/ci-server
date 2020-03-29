@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.history-page .header a {
+.history-page a {
   text-decoration: none;
   color: unset;
 }
@@ -17,17 +17,12 @@
   margin-bottom: var(--space-l);
 }
 
-.history-page__item {
-  text-decoration: none;
-  color: inherit;
-}
-
-.history-page__item .build {
+.history-page .build {
   margin-bottom: var(--space-xxs);
   transition: var(--transition);
 }
 
-.history-page__item .build:hover {
+.history-page .build:hover {
   box-shadow: var(--box-shadow-hover)
 }
 
