@@ -43,6 +43,7 @@
   justify-content: flex-start;
   align-items: baseline;
   margin-bottom: var(--space-s);
+  position: relative;
 }
 
 .settings-page__sync .text-field {
@@ -61,6 +62,16 @@
   width: 52px;
   margin-right: var(--space-xxs);
   text-align: right;
+}
+
+.settings-page__sync .text-field_invalid {
+  margin-bottom: var(--space-s);
+}
+
+.settings-page__sync .text-field__error {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .settings-page__controls {

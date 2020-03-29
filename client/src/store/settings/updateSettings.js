@@ -34,7 +34,7 @@ const validateSettings = settings => {
     return [valid, errors];
   }
 
-  const { repoName, buildCommand } = settings;
+  const { repoName, buildCommand, period } = settings;
 
   if (!repoName) {
     valid = false;
@@ -43,6 +43,11 @@ const validateSettings = settings => {
   if (!buildCommand) {
     valid = false;
     errors.buildCommand = 'Build command should not be empty';
+  }
+
+  if (!/^[0-9]*$/.test(period)) {
+    valid = false;
+    errors.period = 'Period should be a number';
   }
 
   return [valid, errors];
