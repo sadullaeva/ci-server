@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -11,7 +12,6 @@ import Placeholder from 'content.blocks/placeholder/placeholder';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 
 import './historyPage.css';
-import { useSelector } from 'react-redux';
 
 const HistoryPage = props => {
   const { builds = [] } = props;
