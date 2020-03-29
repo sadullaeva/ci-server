@@ -32,11 +32,7 @@ const RunBuildDialog = props => {
     const commitHash = value;
     const [valid, err] = validateCommitHash(commitHash);
     if (valid) {
-      dispatch(
-        runBuild(commitHash, id => {
-          history.push(`/build/${id}`);
-        })
-      );
+      dispatch(runBuild(commitHash, history));
     } else {
       setErrors(err);
       setValid(valid);

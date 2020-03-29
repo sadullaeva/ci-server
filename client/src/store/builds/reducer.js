@@ -1,11 +1,13 @@
 import { REQUEST_RUN_BUILD, RECEIVE_RUN_BUILD, REJECT_RUN_BUILD } from './runBuild';
 import { REQUEST_BUILDS, RECEIVE_BUILDS, REJECT_BUILDS } from './getBuilds';
 import { REQUEST_BUILD, RECEIVE_BUILD, REJECT_BUILD } from './getBuild';
+import { REQUEST_BUILD_LOG, RECEIVE_BUILD_LOG, REJECT_BUILD_LOG } from './getBuildLog';
 
 const initState = {
   loading: false,
   builds: [],
   build: null,
+  log: null,
 };
 
 export default (state = initState, action) => {
@@ -61,6 +63,25 @@ export default (state = initState, action) => {
       };
     }
     case REJECT_BUILD: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+    case REQUEST_BUILD_LOG: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case RECEIVE_BUILD_LOG: {
+      return {
+        ...state,
+        loading: false,
+        log: action.payload,
+      };
+    }
+    case REJECT_BUILD_LOG: {
       return {
         ...state,
         loading: false,

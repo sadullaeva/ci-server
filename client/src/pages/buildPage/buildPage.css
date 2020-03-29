@@ -22,21 +22,6 @@
   margin-bottom: var(--space-s);
 }
 
-.build-page__log {
-  border-radius: var(--border-radius-card);
-  background-color: var(--log-bg);
-  padding: var(--space-xxs) var(--space-s);
-  box-sizing: border-box;
-  overflow-x: auto;
-}
-
-.build-page__log pre {
-  margin: 0;
-  width: auto;
-  font-size: var(--font-size-xxs);
-  line-height: var(--line-height-m);
-}
-
 @media screen and (max-width: 856px) {
   .build-page__content .content-box {
     padding-top: var(--space-xxxs);
@@ -44,11 +29,5 @@
 
   .build-page .build {
     margin-bottom: var(--space-m);
-  }
-
-  .build-page__log {
-    border-radius: 0;
-    padding-left: 0;
-    padding-right: 0;
   }
 }

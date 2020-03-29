@@ -29,7 +29,7 @@ export const validateCommitHash = commitHash => {
   return [valid, errors];
 };
 
-export const runBuild = (commitHash, callback) => {
+export const runBuild = (commitHash, history) => {
   return dispatch => {
     dispatch(requestRunBuild());
     return buildsAPI
@@ -37,7 +37,7 @@ export const runBuild = (commitHash, callback) => {
       .then(response => {
         const { data } = response.data;
         dispatch(receiveRunBuild());
-        callback(data.id);
+        history.push(`/build/${data.id}`);
       })
       .catch(err => {
         console.log("Couldn't run build", err);

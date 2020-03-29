@@ -28,7 +28,7 @@ const HistoryPage = () => {
     if (isEmpty) {
       dispatch(getBuilds());
     }
-  }, [isEmpty]);
+  }, [isEmpty, dispatch]);
 
   const onClickRunBuild = () => setDialogOpen(true);
   const onCancelRunBuild = () => setDialogOpen(false);
