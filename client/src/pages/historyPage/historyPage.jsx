@@ -27,6 +27,10 @@ const HistoryPage = () => {
   const { builds, loading, hasMore } = useSelector(state => state.builds);
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
 
+  const loadBuilds = useCallback(() => {
+    dispatch(getBuilds());
+  }, [dispatch]);
+
   useEffect(() => {
     loadBuilds();
 
@@ -34,10 +38,6 @@ const HistoryPage = () => {
       dispatch(clearState());
     };
   }, [dispatch, loadBuilds]);
-
-  const loadBuilds = useCallback(() => {
-    dispatch(getBuilds());
-  }, [dispatch]);
 
   const onClickRunBuild = () => setDialogOpen(true);
   const onCancelRunBuild = () => setDialogOpen(false);
