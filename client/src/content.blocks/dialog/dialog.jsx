@@ -56,7 +56,7 @@ const Dialog = props => {
   }, [ref, open, onKeyDown, onBackdropClick]);
 
   const dialog = cn('dialog');
-  const root = document.getElementById('dialog');
+  const root = document.getElementById('dialog') || document.body;
 
   return ReactDOM.createPortal(
     <div className={clsx(dialog(), open && dialog({ open: true }), overlayClassName)} ref={ref}>

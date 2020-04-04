@@ -17,8 +17,8 @@ export const Default = () => (
         branch: 'master',
         commit: '9c9f0b9',
         author: 'Philip Kirkorov',
-        date: '21 янв, 03:06',
-        duration: '1 ч 20 мин',
+        date: '2020-03-29T14:00:14.451',
+        duration: 800000,
       }}
     />
 
@@ -31,8 +31,8 @@ export const Default = () => (
         branch: 'master',
         commit: '9c9f0b9',
         author: 'Philip Kirkorov',
-        date: '21 янв, 03:06',
-        duration: '1 ч 20 мин',
+        date: '2020-03-29T14:00:14.451',
+        duration: 800000,
       }}
     />
 
@@ -45,8 +45,8 @@ export const Default = () => (
         branch: 'master',
         commit: '9c9f0b9',
         author: 'Philip Kirkorov',
-        date: '21 янв, 03:06',
-        duration: '1 ч 20 мин',
+        date: '2020-03-29T14:00:14.451',
+        duration: 800000,
       }}
     />
 
@@ -60,8 +60,8 @@ export const Default = () => (
         branch: 'master',
         commit: '9c9f0b9',
         author: 'Philip Kirkorov',
-        date: '21 янв, 03:06',
-        duration: '1 ч 20 мин',
+        date: '2020-03-29T14:00:14.451',
+        duration: 800000,
       }}
     />
   </>

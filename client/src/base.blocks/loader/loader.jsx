@@ -8,7 +8,7 @@ import './loader.css';
 
 const Loader = props => {
   const loader = cn('loader');
-  const root = useRef(document.getElementById('loader'));
+  const root = useRef(document.getElementById('loader') || document.body);
   const [show, setShow] = useState(props.show);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Dialog from 'base.blocks/dialog/dialog';
+import Dialog from 'content.blocks/dialog/dialog';
 import Button from 'base.blocks/button/button';
 import TextField from 'base.blocks/textField/textField';
 
