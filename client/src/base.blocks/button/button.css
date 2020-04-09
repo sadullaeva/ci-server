@@ -1,0 +1,120 @@
+.button {
+  width: auto;
+  height: var(--interactive-elem-size-large);
+  padding: 0 var(--space-l);
+  box-sizing: border-box;
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius-interactive-elem);
+  transition: var(--transition);
+  cursor: pointer;
+  outline: none;
+}
+
+.button:disabled {
+  background-color: var(--grey-50);
+  color: var(--grey-270);
+  pointer-events: none;
+}
+
+.button_kind_primary {
+  background-color: var(--yellow-500);
+}
+
+.button_kind_primary:hover {
+  background-color: var(--yellow-530);
+  border-color: var(--yellow-530);
+}
+
+.button_kind_primary:active {
+  background-color: var(--yellow-650);
+  border-color: var(--yellow-650);
+}
+
+.button_kind_primary:focus {
+  border-color: var(--yellow-650);
+}
+
+.button_kind_secondary {
+  background-color: var(--grey-100);
+}
+
+.button_kind_secondary:hover {
+  background-color: var(--grey-140);
+  border-color: var(--grey-140);
+}
+
+.button_kind_secondary:active {
+  background-color: var(--grey-300);
+  border-color: var(--grey-300);
+}
+
+.button_kind_secondary:focus {
+  border-color: var(--grey-300);
+}
+
+.button_size_s {
+  padding: 0 var(--space-s);
+  height: var(--interactive-elem-size-small);
+}
+
+.button_icon {
+  padding-left: var(--space-xl);
+  position: relative;
+}
+
+.button_icon::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: var(--text-primary);
+}
+
+.button_icon_settings::before {
+  -webkit-mask-box-image: url("images/settings.svg");
+  mask: url("images/settings.svg");
+}
+
+.button_icon_play::before {
+  -webkit-mask-box-image: url("images/play.svg");
+  mask: url("images/play.svg");
+}
+
+.button_icon_repeat::before {
+  -webkit-mask-box-image: url("images/repeat.svg");
+  mask: url("images/repeat.svg");
+}
+
+.button_icon:disabled::before {
+  background-color: var(--grey-270);
+}
+
+.button_size_xs {
+  padding: 0;
+  width: var(--interactive-elem-size-small);
+  height: var(--interactive-elem-size-small);
+}
+
+.button_size_xs .button__content {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .button_size_s {
+    padding: 0;
+    width: var(--interactive-elem-size-small);
+  }
+
+  .button_size_s .button__content {
+    display: none;
+  }
+}

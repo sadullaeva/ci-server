@@ -1,0 +1,33 @@
+.build-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-family);
+}
+
+.build-page .header a {
+  text-decoration: none;
+  color: unset;
+}
+
+.build-page__content .content-box {
+  padding-top: var(--space-xxs);
+}
+
+.build-page__content .content-box:last-child {
+  margin-bottom: var(--space-l);
+}
+
+.build-page .build {
+  margin-bottom: var(--space-s);
+}
+
+@media screen and (max-width: 856px) {
+  .build-page__content .content-box {
+    padding-top: var(--space-xxxs);
+  }
+
+  .build-page .build {
+    margin-bottom: var(--space-m);
+  }
+}

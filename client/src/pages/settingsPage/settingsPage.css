@@ -1,0 +1,116 @@
+.settings-page {}
+
+.settings-page .header a {
+  text-decoration: none;
+  color: unset;
+}
+
+.settings-page__content.content-box {
+  margin-bottom: var(--space-l);
+}
+
+.settings-page__title {
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: var(--space-xxs);
+}
+
+.settings-page__description {
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: 0.06px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-l);
+}
+
+.settings-page__general-error {
+  color: var(--red-500);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+}
+
+.settings-page .text-field {
+  padding: var(--space-xs) 0 var(--space-xxs);
+}
+
+.settings-page__sync {
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  color: var(--blue-grey-600);
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-bottom: var(--space-s);
+  position: relative;
+}
+
+.settings-page__sync .text-field {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding-top: var(--space-s);
+}
+
+.settings-page__sync .text-field .text-field__label {
+  width: auto;
+  margin-right: var(--space-xxs);
+}
+
+.settings-page__sync .text-field .text-field__input {
+  width: 52px;
+  margin-right: var(--space-xxs);
+  text-align: right;
+}
+
+.settings-page__sync .text-field_invalid {
+  margin-bottom: var(--space-s);
+}
+
+.settings-page__sync .text-field__error {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.settings-page__controls {
+  display: flex;
+}
+
+.settings-page__controls > * {
+  margin-right: var(--space-xxs);
+}
+
+.settings-page__controls > *:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .settings-page__description {
+    padding-right: var(--space-xxxl);
+    margin-bottom: var(--space-xxxs);
+  }
+
+  .settings-page__controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .settings-page__controls .button {
+    width: 100%;
+  }
+
+  .settings-page__controls > * {
+    margin-right: 0;
+    margin-bottom: var(--space-s);
+  }
+
+  .settings-page__controls > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .settings-page__sync .text-field {
+    padding-top: var(--space-xxs);
+  }
+}

@@ -1,0 +1,14 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay) url("./images/loader.svg") center no-repeat;
+  background-size: 38px;
+  display: none;
+}
+
+.loader_show {
+  display: block;
+}

@@ -1,0 +1,35 @@
+.history-page {}
+
+.history-page_empty .layout__content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-page .header a,
+.history-page__content a {
+  text-decoration: none;
+  color: unset;
+}
+
+.history-page__content.content-box {
+  padding-top: var(--space-xxs);
+  margin-bottom: var(--space-l);
+}
+
+.history-page .build {
+  margin-bottom: var(--space-xxs);
+  transition: var(--transition);
+}
+
+.history-page .build:hover {
+  box-shadow: var(--box-shadow-hover)
+}
+
+@media screen and (max-width: 480px) {
+  .history-page__show-more {
+    width: 100%;
+    height: var(--interactive-elem-size-large);
+  }
+}

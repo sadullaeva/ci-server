@@ -13,10 +13,8 @@ exports.getSettings = (req, res, next) => {
 
 exports.postSettings = (req, res, next) => {
   const { repoName, mainBranch } = req.body;
-  cloneRepo(repoName, mainBranch);
-
-  postSettings(req.body)
-    .then(response => {
+  Promise.all([cloneRepo(repoName, mainBranch), postSettings(req.body)])
+    .then(([_, response]) => {
       res.send(response.data);
     })
     .catch(err => {

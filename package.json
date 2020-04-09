@@ -1,13 +1,7 @@
 {
   "name": "ci-server",
   "version": "1.0.0",
-  "description": "UI for CI server",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "server": "node server/server.js"
-  },
+  "description": "CI server",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sadullaeva/ci-server.git"
@@ -19,20 +13,7 @@
     "url": "https://github.com/sadullaeva/ci-server/issues"
   },
   "homepage": "https://github.com/sadullaeva/ci-server#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "swagger-ui-express": "^4.1.3"
-  },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@storybook/html": "^5.3.14",
-    "babel-loader": "^8.0.6",
     "prettier": "^1.19.1"
-  },
-  "engines": {
-    "node": "12.16.1",
-    "npm": "6.13.4"
   }
 }
