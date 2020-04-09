@@ -12,24 +12,27 @@ import RouterWrapper from './template.blocks/routerWrapper/routerWrapper';
 import SettingsPage from './pages/settingsPage/settingsPage';
 import BuildPage from './pages/buildPage/buildPage';
 import MainPage from './pages/mainPage/mainPage';
+import ErrorBoundary from './template.blocks/errorBoundary/errorBoundary';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterWrapper>
         <Router>
-          <Switch>
-            <Route exact path={'/'}>
-              <MainPage />
-            </Route>
-            <Route path={'/settings'}>
-              <SettingsPage />
-            </Route>
-            <Route path={'/build/:id'}>
-              <BuildPage />
-            </Route>
-            <Route>{'404'}</Route>
-          </Switch>
+          <ErrorBoundary>
+            <Switch>
+              <Route exact path={'/'}>
+                <MainPage />
+              </Route>
+              <Route path={'/settings'}>
+                <SettingsPage />
+              </Route>
+              <Route path={'/build/:id'}>
+                <BuildPage />
+              </Route>
+              <Route>{'404'}</Route>
+            </Switch>
+          </ErrorBoundary>
         </Router>
       </RouterWrapper>
     </Provider>
