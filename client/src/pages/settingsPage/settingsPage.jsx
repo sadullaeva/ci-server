@@ -79,6 +79,7 @@ const SettingsPage = props => {
             placeholder={'user-name/repo-name'}
             defaultValue={repoName}
             error={errors.repoName}
+            tabIndex={1}
             required
             clearable
           />
@@ -88,6 +89,7 @@ const SettingsPage = props => {
             placeholder={'npm run build'}
             defaultValue={buildCommand}
             error={errors.buildCommand}
+            tabIndex={2}
             required
             clearable
           />
@@ -97,6 +99,7 @@ const SettingsPage = props => {
             placeholder={'master'}
             defaultValue={mainBranch}
             error={errors.mainBranch}
+            tabIndex={3}
             clearable
           />
           <div className={settingsPage('sync')}>
@@ -106,14 +109,15 @@ const SettingsPage = props => {
               placeholder={'5'}
               defaultValue={period}
               error={errors.period}
+              tabIndex={4}
             />
             minutes
           </div>
           <div className={settingsPage('controls')}>
-            <Button type={'submit'} kind={'primary'} disabled={!valid}>
+            <Button type={'submit'} kind={'primary'} disabled={!valid} tabIndex={5}>
               Save
             </Button>
-            <Button kind={'secondary'} onClick={onCancel}>
+            <Button kind={'secondary'} onClick={onCancel} tabIndex={6}>
               Cancel
             </Button>
           </div>
