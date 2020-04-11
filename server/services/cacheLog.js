@@ -1,50 +1,45 @@
-const cacheMap = new Map();
-// const MAX_CACHE_SIZE = 2; // for testing
-const MAX_CACHE_SIZE = 10;
-const STORAGE_TIME = 600000; // 10 min
+class CachedLog {
+  constructor(maxCacheSize = 10, storageTime = 600000) {
+    this.cacheMap = new Map();
+    this.MAX_CACHE_SIZE = maxCacheSize;
+    this.STORAGE_TIME = storageTime;
+  }
 
-const setClearTimer = buildId => {
-  const timerId = setTimeout(() => {
-    cacheMap.delete(buildId);
-    clearTimeout(timerId);
-  }, STORAGE_TIME);
-  return timerId;
-};
-
-const cacheLog = (buildId, log) => {
-  const cachedLog = cacheMap.get(buildId);
-
-  if (cachedLog) {
-    clearTimeout(cachedLog.timerId);
-    cachedLog.timerId = setClearTimer(buildId);
-    cachedLog.dateTime = new Date();
-  } else {
-    while (cacheMap.size >= MAX_CACHE_SIZE) {
-      const cacheMapIterator = cacheMap.keys();
-      const keyToDelete = cacheMapIterator.next().value;
-      cacheMap.delete(keyToDelete);
+  get(id) {
+    const log = this.cacheMap.get(id);
+    if (log) {
+      this.delete(id);
+      this.set(id, log.log);
+      return log.log;
     }
-    cacheMap.set(buildId, {
+    return undefined;
+  }
+
+  set(id, log) {
+    if (!log) return;
+
+    while (this.cacheMap.size >= this.MAX_CACHE_SIZE) {
+      const cacheMapIterator = this.cacheMap.keys();
+      const id = cacheMapIterator.next().value;
+      this.delete(id);
+    }
+
+    const timerId = setTimeout(() => {
+      this.delete(id);
+    }, this.STORAGE_TIME);
+
+    this.cacheMap.set(id, {
       log,
+      timerId,
       dateTime: new Date(),
-      timerId: setClearTimer(buildId),
     });
   }
-};
 
-const getFromCache = buildId => {
-  const cachedLog = cacheMap.get(buildId);
-
-  if (cachedLog) {
-    clearTimeout(cachedLog.timerId);
-    cachedLog.timerId = setClearTimer(buildId);
-    cachedLog.dateTime = new Date();
-    return cachedLog.log;
+  delete(id) {
+    const log = this.cacheMap.get(id);
+    this.cacheMap.delete(id);
+    clearTimeout(log.id);
   }
-  return undefined;
-};
+}
 
-module.exports = {
-  cacheLog,
-  getFromCache,
-};
+module.exports = CachedLog;
