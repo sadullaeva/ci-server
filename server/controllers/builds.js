@@ -11,7 +11,7 @@ const {
   postBuild,
   getBuildLog,
   getSettings,
-} = require('../services/storageMethods');
+} = require('../api/storageMethods');
 
 const cachedLog = new CachedLog();
 

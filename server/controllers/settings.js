@@ -1,4 +1,4 @@
-const { getSettings, postSettings } = require('../services/storageMethods');
+const { getSettings, postSettings } = require('../api/storageMethods');
 const cloneRepo = require('../services/cloneRepo');
 
 exports.getSettings = (req, res, next) => {
