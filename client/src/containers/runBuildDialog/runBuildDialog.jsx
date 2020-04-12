@@ -68,7 +68,7 @@ const RunBuildDialog = props => {
         </>
       }
     >
-      <form id={'runBuildForm'} onSubmit={onSubmit}>
+      <form id={'runBuildForm'} onSubmit={onSubmit} data-testid={'run-build-dialog-form'}>
         <TextField
           id={'commitHash'}
           value={value}
@@ -80,6 +80,7 @@ const RunBuildDialog = props => {
           onClear={onClear}
           clearable
           autoFocus
+          data-testid={'run-build-dialog-input'}
         />
       </form>
     </Dialog>

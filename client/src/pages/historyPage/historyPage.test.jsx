@@ -7,6 +7,7 @@ import testRender from 'utils/testRender';
 import HistoryPage from './historyPage';
 
 import * as getBuildsActions from 'store/builds/getBuilds';
+import * as runBuildActions from 'store/builds/runBuild';
 
 let container = null;
 const initState = {
@@ -41,5 +42,18 @@ describe('HistoryPage', () => {
     fireEvent.click(getByTestId('run-build'));
 
     expect(document.querySelector('.run-build-dialog')).toBeVisible();
+  });
+
+  it('calls runBuild actions with the correct params', () => {
+    const runBuild = jest.spyOn(runBuildActions, 'runBuild');
+    const commitHash = '1q2w3e4';
+
+    const { history, getByTestId } = testRender(<HistoryPage />, initState);
+    fireEvent.click(getByTestId('run-build'));
+    fireEvent.input(getByTestId('run-build-dialog-input'), { target: { value: commitHash } });
+    fireEvent.submit(getByTestId('run-build-dialog-form'));
+
+    expect(runBuild).toHaveBeenCalledTimes(1);
+    expect(runBuild).toHaveBeenCalledWith(commitHash, history);
   });
 });
