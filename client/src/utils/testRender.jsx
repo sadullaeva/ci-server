@@ -1,25 +1,32 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
+import { Router } from 'react-router';
+import { createMemoryHistory } from 'history';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-const TestProvider = ({ store, children }) => (
+const TestProvider = ({ store, history, children }) => (
   <Provider store={store}>
-    <MemoryRouter>{children}</MemoryRouter>
+    <Router history={history}>{children}</Router>
   </Provider>
 );
 
 const testRender = (ui, storeInitialState = {}, ...otherOptions) => {
   const store = mockStore(storeInitialState);
+  const history = createMemoryHistory();
 
-  const renderResult = render(<TestProvider store={store}>{ui}</TestProvider>, otherOptions);
+  const renderResult = render(
+    <TestProvider store={store} history={history}>
+      {ui}
+    </TestProvider>,
+    otherOptions
+  );
 
-  return { store, ...renderResult };
+  return { store, history, ...renderResult };
 };
 
 export default testRender;
