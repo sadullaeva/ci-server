@@ -38,7 +38,15 @@ class CachedLog {
   delete(id) {
     const log = this.cacheMap.get(id);
     this.cacheMap.delete(id);
-    clearTimeout(log.id);
+    clearTimeout(log.timerId);
+  }
+
+  clear() {
+    while (this.cacheMap.size > 0) {
+      const cacheMapIterator = this.cacheMap.keys();
+      const id = cacheMapIterator.next().value;
+      this.delete(id);
+    }
   }
 }
 
