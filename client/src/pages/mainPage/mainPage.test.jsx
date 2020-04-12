@@ -32,6 +32,15 @@ describe('MainPage', () => {
   });
 
   it('renders history page if there are repository setting in store', () => {
-    // todo
+    const initState = {
+      settings: {
+        settings: {},
+      },
+      builds: {},
+    };
+
+    testRender(<MainPage />, initState);
+
+    expect(document.querySelector('.history-page')).toBeInTheDocument();
   });
 });
