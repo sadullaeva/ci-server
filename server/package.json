@@ -19,5 +19,9 @@
   "engines": {
     "node": "12.16.1",
     "npm": "6.13.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1"
   }
 }
