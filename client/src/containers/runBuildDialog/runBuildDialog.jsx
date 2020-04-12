@@ -8,7 +8,8 @@ import Dialog from 'content.blocks/dialog/dialog';
 import Button from 'base.blocks/button/button';
 import TextField from 'base.blocks/textField/textField';
 
-import { validateCommitHash, runBuild } from 'store/builds/runBuild';
+import { runBuild } from 'store/builds/runBuild';
+import validateCommitHash from 'store/builds/helpers/validateCommitHash';
 
 import './runBuildDialog.css';
 
