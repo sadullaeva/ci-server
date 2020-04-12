@@ -9,6 +9,8 @@ import SettingsPage from './settingsPage';
 import * as updateSettingsActions from 'store/settings/updateSettings';
 
 let container = null;
+let updateSettings;
+
 const initState = {
   settings: {
     settings: null,
@@ -17,6 +19,10 @@ const initState = {
     errors: {},
   },
 };
+
+beforeAll(() => {
+  updateSettings = jest.spyOn(updateSettingsActions, 'updateSettings').mockReturnValue(jest.fn());
+});
 
 beforeEach(() => {
   container = document.createElement('div');
@@ -27,11 +33,16 @@ afterEach(() => {
   ReactDOM.unmountComponentAtNode(container);
   container.remove();
   container = null;
+
+  updateSettings.mockClear();
+});
+
+afterAll(() => {
+  updateSettings.mockRestore();
 });
 
 describe('SettingsPage', () => {
   it('calls updateSettings actions with the correct params', () => {
-    const updateSettings = jest.spyOn(updateSettingsActions, 'updateSettings');
     const settings = {
       repoName: 'sadullaeva/shri-2020-task-2',
       buildCommand: 'npm i && npm run build',

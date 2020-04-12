@@ -10,12 +10,20 @@ import * as getBuildsActions from 'store/builds/getBuilds';
 import * as runBuildActions from 'store/builds/runBuild';
 
 let container = null;
+let getBuilds;
+let runBuild;
+
 const initState = {
   settings: {
     settings: {},
   },
   builds: {},
 };
+
+beforeAll(() => {
+  getBuilds = jest.spyOn(getBuildsActions, 'getBuilds').mockReturnValue(jest.fn());
+  runBuild = jest.spyOn(runBuildActions, 'runBuild').mockReturnValue(jest.fn());
+});
 
 beforeEach(() => {
   container = document.createElement('div');
@@ -26,12 +34,18 @@ afterEach(() => {
   ReactDOM.unmountComponentAtNode(container);
   container.remove();
   container = null;
+
+  getBuilds.mockClear();
+  runBuild.mockClear();
+});
+
+afterAll(() => {
+  getBuilds.mockRestore();
+  runBuild.mockRestore();
 });
 
 describe('HistoryPage', () => {
   it('requests builds history when first render', () => {
-    const getBuilds = jest.spyOn(getBuildsActions, 'getBuilds');
-
     testRender(<HistoryPage />, initState);
 
     expect(getBuilds).toHaveBeenCalledTimes(1);
@@ -45,7 +59,6 @@ describe('HistoryPage', () => {
   });
 
   it('calls runBuild actions with the correct params', () => {
-    const runBuild = jest.spyOn(runBuildActions, 'runBuild');
     const commitHash = '1q2w3e4';
 
     const { history, getByTestId } = testRender(<HistoryPage />, initState);
