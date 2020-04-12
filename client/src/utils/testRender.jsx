@@ -15,9 +15,9 @@ const TestProvider = ({ store, history, children }) => (
   </Provider>
 );
 
-const testRender = (ui, storeInitialState = {}, ...otherOptions) => {
+const testRender = (ui, storeInitialState = {}, historyInitialState = {}, ...otherOptions) => {
   const store = mockStore(storeInitialState);
-  const history = createMemoryHistory();
+  const history = createMemoryHistory(historyInitialState);
 
   const renderResult = render(
     <TestProvider store={store} history={history}>
