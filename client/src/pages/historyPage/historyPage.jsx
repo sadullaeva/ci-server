@@ -50,7 +50,13 @@ const HistoryPage = () => {
       heading: repoName,
       extra: (
         <>
-          <Button kind={'secondary'} size={'s'} icon={'play'} onClick={onClickRunBuild}>
+          <Button
+            kind={'secondary'}
+            size={'s'}
+            icon={'play'}
+            onClick={onClickRunBuild}
+            data-testid={'run-build'}
+          >
             Run build
           </Button>
           <Link to={'/settings'}>
