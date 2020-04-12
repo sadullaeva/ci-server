@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 
-import withTestEnv from 'utils/withTestEnv';
+import testRender from 'utils/testRender';
 
 import MainPage from './mainPage';
 
-const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
 let container = null;
 
 beforeEach(() => {
@@ -29,10 +25,8 @@ describe('MainPage', () => {
         settings: null,
       },
     };
-    const store = mockStore(initState);
-    const MainPageWithTestEnv = withTestEnv(MainPage, store);
 
-    ReactDOM.render(<MainPageWithTestEnv />, container);
+    testRender(<MainPage />, initState);
 
     expect(document.querySelector('.start-page')).toBeInTheDocument();
   });
