@@ -17,7 +17,9 @@ const TestProvider = ({ store, children }) => (
 const testRender = (ui, storeInitialState = {}, ...otherOptions) => {
   const store = mockStore(storeInitialState);
 
-  render(<TestProvider store={store}>{ui}</TestProvider>, otherOptions);
+  const renderResult = render(<TestProvider store={store}>{ui}</TestProvider>, otherOptions);
+
+  return { store, ...renderResult };
 };
 
 export default testRender;
