@@ -14,6 +14,8 @@
   },
   "homepage": "https://github.com/sadullaeva/ci-server#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "hermione": "^3.1.0",
     "prettier": "^1.19.1"
   }
 }
