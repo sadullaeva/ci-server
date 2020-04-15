@@ -4,6 +4,8 @@ exports.getSettings = () => axios.get('/conf');
 
 exports.postSettings = body => axios.post('/conf', body);
 
+exports.deleteSettings = () => axios.delete('/conf');
+
 exports.getBuild = search => axios.get(`/build/details${search}`);
 
 exports.getBuildLog = search => axios.get(`/build/log${search}`);
