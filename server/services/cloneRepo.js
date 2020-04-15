@@ -9,7 +9,7 @@ module.exports = async (repoName, mainBranch) => {
     await child_process.exec(`rm -rf ${cwd}/${folderName}`);
     await child_process.spawn([
       'git',
-      ['clone', '-b', mainBranch, `git@github.com:${repoName}.git`, folderName],
+      ['clone', '-b', mainBranch, `https://github.com/${repoName}.git`, folderName],
       { cwd },
     ]);
   } catch (e) {
