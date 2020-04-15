@@ -20,5 +20,6 @@ module.exports = {
     'html-reporter/hermione': {
       path: 'hermione-html-report',
     },
+    'hermione-custom-commands': true,
   },
 };
