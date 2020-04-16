@@ -22,6 +22,6 @@
   },
   "scripts": {
     "hermione": "hermione",
-    "hermione:local": "GRID_URL=http://localhost:4444 BASE_URL=http://localhost:3000 API_URL=http://server:8080/api hermione"
+    "hermione:local": "GRID_URL=http://localhost:4444 BASE_URL=http://localhost:3000 API_URL=http://localhost:8080/api hermione"
   }
 }
