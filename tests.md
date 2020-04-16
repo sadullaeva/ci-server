@@ -1,5 +1,29 @@
 # Тесты
 
+Убедитесь, что используете Node.js 12.16.1.
+
+Убедитесь, что выполнены инструкции из [README.md](README.md).
+
+## Как запустить модульные тесты
+
+1. Установите все зависимости командой `make install-dependencies`
+2. Выполните команду `make run-unit-tests`
+
+## Как запустить интеграционные тесты
+
+Простой способ (если у вас есть установленный docker):
+1. В одной вкладке терминала запустить `make docker-run` и дождаться, пока все поднимется
+2. В другой вкладке терминала запустить `make docker-test`
+
+Способ сложнее:
+1. Выполнить [hermione prerequisites](https://github.com/gemini-testing/hermione/blob/master/README.md#prerequisites)
+2. Выполнить `make install-all-dependencies`
+3. В четырех разных вкладках терминала запустить команды:
+    * `make run-server`
+    * `make run-client`
+    * `make run-selenium`
+    * `make run-integration-tests`
+
 ## Модульные тесты
 
 **Логические блоки приложения:**
@@ -41,6 +65,8 @@
     * getCommitAuthorName работает корректно
     * getCommitMessage работает корректно
     * **TODO:** Контроллеры используют storageMethods с корректными параметрами
+
+## Интеграционные тесты
 
 **Сценарии интеграционных тестов (как я их видела изначально):**
 
