@@ -1,6 +1,6 @@
 module.exports = {
-  baseUrl: 'http://localhost:3000',
-  gridUrl: 'http://localhost:4444/wd/hub',
+  baseUrl: process.env.BASE_URL,
+  gridUrl: `${process.env.GRID_URL}/wd/hub`,
 
   sets: {
     common: {

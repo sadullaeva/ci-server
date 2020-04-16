@@ -1,8 +1,8 @@
 const assert = require('chai').assert;
-const deleteSettings = require('./utils/deleteSettings');
+const deleteSettings = require('../utils/deleteSettings');
 
-const rootUrl = 'http://localhost:3000/';
-const buildUrl = 'http://localhost:3000/build/';
+const rootUrl = process.env.BASE_URL;
+const buildUrl = `${process.env.BASE_URL}/build/`;
 const selectors = {
   runBuildButton: '[data-testid=run-build]',
   runBuildForm: '[data-testid=run-build-dialog-form]',
@@ -43,6 +43,7 @@ describe('Run build', function() {
       .submitForm(selectors.runBuildForm)
       .getUrl(url => {
         const isOnBuildPage = new RegExp(`${buildUrl}(.*)`).test(url);
+        console.log('URLLLLLLLLLLLL', url);
         assert.ok(isOnBuildPage, 'Displayed page is not a Build page');
       });
   });

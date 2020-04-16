@@ -1,7 +1,7 @@
 {
   "name": "ci-server",
   "version": "1.0.0",
-  "description": "CI server",
+  "description": "CI server Selenium tests",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sadullaeva/ci-server.git"
@@ -14,6 +14,14 @@
   },
   "homepage": "https://github.com/sadullaeva/ci-server#readme",
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "hermione": "^3.1.0",
+    "hermione-custom-commands": "file:hermione-custom-commands",
+    "html-reporter": "^5.15.2"
+  },
+  "scripts": {
+    "hermione": "hermione",
+    "hermione:local": "GRID_URL=http://localhost:4444 BASE_URL=http://localhost:3000 API_URL=http://server:8080/api hermione"
   }
 }

@@ -1,4 +1,4 @@
-const deleteSettings = require('./utils/deleteSettings');
+const deleteSettings = require('../utils/deleteSettings');
 
 const selectors = {
   fieldError: '.text-field__error',

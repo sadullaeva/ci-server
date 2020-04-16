@@ -1,5 +1,5 @@
 module.exports = (browser, settings) => {
-  const url = 'http://localhost:3000/settings';
+  const url = `${process.env.BASE_URL}/settings`;
   const selectors = {
     form: '[data-testid=settings-page-form]',
     repoName: '#repoName',
