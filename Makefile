@@ -32,13 +32,17 @@ install-all-dependencies: fix-node-modules-permissions
 	npm --prefix hermione ci
 
 .PHONY: run-server
+run-server:
 	npm --prefix server run server
 
 .PHONY: run-client
+run-client:
 	npm --prefix client run start
 
 .PHONY: run-selenium
+run-selenium:
 	selenium-standalone start
 
 .PHONY: run-integration-tests
+run-integration-tests:
 	npm --prefix hermione run hermione:local
