@@ -1,5 +1,6 @@
 import settingsAPI from 'api/settings';
-import { minsToMs } from 'utils/date';
+import validateSettings from './helpers/validateSettings';
+import normalizeSettings from './helpers/normalizeSettings';
 
 export const REQUEST_UPDATE = 'updateSettings/request';
 const requestUpdate = () => ({
@@ -23,44 +24,6 @@ export const setValidity = ([valid, errors]) => ({
   type: SET_VALIDITY,
   payload: { valid, errors },
 });
-
-const validateSettings = settings => {
-  let valid = true;
-  let errors = {};
-
-  if (!settings) {
-    valid = false;
-    errors.general = 'There are no settings provided';
-    return [valid, errors];
-  }
-
-  const { repoName, buildCommand, period } = settings;
-
-  if (!repoName) {
-    valid = false;
-    errors.repoName = 'Repository name should not be empty';
-  }
-  if (!buildCommand) {
-    valid = false;
-    errors.buildCommand = 'Build command should not be empty';
-  }
-
-  if (!/^[0-9]*$/.test(period)) {
-    valid = false;
-    errors.period = 'Period should be a number';
-  }
-
-  return [valid, errors];
-};
-
-export const normalizeSettings = settings => {
-  return {
-    repoName: settings.repoName.trim(),
-    buildCommand: settings.buildCommand.trim(),
-    mainBranch: settings.mainBranch ? settings.mainBranch.trim() : 'master',
-    period: settings.period ? minsToMs(parseFloat(settings.period.trim())) : 0,
-  };
-};
 
 export const updateSettings = settings => {
   return dispatch => {

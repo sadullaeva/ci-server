@@ -1,4 +1,4 @@
-const { getSettings, postSettings } = require('../services/storageMethods');
+const { getSettings, postSettings, deleteSettings } = require('../api/storageMethods');
 const cloneRepo = require('../services/cloneRepo');
 
 exports.getSettings = (req, res, next) => {
@@ -16,6 +16,16 @@ exports.postSettings = (req, res, next) => {
   Promise.all([cloneRepo(repoName, mainBranch), postSettings(req.body)])
     .then(([_, response]) => {
       res.send(response.data);
+    })
+    .catch(err => {
+      next(err);
+    });
+};
+
+exports.deleteSettings = (req, res, next) => {
+  deleteSettings()
+    .then(() => {
+      res.send();
     })
     .catch(err => {
       next(err);

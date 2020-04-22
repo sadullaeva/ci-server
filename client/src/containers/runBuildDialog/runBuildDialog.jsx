@@ -8,7 +8,8 @@ import Dialog from 'content.blocks/dialog/dialog';
 import Button from 'base.blocks/button/button';
 import TextField from 'base.blocks/textField/textField';
 
-import { validateCommitHash, runBuild } from 'store/builds/runBuild';
+import { runBuild } from 'store/builds/runBuild';
+import validateCommitHash from 'store/builds/helpers/validateCommitHash';
 
 import './runBuildDialog.css';
 
@@ -68,7 +69,7 @@ const RunBuildDialog = props => {
         </>
       }
     >
-      <form id={'runBuildForm'} onSubmit={onSubmit}>
+      <form id={'runBuildForm'} onSubmit={onSubmit} data-testid={'run-build-dialog-form'}>
         <TextField
           id={'commitHash'}
           value={value}
@@ -80,6 +81,7 @@ const RunBuildDialog = props => {
           onClear={onClear}
           clearable
           autoFocus
+          data-testid={'run-build-dialog-input'}
         />
       </form>
     </Dialog>

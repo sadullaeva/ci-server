@@ -32,7 +32,7 @@ const Loader = props => {
   }, [props]);
 
   return ReactDOM.createPortal(
-    <div className={clsx(loader(), show && loader({ show: true }))} />,
+    <div className={clsx(loader(), show && loader({ show: true }))} data-testid={'loader'} />,
     root.current
   );
 };

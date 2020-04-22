@@ -1,0 +1,52 @@
+version: '3'
+services:
+
+  client:
+    image: node:12.16-alpine
+    container_name: client
+    user: 'root'
+    working_dir: /home/ci-server/client
+    command: 'sh -c "apk add python g++ make && npm i && npm run start"'
+    volumes:
+      - ./client:/home/ci-server/client
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./client/.env
+    stdin_open: true
+
+  server:
+    image: node:12.16-alpine
+    container_name: server
+    user: 'root'
+    working_dir: /home/ci-server/server
+    command: 'sh -c "apk add git && npm i && npm run server"'
+    volumes:
+      - ./server:/home/ci-server/server
+    ports:
+      - '8080:8080'
+    env_file:
+      - ./server/.env
+
+  selenium:
+    image: selenium/standalone-chrome-debug:3.141.59-20200409
+    container_name: selenium
+    user: 'root'
+    ports:
+      - '4444:4444'
+      - '5900:5900'
+
+  hermione:
+    image: node:12.16-alpine
+    container_name: hermione
+    user: 'root'
+    working_dir: /home/ci-server/hermione
+    command: 'sh -c "npm i && npm run hermione"'
+    volumes:
+      - ./hermione:/home/ci-server/hermione
+    depends_on:
+      - selenium
+    environment:
+      GRID_URL: 'http://selenium:4444'
+      BASE_URL: 'http://client:3000'
+      API_URL: 'http://server:8080/api'

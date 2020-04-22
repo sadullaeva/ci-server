@@ -68,6 +68,17 @@
             "description": "Success"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "BuildConfiguration"
+        ],
+        "summary": "Deletes current settings",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
       }
     },
     "/builds": {

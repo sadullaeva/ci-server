@@ -71,7 +71,7 @@ const SettingsPage = props => {
         <div className={settingsPage('description')}>
           Configure repository connection and synchronization settings.
         </div>
-        <form onSubmit={onSumbit} onFocus={onFocus}>
+        <form onSubmit={onSumbit} onFocus={onFocus} data-testid={'settings-page-form'}>
           {errors.general && <div className={settingsPage('general-error')}>{errors.general}</div>}
           <TextField
             id={'repoName'}
@@ -82,6 +82,7 @@ const SettingsPage = props => {
             tabIndex={1}
             required
             clearable
+            data-testid={'settings-page-repo-name'}
           />
           <TextField
             id={'buildCommand'}
@@ -92,6 +93,7 @@ const SettingsPage = props => {
             tabIndex={2}
             required
             clearable
+            data-testid={'settings-page-build-command'}
           />
           <TextField
             id={'mainBranch'}
@@ -101,6 +103,7 @@ const SettingsPage = props => {
             error={errors.mainBranch}
             tabIndex={3}
             clearable
+            data-testid={'settings-page-main-branch'}
           />
           <div className={settingsPage('sync')}>
             <TextField
@@ -110,6 +113,7 @@ const SettingsPage = props => {
               defaultValue={period}
               error={errors.period}
               tabIndex={4}
+              data-testid={'settings-page-period'}
             />
             minutes
           </div>

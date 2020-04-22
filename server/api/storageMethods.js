@@ -1,8 +1,10 @@
-const axios = require('../axios');
+const axios = require('./axios');
 
 exports.getSettings = () => axios.get('/conf');
 
 exports.postSettings = body => axios.post('/conf', body);
+
+exports.deleteSettings = () => axios.delete('/conf');
 
 exports.getBuild = search => axios.get(`/build/details${search}`);
 

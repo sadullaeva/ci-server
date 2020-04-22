@@ -47,7 +47,13 @@ const BuildPage = props => {
       heading: <Link to={'/'}>{repoName}</Link>,
       extra: (
         <>
-          <Button kind={'secondary'} size={'s'} icon={'repeat'} onClick={rebuild}>
+          <Button
+            kind={'secondary'}
+            size={'s'}
+            icon={'repeat'}
+            onClick={rebuild}
+            data-testid={'rebuild'}
+          >
             Rebuild
           </Button>
           <Link to={'/settings'}>

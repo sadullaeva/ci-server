@@ -21,22 +21,23 @@ Create `client/.env` file as a copy of `client/.env.template` file and fill the 
 
 * `REACT_APP_API_URL` - leave it as is
 
-Run the server from the `/server` directory:
+Install dependencies:
+```
+make install-dependencies
+```
+
+Run the server:
 
 ```
-cd server
-npm ci
-npm run server
+make run-server
 ```
 
 Server will run on localhost:8080.
 
-Open another Terminal tab and run the client from the `/client` directory:
+Open another Terminal tab and run the client:
 
 ```
-cd client
-npm ci
-npm start
+make run-client
 ```
 
 Client will run on localhost:3000.
@@ -48,3 +49,7 @@ You can also run a storybook from the `/client` directory:
 ```
 npm run storybook
 ```
+
+## Tests
+
+Everything described in [tests.md](tests.md) file.

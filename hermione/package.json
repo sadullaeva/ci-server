@@ -1,0 +1,28 @@
+{
+  "name": "ci-server",
+  "version": "1.0.0",
+  "description": "CI server Selenium tests",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sadullaeva/ci-server.git"
+  },
+  "keywords": [],
+  "author": "Marina Lazarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sadullaeva/ci-server/issues"
+  },
+  "homepage": "https://github.com/sadullaeva/ci-server#readme",
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "hermione": "^3.1.0",
+    "hermione-custom-commands": "file:hermione-custom-commands",
+    "html-reporter": "^5.15.2",
+    "selenium-standalone": "^6.17.0"
+  },
+  "scripts": {
+    "hermione": "hermione",
+    "hermione:local": "GRID_URL=http://localhost:4444 BASE_URL=http://localhost:3000 API_URL=http://localhost:8080/api hermione"
+  }
+}

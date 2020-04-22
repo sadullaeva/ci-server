@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "clsx": "^1.1.0",
     "dayjs": "^1.8.23",
+    "history": "^4.10.1",
     "pretty-ms": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -18,6 +19,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
@@ -30,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
