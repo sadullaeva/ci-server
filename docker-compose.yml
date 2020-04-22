@@ -41,7 +41,7 @@ services:
     container_name: hermione
     user: 'root'
     working_dir: /home/ci-server/hermione
-    command: 'sh -c "npm i && npm run hermione"'
+    command: 'sh -c "apk add --no-cache python make g++ && npm i && npm run hermione"'
     volumes:
       - ./hermione:/home/ci-server/hermione
     depends_on:
