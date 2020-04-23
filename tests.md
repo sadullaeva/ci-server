@@ -29,7 +29,7 @@
 **Логические блоки приложения:**
 
 * Клиентская часть
-    * Точка входа в приложение `client/src/index.js`
+    * Точка входа в приложение `client/src/index.ts`
     * Компоненты `client/src/*.blocks`
     * Страницы `client/src/pages`
     * Хранилище `client/src/store`
