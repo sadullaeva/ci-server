@@ -6,7 +6,7 @@ services:
     container_name: client
     user: 'root'
     working_dir: /home/ci-server/client
-    command: 'sh -c "apk add python g++ make && npm i && npm run start"'
+    command: 'sh -c "apk add python g++ make && npm ci && npm run start"'
     volumes:
       - ./client:/home/ci-server/client
     ports:
@@ -20,7 +20,7 @@ services:
     container_name: server
     user: 'root'
     working_dir: /home/ci-server/server
-    command: 'sh -c "apk add git && npm i && npm run server"'
+    command: 'sh -c "apk add git && npm ci && npm run server"'
     volumes:
       - ./server:/home/ci-server/server
     ports:
@@ -41,7 +41,7 @@ services:
     container_name: hermione
     user: 'root'
     working_dir: /home/ci-server/hermione
-    command: 'sh -c "apk add --no-cache python make g++ && npm i && npm run hermione"'
+    command: 'sh -c "apk add --no-cache python make g++ && npm ci && npm run hermione"'
     volumes:
       - ./hermione:/home/ci-server/hermione
     depends_on:
