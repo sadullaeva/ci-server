@@ -1,5 +1,5 @@
-const axios = require('axios');
-const https = require('https');
+import axios from 'axios';
+import https from 'https';
 
 const instance = axios.create({
   baseURL: process.env.API_URL,
@@ -10,4 +10,4 @@ const instance = axios.create({
 
 instance.defaults.headers.common['Authorization'] = `Bearer ${process.env.AUTH_TOKEN}`;
 
-module.exports = instance;
+export default instance;

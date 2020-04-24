@@ -1,11 +1,19 @@
 class CachedLog {
+  cacheMap: Map<string, {
+    log: string,
+    timerId: NodeJS.Timeout,
+    dateTime: Date
+  }>;
+  MAX_CACHE_SIZE: number;
+  STORAGE_TIME: number;
+
   constructor(maxCacheSize = 10, storageTime = 600000) {
     this.cacheMap = new Map();
     this.MAX_CACHE_SIZE = maxCacheSize;
     this.STORAGE_TIME = storageTime;
   }
 
-  get(id) {
+  get(id: string) {
     const log = this.cacheMap.get(id);
     if (log) {
       this.delete(id);
@@ -15,7 +23,7 @@ class CachedLog {
     return undefined;
   }
 
-  set(id, log) {
+  set(id: string, log: string) {
     if (!log) return;
 
     while (this.cacheMap.size >= this.MAX_CACHE_SIZE) {
@@ -35,10 +43,10 @@ class CachedLog {
     });
   }
 
-  delete(id) {
+  delete(id: string) {
     const log = this.cacheMap.get(id);
     this.cacheMap.delete(id);
-    clearTimeout(log.timerId);
+    if (log) clearTimeout(log.timerId);
   }
 
   clear() {
@@ -50,4 +58,4 @@ class CachedLog {
   }
 }
 
-module.exports = CachedLog;
+export default CachedLog;

@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 
-const { getSettings, postSettings, deleteSettings } = require('../controllers/settings');
-const { getBuilds, postBuild, getBuild, getBuildLogs } = require('../controllers/builds');
+import { deleteSettings, getSettings, postSettings } from '../controllers/settings';
+import { getBuild, getBuildLogs, getBuilds, postBuild } from '../controllers/builds';
+
+const router = express.Router();
 
 router.get('/settings', getSettings);
 router.post('/settings', postSettings);
@@ -12,4 +13,4 @@ router.post('/builds/:commitHash', postBuild);
 router.get('/builds/:buildId', getBuild);
 router.get('/builds/:buildId/logs', getBuildLogs);
 
-module.exports = router;
+export default router;

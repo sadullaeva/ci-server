@@ -1,7 +1,7 @@
-const path = require('path');
-const child_process = require('../utils/childProcess');
+import path from 'path';
+import * as child_process from '../utils/childProcess';
 
-module.exports = async (repoName, mainBranch) => {
+export default async (repoName: string, mainBranch: string) => {
   const cwd = path.resolve(__dirname, '..');
   const folderName = 'ci-repo';
 

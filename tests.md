@@ -39,8 +39,8 @@
     * Документация `client/docs`
 
 * Серверная часть
-    * Точка входа в приложение `server/server.js`
-    * Роутинг `server/routes/api.js`
+    * Точка входа в приложение `server/server.ts`
+    * Роутинг `server/routes/api.ts`
     * Контроллеры `server/controllers`
     * Доступ к хранилищу `server/api`
     * Сервисы `server/services`
