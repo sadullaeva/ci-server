@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getSettings } from 'store/settings/getSettings';
+import { State } from 'store/store';
+import Settings from 'typings/settings';
 
-const RouterWrapper = props => {
+export interface RouterWrapperProps {
+  children?: React.ReactNode;
+}
+
+const RouterWrapper: React.FC<RouterWrapperProps> = props => {
   const dispatch = useDispatch();
-  const settings = useSelector(state => state.settings.settings);
+  const settings = useSelector((state: State): Settings => state.settings.settings);
 
   useEffect(() => {
     if (!settings) {
@@ -15,10 +20,6 @@ const RouterWrapper = props => {
   }, [settings, dispatch]);
 
   return <>{props.children}</>;
-};
-
-RouterWrapper.propTypes = {
-  children: PropTypes.node,
 };
 
 export default RouterWrapper;

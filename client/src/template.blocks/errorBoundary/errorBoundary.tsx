@@ -1,15 +1,27 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import React, { Component, ErrorInfo } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { cn } from 'utils/bem';
+import { MemoryHistory } from 'history';
 
 import Placeholder from 'content.blocks/placeholder/placeholder';
 import Layout from 'template.blocks/layout/layout';
 
 import './errorBoundary.css';
 
-class ErrorBoundary extends Component {
-  constructor(props) {
+export interface ErrorBoundaryProps {
+  children?: React.ReactNode;
+  history: MemoryHistory;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends Component<
+  ErrorBoundaryProps & RouteComponentProps,
+  ErrorBoundaryState
+> {
+  constructor(props: ErrorBoundaryProps & RouteComponentProps) {
     super(props);
     this.state = { hasError: false };
   }
@@ -18,7 +30,7 @@ class ErrorBoundary extends Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.log(error, errorInfo);
   }
 
@@ -50,10 +62,5 @@ class ErrorBoundary extends Component {
     );
   }
 }
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.node,
-  history: PropTypes.object,
-};
 
 export default withRouter(ErrorBoundary);
