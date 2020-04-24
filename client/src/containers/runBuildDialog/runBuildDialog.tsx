@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { MemoryHistory } from 'history';
 import { cn } from 'utils/bem';
 
 import Dialog from 'content.blocks/dialog/dialog';
@@ -9,18 +9,27 @@ import Button from 'base.blocks/button/button';
 import TextField from 'base.blocks/textField/textField';
 
 import { runBuild } from 'store/builds/runBuild';
-import validateCommitHash from 'store/builds/helpers/validateCommitHash';
+import validateCommitHash, {
+  CommitHashErrors,
+  CommitHashValid,
+} from 'store/builds/helpers/validateCommitHash';
 
 import './runBuildDialog.css';
 
-const RunBuildDialog = props => {
+export interface RunBuildDialogProps {
+  open: boolean;
+  onClose: () => any;
+  history: MemoryHistory;
+}
+
+const RunBuildDialog: React.FC<RunBuildDialogProps & RouteComponentProps> = props => {
   const { history, open } = props;
   const dispatch = useDispatch();
-  const [value, setValue] = useState('');
-  const [valid, setValid] = useState(true);
-  const [errors, setErrors] = useState({});
+  const [value, setValue] = useState<string>('');
+  const [valid, setValid] = useState<CommitHashValid>(true);
+  const [errors, setErrors] = useState<CommitHashErrors>({});
 
-  const onChange = evt => {
+  const onChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(evt.target.value);
   };
 
@@ -28,7 +37,7 @@ const RunBuildDialog = props => {
     setValue('');
   };
 
-  const onSubmit = evt => {
+  const onSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
     const commitHash = value;
     const [valid, err] = validateCommitHash(commitHash);
@@ -86,12 +95,6 @@ const RunBuildDialog = props => {
       </form>
     </Dialog>
   );
-};
-
-RunBuildDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  history: PropTypes.object,
 };
 
 export default withRouter(RunBuildDialog);

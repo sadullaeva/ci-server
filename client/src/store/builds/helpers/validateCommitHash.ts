@@ -1,8 +1,8 @@
-type CommitHashErrors = {
+export type CommitHashErrors = {
   commitHash?: string;
 };
 
-type CommitHashValid = boolean;
+export type CommitHashValid = boolean;
 
 const validateCommitHash = (commitHash: string): [CommitHashValid, CommitHashErrors] => {
   let valid: CommitHashValid = true;
