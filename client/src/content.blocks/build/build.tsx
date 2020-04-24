@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import prettyMilliseconds from 'pretty-ms';
 import dayjs from 'dayjs';
 import clsx from 'clsx';
@@ -9,7 +8,22 @@ import IconText from 'base.blocks/iconText/iconText';
 
 import './build.css';
 
-const Build = props => {
+export interface BuildProps {
+  className?: string;
+  status?: 'waiting' | 'running' | 'success' | 'failed' | 'cancelled';
+  size?: 'l';
+  meta: {
+    buildNumber: number;
+    message: string;
+    branch: string;
+    commit: string;
+    author: string;
+    date: string;
+    duration: number;
+  };
+}
+
+const Build: React.FC<BuildProps> = props => {
   const { className = '', size, status, meta } = props;
   const duration = meta.duration ? prettyMilliseconds(meta.duration) : '';
   const date = meta.date ? dayjs(meta.date).format('D MMM, HH:mm') : '';
@@ -45,21 +59,6 @@ const Build = props => {
       </div>
     </div>
   );
-};
-
-Build.propTypes = {
-  className: PropTypes.string,
-  status: PropTypes.oneOf(['waiting', 'running', 'success', 'failed', 'cancelled']),
-  size: PropTypes.oneOf(['l']),
-  meta: PropTypes.exact({
-    buildNumber: PropTypes.number,
-    message: PropTypes.string,
-    branch: PropTypes.string,
-    commit: PropTypes.string,
-    author: PropTypes.string,
-    date: PropTypes.string,
-    duration: PropTypes.number,
-  }).isRequired,
 };
 
 export default Build;

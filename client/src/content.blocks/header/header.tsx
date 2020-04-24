@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -7,7 +6,14 @@ import ContentBox from 'base.blocks/contentBox/contentBox';
 
 import './header.css';
 
-const Header = props => {
+export interface HeaderProps {
+  className?: string;
+  type?: 'primary' | 'secondary';
+  heading?: React.ReactNode;
+  extra?: React.ReactNode;
+}
+
+const Header: React.FC<HeaderProps> = props => {
   const { className = '', type = 'primary', heading, extra } = props;
   const header = cn('header');
   const classes = clsx(header(), className, header({ type }));
@@ -19,13 +25,6 @@ const Header = props => {
       </ContentBox>
     </header>
   );
-};
-
-Header.propTypes = {
-  className: PropTypes.string,
-  type: PropTypes.oneOf(['primary', 'secondary']),
-  heading: PropTypes.node,
-  extra: PropTypes.node,
 };
 
 export default Header;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -7,7 +6,16 @@ import Button from 'base.blocks/button/button';
 
 import './placeholder.css';
 
-const Placeholder = props => {
+export interface PlaceholderProps {
+  className?: string;
+  children?: React.ReactNode;
+  action?: {
+    content: React.ReactNode;
+    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  };
+}
+
+const Placeholder: React.FC<PlaceholderProps> = props => {
   const { className = '', children, action } = props;
   const placeholder = cn('placeholder');
   const classes = clsx(placeholder(), className);
@@ -21,15 +29,6 @@ const Placeholder = props => {
       )}
     </div>
   );
-};
-
-Placeholder.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  action: PropTypes.shape({
-    content: PropTypes.node,
-    onClick: PropTypes.func,
-  }),
 };
 
 export default Placeholder;

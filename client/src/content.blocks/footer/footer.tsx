@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -8,7 +7,11 @@ import Link from 'base.blocks/link/link';
 
 import './footer.css';
 
-const Footer = props => {
+export interface FooterProps {
+  className?: string;
+}
+
+const Footer: React.FC<FooterProps> = props => {
   const { className = '', ...other } = props;
   const footer = cn('footer');
   const classes = clsx(footer(), className);
@@ -31,10 +34,6 @@ const Footer = props => {
       </ContentBox>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  className: PropTypes.string,
 };
 
 export default Footer;

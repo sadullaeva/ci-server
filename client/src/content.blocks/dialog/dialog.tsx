@@ -1,12 +1,23 @@
 import React, { createRef, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import './dialog.css';
 
-const Dialog = props => {
+export interface DialogProps {
+  popupClassName?: string;
+  overlayClassName?: string;
+  title?: React.ReactNode;
+  children?: React.ReactNode;
+  actions?: React.ReactNode;
+  open: boolean;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  onClose(): any;
+}
+
+const Dialog: React.FC<DialogProps> = props => {
   const {
     popupClassName = '',
     overlayClassName = '',
@@ -18,7 +29,7 @@ const Dialog = props => {
     disableEscapeKeyDown = false,
     onClose,
   } = props;
-  const ref = createRef();
+  const ref = createRef<HTMLDivElement>();
 
   const onKeyDown = useCallback(
     evt => {
@@ -68,18 +79,6 @@ const Dialog = props => {
     </div>,
     root
   );
-};
-
-Dialog.propTypes = {
-  popupClassName: PropTypes.string,
-  overlayClassName: PropTypes.string,
-  title: PropTypes.node,
-  children: PropTypes.node,
-  actions: PropTypes.node,
-  open: PropTypes.bool.isRequired,
-  disableBackdropClick: PropTypes.bool,
-  disableEscapeKeyDown: PropTypes.bool,
-  onClose: PropTypes.func.isRequired,
 };
 
 export default Dialog;
