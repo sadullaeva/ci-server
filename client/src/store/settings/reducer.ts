@@ -15,16 +15,16 @@ import { CLEAR_VALIDATION, ClearValidationAction } from './clearState';
 import { SettingsErrors, SettingsValid } from './helpers/validateSettings';
 import Settings from 'typings/settings';
 
-type SettingsInitState = {
+export type SettingsState = {
   loading: boolean;
   settings: Settings | null;
   valid: SettingsValid;
   errors: SettingsErrors;
 };
 
-type SettingsActions = GetSettingsActions | UpdateSettingsActions | ClearValidationAction;
+export type SettingsActions = GetSettingsActions | UpdateSettingsActions | ClearValidationAction;
 
-const initState: SettingsInitState = {
+const initState: SettingsState = {
   loading: false,
   settings: null,
   valid: true,

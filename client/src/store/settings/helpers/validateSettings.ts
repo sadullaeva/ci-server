@@ -6,6 +6,7 @@ export type SettingsErrors = {
   general?: string;
   repoName?: string;
   buildCommand?: string;
+  mainBranch?: string;
   period?: string;
 };
 

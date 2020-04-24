@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { cn } from 'utils/bem';
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryHistory } from 'history';
 
 import Button from 'base.blocks/button/button';
-import Layout from 'template.blocks/layout/layout';
+import Layout, { LayoutProps } from 'template.blocks/layout/layout';
 import TextField from 'base.blocks/textField/textField';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 import Loader from 'base.blocks/loader/loader';
@@ -15,12 +15,21 @@ import { clearValidation } from 'store/settings/clearState';
 
 import { msToMins } from 'utils/date';
 
+import { State } from 'store/store';
+import { SettingsState } from 'store/settings/reducer';
+
 import './settingsPage.css';
 
-const SettingsPage = props => {
+export interface SettingsPageProps {
+  history: MemoryHistory;
+}
+
+const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props => {
   const { history } = props;
   const dispatch = useDispatch();
-  const { settings, loading, valid, errors } = useSelector(state => state.settings);
+  const { settings, loading, valid, errors } = useSelector(
+    (state: State): SettingsState => state.settings
+  );
 
   useEffect(() => {
     return () => {
@@ -29,7 +38,7 @@ const SettingsPage = props => {
   }, [dispatch]);
 
   const settingsPage = cn('settings-page');
-  const layoutProps = {
+  const layoutProps: LayoutProps = {
     className: settingsPage(),
     headerProps: {
       type: 'secondary',
@@ -37,10 +46,15 @@ const SettingsPage = props => {
     },
   };
 
-  const onSumbit = evt => {
+  const onSumbit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
-    if (evt.target && evt.target.elements) {
-      const { repoName, buildCommand, mainBranch, period } = evt.target.elements;
+
+    const form = evt.target as HTMLFormElement;
+    if (form && form.elements) {
+      const repoName = form.elements.namedItem('repoName') as HTMLInputElement;
+      const buildCommand = form.elements.namedItem('mainBranch') as HTMLInputElement;
+      const mainBranch = form.elements.namedItem('mainBranch') as HTMLInputElement;
+      const period = form.elements.namedItem('period') as HTMLInputElement;
       const settings = {
         repoName: repoName.value,
         buildCommand: buildCommand.value,
@@ -51,7 +65,7 @@ const SettingsPage = props => {
     }
   };
 
-  const onFocus = evt => {
+  const onFocus = (evt: React.FocusEvent<HTMLFormElement>): void => {
     if (evt.target.tagName === 'INPUT') {
       dispatch(setValidity([true, {}]));
     }
@@ -130,10 +144,6 @@ const SettingsPage = props => {
       <Loader show={loading} disableTimeout />
     </Layout>
   );
-};
-
-SettingsPage.propTypes = {
-  history: PropTypes.object,
 };
 
 export default withRouter(SettingsPage);
