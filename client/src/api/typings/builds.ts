@@ -1,12 +1,11 @@
 import Build from 'typings/build';
+import BuildLog from 'typings/buildLog';
 
 export type GetBuildResponse = {
   data?: Build;
 };
 
-export type GetBuildLogResponse = {
-  data?: string;
-};
+export type GetBuildLogResponse = BuildLog;
 
 export type GetBuildsRequest = {
   limit: number;

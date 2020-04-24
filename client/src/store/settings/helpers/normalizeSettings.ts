@@ -1,6 +1,19 @@
 import { minsToMs } from 'utils/date';
+import Settings from '../../../typings/settings';
 
-export const normalizeSettings = settings => {
+type NormalizeSettingsFn = ({
+  repoName,
+  buildCommand,
+  mainBranch,
+  period,
+}: {
+  repoName: string;
+  buildCommand: string;
+  mainBranch: string;
+  period: string;
+}) => Omit<Settings, 'id'>;
+
+export const normalizeSettings: NormalizeSettingsFn = settings => {
   return {
     repoName: settings.repoName.trim(),
     buildCommand: settings.buildCommand.trim(),

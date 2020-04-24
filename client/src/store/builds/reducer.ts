@@ -1,10 +1,40 @@
-import { REQUEST_RUN_BUILD, RECEIVE_RUN_BUILD, REJECT_RUN_BUILD } from './runBuild';
-import { REQUEST_BUILDS, RECEIVE_BUILDS, REJECT_BUILDS } from './getBuilds';
-import { REQUEST_BUILD, RECEIVE_BUILD, REJECT_BUILD } from './getBuild';
-import { REQUEST_BUILD_LOG, RECEIVE_BUILD_LOG, REJECT_BUILD_LOG } from './getBuildLog';
-import { CLEAR_STATE } from './clearState';
+import { REQUEST_BUILD, RECEIVE_BUILD, REJECT_BUILD, GetBuildActions } from './getBuild';
+import { REQUEST_BUILDS, RECEIVE_BUILDS, REJECT_BUILDS, GetBuildsActions } from './getBuilds';
+import { CLEAR_STATE, ClearStateAction } from './clearState';
+import {
+  REQUEST_RUN_BUILD,
+  RECEIVE_RUN_BUILD,
+  REJECT_RUN_BUILD,
+  RunBuildActions,
+} from './runBuild';
+import {
+  REQUEST_BUILD_LOG,
+  RECEIVE_BUILD_LOG,
+  REJECT_BUILD_LOG,
+  GetBuildLogActions,
+} from './getBuildLog';
+import Build from 'typings/build';
+import BuildLog from 'typings/buildLog';
 
-const initState = {
+export type BuildsInitState = {
+  loading: boolean;
+  logLoading: boolean;
+  limit: number;
+  offset: number;
+  hasMore: boolean;
+  builds: Array<Build>;
+  build: Build | null;
+  log: BuildLog | null;
+};
+
+export type BuildsActions =
+  | GetBuildActions
+  | GetBuildsActions
+  | RunBuildActions
+  | GetBuildLogActions
+  | ClearStateAction;
+
+const initState: BuildsInitState = {
   loading: false,
   logLoading: false,
   limit: 20,
@@ -15,7 +45,7 @@ const initState = {
   log: null,
 };
 
-export default (state = initState, action) => {
+export default (state = initState, action: BuildsActions) => {
   switch (action.type) {
     case REQUEST_RUN_BUILD: {
       return {

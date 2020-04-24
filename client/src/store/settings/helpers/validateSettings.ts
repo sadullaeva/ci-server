@@ -1,6 +1,20 @@
-const validateSettings = settings => {
-  let valid = true;
-  let errors = {};
+export type SettingsValid = boolean;
+
+export type SettingsErrors = {
+  general?: string;
+  repoName?: string;
+  buildCommand?: string;
+  period?: string;
+};
+
+const validateSettings = (settings: {
+  repoName: string;
+  buildCommand: string;
+  mainBranch: string;
+  period: string;
+}): [SettingsValid, SettingsErrors] => {
+  let valid: SettingsValid = true;
+  let errors: SettingsErrors = {};
 
   if (!settings) {
     valid = false;

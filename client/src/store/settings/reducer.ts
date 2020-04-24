@@ -1,16 +1,37 @@
-import { REQUEST_SETTINGS, RECEIVE_SETTINGS, REJECT_SETTINGS } from './getSettings';
-import { REJECT_UPDATE, RECEIVE_UPDATE, REQUEST_UPDATE } from './updateSettings';
-import { SET_VALIDITY } from './updateSettings';
-import { CLEAR_VALIDATION } from './clearState';
+import {
+  REQUEST_SETTINGS,
+  RECEIVE_SETTINGS,
+  REJECT_SETTINGS,
+  GetSettingsActions,
+} from './getSettings';
+import {
+  REJECT_UPDATE,
+  RECEIVE_UPDATE,
+  REQUEST_UPDATE,
+  SET_VALIDITY,
+  UpdateSettingsActions,
+} from './updateSettings';
+import { CLEAR_VALIDATION, ClearValidationAction } from './clearState';
+import { SettingsErrors, SettingsValid } from './helpers/validateSettings';
+import Settings from 'typings/settings';
 
-const initState = {
+type SettingsInitState = {
+  loading: boolean;
+  settings: Settings | null;
+  valid: SettingsValid;
+  errors: SettingsErrors;
+};
+
+type SettingsActions = GetSettingsActions | UpdateSettingsActions | ClearValidationAction;
+
+const initState: SettingsInitState = {
   loading: false,
   settings: null,
   valid: true,
   errors: {},
 };
 
-export default (state = initState, action) => {
+export default (state = initState, action: SettingsActions) => {
   switch (action.type) {
     case REQUEST_SETTINGS: {
       return {
