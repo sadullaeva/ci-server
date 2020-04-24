@@ -1,12 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import './button.css';
 
-const Button = props => {
-  const { className = '', type = 'button', kind, size, icon, children, ...other } = props;
+export type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
+  className?: string;
+  children?: React.ReactNode;
+  type?: 'button' | 'submit' | 'reset';
+  kind?: 'primary' | 'secondary';
+  size?: 's' | 'xs';
+  icon?: 'settings' | 'play' | 'repeat';
+};
+
+const Button: React.FC<ButtonProps> = props => {
+  const {
+    className = '',
+    type = 'button',
+    kind = 'primary',
+    size = 's',
+    icon,
+    children,
+    ...other
+  } = props;
   const button = cn('button');
   const classes = clsx(
     button(),
@@ -21,16 +37,6 @@ const Button = props => {
       <span className={button('content')}>{children}</span>
     </button>
   );
-};
-
-Button.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  disabled: PropTypes.bool,
-  kind: PropTypes.oneOf(['primary', 'secondary']),
-  size: PropTypes.oneOf(['s', 'xs']),
-  icon: PropTypes.oneOf(['settings', 'play', 'repeat']),
 };
 
 export default Button;

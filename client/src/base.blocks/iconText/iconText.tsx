@@ -1,11 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import './iconText.css';
 
-const IconText = props => {
+export interface IconTextProps {
+  className?: string;
+  children?: React.ReactNode;
+  type?: 'primary' | 'secondary';
+  icon: 'calendar' | 'stopwatch' | 'commit' | 'user';
+}
+
+const IconText: React.FC<IconTextProps> = props => {
   const { className = '', children, icon, type = 'primary', ...other } = props;
   const iconText = cn('icon-text');
   const classes = clsx(iconText(), className, icon && iconText({ icon }), iconText({ type }));
@@ -14,13 +20,6 @@ const IconText = props => {
       {children}
     </div>
   );
-};
-
-IconText.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  type: PropTypes.oneOf(['primary', 'secondary']),
-  icon: PropTypes.oneOf(['calendar', 'stopwatch', 'commit', 'user']),
 };
 
 export default IconText;

@@ -1,11 +1,25 @@
-import React, { createRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEventHandler, createRef } from 'react';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import './textField.css';
 
-const TextField = props => {
+export type TextFieldProps = React.HTMLProps<HTMLInputElement> & {
+  className?: string;
+  required?: boolean;
+  clearable?: boolean;
+  invalid?: boolean;
+  value?: string;
+  defaultValue?: string;
+  label?: string;
+  placeholder?: string;
+  error?: string;
+  id: string;
+  onChange?: ChangeEventHandler;
+  onClear?(): any;
+};
+
+const TextField: React.FC<TextFieldProps> = props => {
   const {
     className = '',
     required = false,
@@ -18,7 +32,7 @@ const TextField = props => {
     onClear,
     ...other
   } = props;
-  const ref = createRef();
+  const ref = createRef<HTMLInputElement>();
 
   const clear = () => {
     const input = ref && ref.current && ref.current.querySelector('input');
@@ -59,21 +73,6 @@ const TextField = props => {
       {error && <div className={textField('error')}>{error}</div>}
     </div>
   );
-};
-
-TextField.propTypes = {
-  className: PropTypes.string,
-  required: PropTypes.bool,
-  clearable: PropTypes.bool,
-  invalid: PropTypes.bool,
-  value: PropTypes.string,
-  defaultValue: PropTypes.string,
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  error: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  onClear: PropTypes.func,
 };
 
 export default TextField;
