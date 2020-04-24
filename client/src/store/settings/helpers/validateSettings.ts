@@ -1,3 +1,5 @@
+import { SettingsForm } from 'typings/settings';
+
 export type SettingsValid = boolean;
 
 export type SettingsErrors = {
@@ -7,12 +9,7 @@ export type SettingsErrors = {
   period?: string;
 };
 
-const validateSettings = (settings: {
-  repoName: string;
-  buildCommand: string;
-  mainBranch: string;
-  period: string;
-}): [SettingsValid, SettingsErrors] => {
+const validateSettings = (settings: SettingsForm): [SettingsValid, SettingsErrors] => {
   let valid: SettingsValid = true;
   let errors: SettingsErrors = {};
 

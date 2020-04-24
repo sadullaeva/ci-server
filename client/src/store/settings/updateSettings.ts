@@ -4,7 +4,7 @@ import settingsAPI from 'api/settings';
 import validateSettings, { SettingsErrors, SettingsValid } from './helpers/validateSettings';
 import normalizeSettings from './helpers/normalizeSettings';
 import Action from 'typings/action';
-import Settings from 'typings/settings';
+import { SettingsForm, SettingsNorm } from 'typings/settings';
 
 export const REQUEST_UPDATE = 'updateSettings/request';
 export const RECEIVE_UPDATE = 'updateSettings/receive';
@@ -14,7 +14,7 @@ export const SET_VALIDITY = 'updateSettings/setValidity';
 export type RequestUpdateAction = Action & { type: typeof REQUEST_UPDATE };
 export type ReceiveUpdateAction = Action & {
   type: typeof RECEIVE_UPDATE;
-  payload: Omit<Settings, 'id'>;
+  payload: SettingsNorm;
 };
 export type RejectUpdateAction = Action & { type: typeof REJECT_UPDATE };
 export type SetValidityAction = Action & { type: typeof SET_VALIDITY };
@@ -29,7 +29,7 @@ const requestUpdate = (): RequestUpdateAction => ({
   type: REQUEST_UPDATE,
 });
 
-const receiveUpdate = (payload: Omit<Settings, 'id'>): ReceiveUpdateAction => ({
+const receiveUpdate = (payload: SettingsNorm): ReceiveUpdateAction => ({
   type: RECEIVE_UPDATE,
   payload,
 });
@@ -47,12 +47,7 @@ export const setValidity = ([valid, errors]: [
   payload: { valid, errors },
 });
 
-export const updateSettings = (settings: {
-  repoName: string;
-  buildCommand: string;
-  mainBranch: string;
-  period: string;
-}) => {
+export const updateSettings = (settings: SettingsForm) => {
   return (dispatch: Dispatch<UpdateSettingsActions>) => {
     const [valid, errors] = validateSettings(settings);
     if (valid) {
