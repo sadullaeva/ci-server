@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = props => {
     className = '',
     type = 'button',
     kind = 'primary',
-    size = 's',
+    size,
     icon,
     children,
     ...other
