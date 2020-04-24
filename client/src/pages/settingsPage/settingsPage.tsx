@@ -52,7 +52,7 @@ const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props =>
     const form = evt.target as HTMLFormElement;
     if (form && form.elements) {
       const repoName = form.elements.namedItem('repoName') as HTMLInputElement;
-      const buildCommand = form.elements.namedItem('mainBranch') as HTMLInputElement;
+      const buildCommand = form.elements.namedItem('buildCommand') as HTMLInputElement;
       const mainBranch = form.elements.namedItem('mainBranch') as HTMLInputElement;
       const period = form.elements.namedItem('period') as HTMLInputElement;
       const settings = {
