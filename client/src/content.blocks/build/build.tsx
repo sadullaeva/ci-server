@@ -18,8 +18,8 @@ export interface BuildProps {
     branch: string;
     commit: string;
     author: string;
-    date: string;
-    duration: number;
+    date?: string;
+    duration?: number;
   };
 }
 

@@ -4,7 +4,7 @@ import { cn } from 'utils/bem';
 import { MemoryHistory } from 'history';
 
 import Placeholder from 'content.blocks/placeholder/placeholder';
-import Layout from 'template.blocks/layout/layout';
+import Layout, { LayoutProps } from 'template.blocks/layout/layout';
 
 import './errorBoundary.css';
 
@@ -36,7 +36,7 @@ class ErrorBoundary extends Component<
 
   render() {
     const errorBoundary = cn('error-boundary');
-    const layoutProps = {
+    const layoutProps: LayoutProps = {
       className: errorBoundary(),
       headerProps: {
         type: 'secondary',

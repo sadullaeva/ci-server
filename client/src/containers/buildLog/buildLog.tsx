@@ -5,7 +5,7 @@ import { cn } from 'utils/bem';
 
 import { getBuildLog } from 'store/builds/getBuildLog';
 import { State } from 'store/store';
-import BuildLog from 'typings/buildLog';
+import BuildLogModel from 'typings/buildLog';
 
 import './buildLog.css';
 
@@ -17,7 +17,7 @@ export interface BuildLogProps {
 const BuildLog: React.FC<BuildLogProps> = props => {
   const { buildId, className = '' } = props;
   const dispatch = useDispatch();
-  const log = useSelector((state: State): BuildLog => state.builds.log);
+  const log = useSelector((state: State): BuildLogModel => state.builds.log);
 
   useEffect(() => {
     dispatch(getBuildLog(buildId));
