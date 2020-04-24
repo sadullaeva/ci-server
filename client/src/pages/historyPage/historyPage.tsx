@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import Button from 'base.blocks/button/button';
-import Layout from 'template.blocks/layout/layout';
+import Layout, { LayoutProps } from 'template.blocks/layout/layout';
 import Build from 'content.blocks/build/build';
 import Placeholder from 'content.blocks/placeholder/placeholder';
 import ContentBox from 'base.blocks/contentBox/contentBox';
@@ -17,14 +17,19 @@ import { clearState } from 'store/builds/clearState';
 
 import { getBuildStatus } from 'utils/build';
 
+import { State } from 'store/store';
+import { BuildsState } from 'store/builds/reducer';
+
 import './historyPage.css';
 
 const HistoryPage = () => {
   const dispatch = useDispatch();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
-  const repoName = useSelector(state => state.settings.settings?.repoName || 'Builds history');
-  const { builds, loading, hasMore } = useSelector(state => state.builds);
+  const repoName = useSelector(
+    (state: State): string => state.settings.settings?.repoName || 'Builds history'
+  );
+  const { builds, loading, hasMore } = useSelector((state: State): BuildsState => state.builds);
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
 
   const loadBuilds = useCallback(() => {
@@ -43,7 +48,7 @@ const HistoryPage = () => {
   const onCancelRunBuild = () => setDialogOpen(false);
 
   const historyPage = cn('history-page');
-  const layoutProps = {
+  const layoutProps: LayoutProps = {
     className: clsx(historyPage(), historyPage({ empty: isEmpty })),
     headerProps: {
       type: 'primary',
