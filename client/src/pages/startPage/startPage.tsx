@@ -1,18 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { MemoryHistory } from 'history';
 import { cn } from 'utils/bem';
 
 import Button from 'base.blocks/button/button';
-import Layout from 'template.blocks/layout/layout';
-import Placeholder from 'content.blocks/placeholder/placeholder';
+import Layout, { LayoutProps } from 'template.blocks/layout/layout';
+import Placeholder, { PlaceholderProps } from 'content.blocks/placeholder/placeholder';
 
 import './startPage.css';
 
-const StartPage = props => {
+export interface StartPageProps {
+  history: MemoryHistory;
+}
+
+const StartPage: React.FC<StartPageProps & RouteComponentProps> = props => {
   const { history } = props;
   const startPage = cn('start-page');
-  const layoutProps = {
+  const layoutProps: LayoutProps = {
     className: startPage(),
     headerProps: {
       type: 'secondary',
@@ -26,7 +30,7 @@ const StartPage = props => {
       ),
     },
   };
-  const placeholderProps = {
+  const placeholderProps: PlaceholderProps = {
     children: 'Configure repository connection and synchronization settings',
     action: {
       content: 'Open settings',
@@ -40,10 +44,6 @@ const StartPage = props => {
       <Placeholder {...placeholderProps} />
     </Layout>
   );
-};
-
-StartPage.propTypes = {
-  history: PropTypes.object,
 };
 
 export default withRouter(StartPage);
