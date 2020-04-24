@@ -10,12 +10,12 @@ import './layout.css';
 export interface LayoutProps {
   className?: string;
   children?: React.ReactNode;
-  headerProps: HeaderProps;
-  footerProps: FooterProps;
+  headerProps?: HeaderProps;
+  footerProps?: FooterProps;
 }
 
 const Layout: React.FC<LayoutProps> = props => {
-  const { className = '', children, headerProps, footerProps } = props;
+  const { className = '', children, headerProps = {}, footerProps = {} } = props;
   const layout = cn('layout');
   const classes = clsx(layout(), className);
   return (

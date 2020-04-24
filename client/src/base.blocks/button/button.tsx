@@ -4,7 +4,7 @@ import { cn } from 'utils/bem';
 
 import './button.css';
 
-export type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
+export type ButtonProps = Omit<React.HTMLProps<HTMLButtonElement>, 'size'> & {
   className?: string;
   children?: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';

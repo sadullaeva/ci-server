@@ -16,7 +16,7 @@ import {
 import Build from 'typings/build';
 import BuildLog from 'typings/buildLog';
 
-export type BuildsInitState = {
+export type BuildsState = {
   loading: boolean;
   logLoading: boolean;
   limit: number;
@@ -34,7 +34,7 @@ export type BuildsActions =
   | GetBuildLogActions
   | ClearStateAction;
 
-const initState: BuildsInitState = {
+const initState: BuildsState = {
   loading: false,
   logLoading: false,
   limit: 20,

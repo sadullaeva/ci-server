@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link, useParams, withRouter } from 'react-router-dom';
+import { Link, useParams, withRouter, RouteComponentProps } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryHistory } from 'history';
 import { cn } from 'utils/bem';
 
 import Button from 'base.blocks/button/button';
-import Layout from 'template.blocks/layout/layout';
+import Layout, { LayoutProps } from 'template.blocks/layout/layout';
 import Build from 'content.blocks/build/build';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 import BuildLog from 'containers/buildLog/buildLog';
@@ -15,15 +15,24 @@ import { getBuild } from 'store/builds/getBuild';
 import { clearState } from 'store/builds/clearState';
 import { runBuild } from 'store/builds/runBuild';
 
+import { State } from 'store/store';
+import { BuildsState } from 'store/builds/reducer';
+
 import { getBuildStatus } from 'utils/build';
 
 import './buildPage.css';
 
-const BuildPage = props => {
-  const { id } = useParams();
+export interface BuildPageProps {
+  history: MemoryHistory;
+}
+
+const BuildPage: React.FC<BuildPageProps & RouteComponentProps> = props => {
+  const { id = '' } = useParams();
   const dispatch = useDispatch();
-  const { build, loading, logLoading } = useSelector(state => state.builds);
-  const repoName = useSelector(state => state.settings.settings?.repoName || 'Build details');
+  const { build, loading, logLoading } = useSelector((state: State): BuildsState => state.builds);
+  const repoName = useSelector(
+    (state: State): string => state.settings.settings?.repoName || 'Build details'
+  );
 
   useEffect(() => {
     dispatch(getBuild(id));
@@ -40,7 +49,7 @@ const BuildPage = props => {
   };
 
   const buildPage = cn('build-page');
-  const layoutProps = {
+  const layoutProps: LayoutProps = {
     className: buildPage(),
     headerProps: {
       type: 'primary',
@@ -63,6 +72,7 @@ const BuildPage = props => {
       ),
     },
   };
+
   return (
     <Layout {...layoutProps}>
       <div className={buildPage('content')}>
@@ -90,10 +100,6 @@ const BuildPage = props => {
       <Loader show={loading || logLoading} />
     </Layout>
   );
-};
-
-BuildPage.propTypes = {
-  history: PropTypes.object,
 };
 
 export default withRouter(BuildPage);

@@ -9,7 +9,7 @@ type Build = {
   branchName: string;
   authorName: string;
   status: BuildStatus;
-  start?: Date;
+  start?: string;
   duration?: number;
 };
 
