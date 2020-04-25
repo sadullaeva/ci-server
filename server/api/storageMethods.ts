@@ -1,21 +1,30 @@
 import axios from './axios';
+import {
+  GetBuildLogResponse,
+  GetBuildResponse,
+  GetBuildsResponse,
+  PostBuildRequest,
+  PostBuildResponse,
+} from '../controllers/typings/builds';
+import {
+  GetSettingsResponse,
+  PostSettingsRequest,
+  PostSettingsResponse,
+} from '../controllers/typings/settings';
 
-export const getSettings = () => axios.get('/conf');
+export const getSettings = () => axios.get<GetSettingsResponse>('/conf');
 
-export const postSettings = (body: any) => axios.post('/conf', body);
+export const postSettings = (body: PostSettingsRequest) =>
+  axios.post<PostSettingsResponse>('/conf', body);
 
 export const deleteSettings = () => axios.delete('/conf');
 
-export const getBuild = (search: any) => axios.get(`/build/details${search}`);
+export const getBuild = (search: string) => axios.get<GetBuildResponse>(`/build/details${search}`);
 
-export const getBuildLog = (search: any) => axios.get(`/build/log${search}`);
+export const getBuildLog = (search: string) =>
+  axios.get<GetBuildLogResponse>(`/build/log${search}`);
 
-export const getBuilds = (search: any) => axios.get(`/build/list${search}`);
+export const getBuilds = (search: string) => axios.get<GetBuildsResponse>(`/build/list${search}`);
 
-export const postBuild = (body: any) => axios.post('/build/request', body);
-
-export const startBuild = (body: any) => axios.post('/build/start', body);
-
-export const finishBuild = (body: any) => axios.post('/build/finish', body);
-
-export const cancelBuild = (body: any) => axios.post('/build/cancel', body);
+export const postBuild = (body: PostBuildRequest) =>
+  axios.post<PostBuildResponse>('/build/request', body);
