@@ -1,9 +1,9 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import sinon from 'sinon';
 
-const child_process = require('../../utils/childProcess');
+import * as child_process from '../../utils/childProcess';
 
-const cloneRepo = require('../../services/cloneRepo');
+import cloneRepo from '../../services/cloneRepo';
 
 describe('cloneRepo', () => {
   const sandbox = sinon.createSandbox();

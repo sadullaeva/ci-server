@@ -1,8 +1,9 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
 
-const CachedLog = require('../../services/cacheLog');
+import CachedLog, { CacheLog } from '../../services/cacheLog';
+import BuildLog from '../../typings/buildLog';
 
-let cachedLog;
+let cachedLog: CachedLog;
 
 beforeEach(() => {
   cachedLog = new CachedLog();
@@ -10,7 +11,6 @@ beforeEach(() => {
 
 afterEach(() => {
   cachedLog.clear();
-  cachedLog = null;
 });
 
 describe('CachedLog', () => {
@@ -25,8 +25,8 @@ describe('CachedLog', () => {
 
     it('returns log if it is in cache', () => {
       const id = '1';
-      const log = 'build log';
-      cachedLog.cacheMap.set(id, { log });
+      const log: BuildLog = 'build log';
+      cachedLog.cacheMap.set(id, { log } as CacheLog);
 
       const result = cachedLog.get(id);
 
@@ -37,7 +37,7 @@ describe('CachedLog', () => {
   describe('set', () => {
     it('does nothing if log is empty', () => {
       const id = '1';
-      const log = '';
+      const log: BuildLog = '';
 
       cachedLog.set(id, log);
       const result = cachedLog.get(id);
@@ -47,20 +47,20 @@ describe('CachedLog', () => {
 
     it('adds log to cache if log is not empty', () => {
       const id = '1';
-      const log = 'build log';
+      const log: BuildLog = 'build log';
 
       cachedLog.set(id, log);
       const result = cachedLog.cacheMap.get(id);
 
-      expect(result.log).to.equal(log);
+      expect(result!.log).to.equal(log);
     });
   });
 
   describe('delete', () => {
     it('deletes log from cache', () => {
       const id = '1';
-      const log = 'build log';
-      cachedLog.cacheMap.set(id, { log });
+      const log: BuildLog = 'build log';
+      cachedLog.cacheMap.set(id, { log } as CacheLog);
 
       cachedLog.delete(id);
       const result = cachedLog.cacheMap.get(id);

@@ -29,7 +29,7 @@ class CachedLog {
     return undefined;
   }
 
-  set(id: string, log: string) {
+  set(id: string, log: BuildLog) {
     if (!log) return;
 
     while (this.cacheMap.size >= this.MAX_CACHE_SIZE) {

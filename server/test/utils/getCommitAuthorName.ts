@@ -1,9 +1,9 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import sinon from 'sinon';
 
-const child_process = require('../../utils/childProcess');
+import * as child_process from '../../utils/childProcess';
 
-const getCommitAuthorName = require('../../utils/getCommitAuthorName');
+import getCommitAuthorName from '../../utils/getCommitAuthorName';
 
 const authorName = 'Commit message';
 
@@ -11,7 +11,7 @@ describe('getCommitAuthorName', () => {
   const sandbox = sinon.createSandbox();
 
   beforeEach(() => {
-    sandbox.stub(child_process, 'exec').resolves({ stdout: authorName });
+    sandbox.stub(child_process, 'exec').resolves({ stdout: authorName, stderr: '' });
   });
 
   afterEach(() => {
