@@ -1,11 +1,16 @@
 import util from 'util';
-import child_process from 'child_process';
+import child_process, { SpawnOptionsWithoutStdio } from 'child_process';
 
 export const exec = util.promisify(child_process.exec);
 
-export const spawn = (params: object, onStdout = () => {}, onStderr = () => {}) =>
+export type SpawnParams = [
+  string, // command
+  ReadonlyArray<string>, // args?
+  SpawnOptionsWithoutStdio // options?
+];
+
+export const spawn = (params: SpawnParams, onStdout = () => {}, onStderr = () => {}) =>
   new Promise((resolve, reject) => {
-    // @ts-ignore
     const process = child_process.spawn(...params);
 
     process.stdout.on('data', onStdout);
