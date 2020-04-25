@@ -1,7 +1,7 @@
 import path from 'path';
 import * as child_process from '../utils/childProcess';
 
-export default async (repoName: string, mainBranch: string) => {
+export default async (repoName: string, mainBranch: string): Promise<void> => {
   const cwd = path.resolve(__dirname, '..');
   const folderName = 'ci-repo';
 

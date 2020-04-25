@@ -1,9 +1,15 @@
+import BuildLog from '../typings/buildLog';
+
+export type CacheLog = {
+  log: BuildLog;
+  timerId: NodeJS.Timeout;
+  dateTime: Date;
+};
+
+export type CacheMap = Map<string, CacheLog>;
+
 class CachedLog {
-  cacheMap: Map<string, {
-    log: string,
-    timerId: NodeJS.Timeout,
-    dateTime: Date
-  }>;
+  cacheMap: CacheMap;
   MAX_CACHE_SIZE: number;
   STORAGE_TIME: number;
 
