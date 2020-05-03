@@ -18,7 +18,6 @@ import { clearState } from 'store/builds/clearState';
 import { getBuildStatus } from 'utils/build';
 
 import { State } from 'store/store';
-import { BuildsState } from 'store/builds/reducer';
 
 import './historyPage.css';
 
@@ -27,9 +26,9 @@ const HistoryPage = () => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const repoName = useSelector(
-    (state: State): string => state.settings.settings?.repoName || 'Builds history'
+    (state: State) => state.settings.settings?.repoName || 'Builds history'
   );
-  const { builds, loading, hasMore } = useSelector((state: State): BuildsState => state.builds);
+  const { builds, loading, hasMore } = useSelector((state: State) => state.builds);
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
 
   const loadBuilds = useCallback(() => {

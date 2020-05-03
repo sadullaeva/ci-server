@@ -16,7 +16,6 @@ import { clearValidation } from 'store/settings/clearState';
 import { msToMins } from 'utils/date';
 
 import { State } from 'store/store';
-import { SettingsState } from 'store/settings/reducer';
 
 import './settingsPage.css';
 
@@ -27,9 +26,7 @@ export interface SettingsPageProps {
 const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props => {
   const { history } = props;
   const dispatch = useDispatch();
-  const { settings, loading, valid, errors } = useSelector(
-    (state: State): SettingsState => state.settings
-  );
+  const { settings, loading, valid, errors } = useSelector((state: State) => state.settings);
 
   useEffect(() => {
     return () => {

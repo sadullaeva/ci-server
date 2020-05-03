@@ -45,7 +45,7 @@ const initState: BuildsState = {
   log: null,
 };
 
-export default (state = initState, action: BuildsActions) => {
+export default (state = initState, action: BuildsActions): BuildsState => {
   switch (action.type) {
     case REQUEST_RUN_BUILD: {
       return {

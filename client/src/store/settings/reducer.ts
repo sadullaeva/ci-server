@@ -31,7 +31,7 @@ const initState: SettingsState = {
   errors: {},
 };
 
-export default (state = initState, action: SettingsActions) => {
+export default (state = initState, action: SettingsActions): SettingsState => {
   switch (action.type) {
     case REQUEST_SETTINGS: {
       return {

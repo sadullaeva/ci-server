@@ -16,7 +16,6 @@ import { clearState } from 'store/builds/clearState';
 import { runBuild } from 'store/builds/runBuild';
 
 import { State } from 'store/store';
-import { BuildsState } from 'store/builds/reducer';
 
 import { getBuildStatus } from 'utils/build';
 
@@ -29,9 +28,9 @@ export interface BuildPageProps {
 const BuildPage: React.FC<BuildPageProps & RouteComponentProps> = props => {
   const { id = '' } = useParams();
   const dispatch = useDispatch();
-  const { build, loading, logLoading } = useSelector((state: State): BuildsState => state.builds);
+  const { build, loading, logLoading } = useSelector((state: State) => state.builds);
   const repoName = useSelector(
-    (state: State): string => state.settings.settings?.repoName || 'Build details'
+    (state: State) => state.settings.settings?.repoName || 'Build details'
   );
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getSettings } from 'store/settings/getSettings';
 import { State } from 'store/store';
-import Settings from 'typings/settings';
 
 export interface RouterWrapperProps {
   children?: React.ReactNode;
@@ -11,7 +10,7 @@ export interface RouterWrapperProps {
 
 const RouterWrapper: React.FC<RouterWrapperProps> = props => {
   const dispatch = useDispatch();
-  const settings = useSelector((state: State): Settings => state.settings.settings);
+  const settings = useSelector((state: State) => state.settings.settings);
 
   useEffect(() => {
     if (!settings) {

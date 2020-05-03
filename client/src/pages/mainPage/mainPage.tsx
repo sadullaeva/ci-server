@@ -5,10 +5,9 @@ import HistoryPage from 'pages/historyPage/historyPage';
 import StartPage from 'pages/startPage/startPage';
 
 import { State } from 'store/store';
-import Settings from 'typings/settings';
 
 const MainPage = () => {
-  const settings = useSelector((state: State): Settings => state.settings.settings);
+  const settings = useSelector((state: State) => state.settings.settings);
 
   return !!settings ? <HistoryPage /> : <StartPage />;
 };
