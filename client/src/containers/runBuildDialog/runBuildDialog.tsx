@@ -25,7 +25,7 @@ export interface RunBuildDialogProps {
 const RunBuildDialog: React.FC<RunBuildDialogProps & RouteComponentProps> = props => {
   const { history, open } = props;
   const dispatch = useDispatch();
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState('');
   const [valid, setValid] = useState<CommitHashValid>(true);
   const [errors, setErrors] = useState<CommitHashErrors>({});
 

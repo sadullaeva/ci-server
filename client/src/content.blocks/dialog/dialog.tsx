@@ -14,7 +14,7 @@ export interface DialogProps {
   open: boolean;
   disableBackdropClick?: boolean;
   disableEscapeKeyDown?: boolean;
-  onClose(): any;
+  onClose(): void;
 }
 
 const Dialog: React.FC<DialogProps> = props => {

@@ -15,8 +15,8 @@ export type TextFieldProps = React.HTMLProps<HTMLInputElement> & {
   placeholder?: string;
   error?: string;
   id: string;
-  onChange?: ChangeEventHandler;
-  onClear?(): any;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onClear?(): void;
 };
 
 const TextField: React.FC<TextFieldProps> = props => {

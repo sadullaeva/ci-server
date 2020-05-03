@@ -16,7 +16,7 @@ const Loader: React.FC<LoaderProps> = props => {
   const [show, setShow] = useState(props.show);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout | null;
+    let timeoutId: number | null;
     const showLoader = () => setShow(true);
     const hideLoader = () => setShow(false);
 
@@ -24,7 +24,7 @@ const Loader: React.FC<LoaderProps> = props => {
       if (props.disableTimeout) {
         showLoader();
       } else {
-        timeoutId = setTimeout(showLoader, 1000);
+        timeoutId = window.setTimeout(showLoader, 1000);
       }
     } else {
       hideLoader();
