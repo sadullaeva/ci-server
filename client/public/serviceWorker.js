@@ -24,6 +24,18 @@ function update(request) {
     .then(cache => fetch(request).then(response => cache.put(request, response)));
 }
 
+function cleanup() {
+  const currentCaches = [CACHE];
+
+  return caches
+    .keys()
+    .then(cacheNames => {
+      const cachesToDelete = cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
+      return Promise.all(cachesToDelete.map(cacheToDelete => caches.delete(cacheToDelete)));
+    })
+    .then(() => self.clients.claim());
+}
+
 self.addEventListener('install', event => {
   console.log('INSTALLED');
 
@@ -32,6 +44,8 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   console.log('ACTIVATED');
+
+  event.waitUntil(cleanup());
 });
 
 self.addEventListener('fetch', event => {

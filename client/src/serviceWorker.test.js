@@ -1,5 +1,4 @@
 const makeServiceWorkerEnv = require('service-worker-mock');
-const makeFetchMock = require('service-worker-mock/fetch');
 
 describe('Service worker', () => {
   beforeEach(() => {
@@ -13,10 +12,22 @@ describe('Service worker', () => {
   });
 
   it('should add listeners', () => {
-    require('./serviceWorker');
+    require('../public/serviceWorker');
 
     expect(self.listeners.get('install')).toBeDefined();
     expect(self.listeners.get('activate')).toBeDefined();
     expect(self.listeners.get('fetch')).toBeDefined();
+  });
+
+  it('should delete old caches on activate', async () => {
+    require('../public/serviceWorker');
+
+    // Create old cache
+    await self.caches.open('OLD_CACHE');
+    expect(self.snapshot().caches['OLD_CACHE']).toBeDefined();
+
+    // Activate and verify old cache is removed
+    await self.trigger('activate');
+    expect(self.snapshot().caches['OLD_CACHE']).toBeUndefined();
   });
 });
