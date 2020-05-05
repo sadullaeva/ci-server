@@ -53,3 +53,9 @@ npm run storybook
 ## Tests
 
 Everything described in [tests.md](tests.md) file.
+
+## Service worker
+
+Here is a service worker added to the client app. It implements the "Cache and Update" caching strategy.
+This strategy was chosen for the user to get the content ASAP but also for having static files always relevant.
+Client part static files change rarely, so it shouldn't be a problem if the user sees the previous time loaded content.
