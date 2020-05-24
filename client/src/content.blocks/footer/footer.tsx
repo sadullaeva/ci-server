@@ -6,6 +6,8 @@ import { cn } from 'utils/bem';
 import ContentBox from 'base.blocks/contentBox/contentBox';
 import Link from 'base.blocks/link/link';
 
+import { changeLanguage } from 'locale/utils';
+
 import './footer.css';
 
 export interface FooterProps {
@@ -17,6 +19,14 @@ const Footer: React.FC<FooterProps> = props => {
   const { t } = useTranslation();
   const footer = cn('footer');
   const classes = clsx(footer(), className);
+
+  const onChangeLanguage = (evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    evt.preventDefault();
+    changeLanguage().catch(err => {
+      console.log('Could not change language', err);
+    });
+  };
+
   return (
     <footer className={classes} {...other}>
       <ContentBox>
@@ -27,7 +37,7 @@ const Footer: React.FC<FooterProps> = props => {
           <Link href={'#'} type={'secondary'}>
             {t('Footer.learning')}
           </Link>
-          <Link href={'#'} type={'secondary'}>
+          <Link href={'#'} type={'secondary'} onClick={onChangeLanguage}>
             {t('Footer.language')}
           </Link>
         </div>

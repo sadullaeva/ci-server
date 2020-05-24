@@ -63,7 +63,7 @@ const HistoryPage = () => {
             onClick={onClickRunBuild}
             data-testid={'run-build'}
           >
-            Run build
+            {t('HistoryPage.runBuild')}
           </Button>
           <Link to={'/settings'}>
             <Button kind={'secondary'} size={'xs'} icon={'settings'} />
