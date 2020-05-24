@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams, withRouter, RouteComponentProps } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { MemoryHistory } from 'history';
+import { useTranslation } from 'react-i18next';
 import { cn } from 'utils/bem';
 
 import Button from 'base.blocks/button/button';
@@ -27,10 +28,11 @@ export interface BuildPageProps {
 
 const BuildPage: React.FC<BuildPageProps & RouteComponentProps> = props => {
   const { id = '' } = useParams();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { build, loading, logLoading } = useSelector((state: State) => state.builds);
   const repoName = useSelector(
-    (state: State) => state.settings.settings?.repoName || 'Build details'
+    (state: State) => state.settings.settings?.repoName || t('BuildPage.title')
   );
 
   useEffect(() => {
@@ -62,7 +64,7 @@ const BuildPage: React.FC<BuildPageProps & RouteComponentProps> = props => {
             onClick={rebuild}
             data-testid={'rebuild'}
           >
-            Rebuild
+            {t('BuildPage.rebuild')}
           </Button>
           <Link to={'/settings'}>
             <Button kind={'secondary'} size={'xs'} icon={'settings'} />

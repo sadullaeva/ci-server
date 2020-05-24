@@ -112,6 +112,7 @@
 
 .build__meta_vertical > * {
   margin-bottom: var(--space-s);
+  white-space: nowrap;
 }
 
 .build__meta_vertical > *:last-child {

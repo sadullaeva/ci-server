@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { store } from './store/store';
+import './locale/i18n';
 
 import RouterWrapper from './template.blocks/routerWrapper/routerWrapper';
 

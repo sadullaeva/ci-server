@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -23,10 +24,11 @@ import './historyPage.css';
 
 const HistoryPage = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const repoName = useSelector(
-    (state: State) => state.settings.settings?.repoName || 'Builds history'
+    (state: State) => state.settings.settings?.repoName || t('HistoryPage.title')
   );
   const { builds, loading, hasMore } = useSelector((state: State) => state.builds);
   const isEmpty = useMemo(() => !builds || !builds.length, [builds]);
@@ -61,7 +63,7 @@ const HistoryPage = () => {
             onClick={onClickRunBuild}
             data-testid={'run-build'}
           >
-            Run build
+            {t('HistoryPage.runBuild')}
           </Button>
           <Link to={'/settings'}>
             <Button kind={'secondary'} size={'xs'} icon={'settings'} />
@@ -100,18 +102,18 @@ const HistoryPage = () => {
               className={historyPage('show-more')}
               onClick={loadBuilds}
             >
-              Show more
+              {t('HistoryPage.showMore')}
             </Button>
           )}
         </ContentBox>
       ) : (
         <Placeholder
           action={{
-            content: 'Run build',
+            content: t('HistoryPage.runBuild'),
             onClick: onClickRunBuild,
           }}
         >
-          Here are no builds yet. Run the first one
+          {t('HistoryPage.noBuilds')}
         </Placeholder>
       )}
       <RunBuildDialog open={dialogOpen} onClose={onCancelRunBuild} />
