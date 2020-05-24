@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { MemoryHistory } from 'history';
+import { useTranslation } from 'react-i18next';
 import { cn } from 'utils/bem';
 
 import Button from 'base.blocks/button/button';
@@ -15,25 +16,26 @@ export interface StartPageProps {
 
 const StartPage: React.FC<StartPageProps & RouteComponentProps> = props => {
   const { history } = props;
+  const { t } = useTranslation();
   const startPage = cn('start-page');
   const layoutProps: LayoutProps = {
     className: startPage(),
     headerProps: {
       type: 'secondary',
-      heading: 'School CI server',
+      heading: t('StartPage.title'),
       extra: (
         <Link to={'/settings'}>
           <Button kind={'secondary'} size={'s'} icon={'settings'}>
-            Settings
+            {t('StartPage.settings')}
           </Button>
         </Link>
       ),
     },
   };
   const placeholderProps: PlaceholderProps = {
-    children: 'Configure repository connection and synchronization settings',
+    children: t('StartPage.text'),
     action: {
-      content: 'Open settings',
+      content: t('StartPage.action'),
       onClick: () => {
         history.push('/settings');
       },

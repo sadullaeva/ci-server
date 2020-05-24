@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { cn } from 'utils/bem';
 import { useDispatch, useSelector } from 'react-redux';
 import { MemoryHistory } from 'history';
@@ -25,6 +26,7 @@ export interface SettingsPageProps {
 
 const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props => {
   const { history } = props;
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { settings, loading, valid, errors } = useSelector((state: State) => state.settings);
 
@@ -39,7 +41,7 @@ const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props =>
     className: settingsPage(),
     headerProps: {
       type: 'secondary',
-      heading: <Link to={'/'}>School CI server</Link>,
+      heading: <Link to={'/'}>{t('SettingsPage.title')}</Link>,
     },
   };
 
@@ -74,20 +76,19 @@ const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props =>
 
   const { repoName = '', buildCommand = '', mainBranch = '' } = settings || {};
   const period = settings?.period ? msToMins(settings.period).toString() : '';
+  const periodI18n = parseInt(period) || 0;
 
   return (
     <Layout {...layoutProps}>
       <ContentBox className={settingsPage('content')}>
-        <h2 className={settingsPage('title')}>Settings</h2>
-        <div className={settingsPage('description')}>
-          Configure repository connection and synchronization settings.
-        </div>
+        <h2 className={settingsPage('title')}>{t('SettingsPage.heading')}</h2>
+        <div className={settingsPage('description')}>{t('SettingsPage.text')}</div>
         <form onSubmit={onSumbit} onFocus={onFocus} data-testid={'settings-page-form'}>
           {errors.general && <div className={settingsPage('general-error')}>{errors.general}</div>}
           <TextField
             id={'repoName'}
-            label={'GitHub repository'}
-            placeholder={'user-name/repo-name'}
+            label={t('SettingsPage.repoName.label')}
+            placeholder={t('SettingsPage.repoName.placeholder')}
             defaultValue={repoName}
             error={errors.repoName}
             tabIndex={1}
@@ -97,8 +98,8 @@ const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props =>
           />
           <TextField
             id={'buildCommand'}
-            label={'Build command'}
-            placeholder={'npm run build'}
+            label={t('SettingsPage.buildCommand.label')}
+            placeholder={t('SettingsPage.buildCommand.placeholder')}
             defaultValue={buildCommand}
             error={errors.buildCommand}
             tabIndex={2}
@@ -108,8 +109,8 @@ const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props =>
           />
           <TextField
             id={'mainBranch'}
-            label={'Main branch'}
-            placeholder={'master'}
+            label={t('SettingsPage.mainBranch.label')}
+            placeholder={t('SettingsPage.mainBranch.placeholder')}
             defaultValue={mainBranch}
             error={errors.mainBranch}
             tabIndex={3}
@@ -119,21 +120,21 @@ const SettingsPage: React.FC<SettingsPageProps & RouteComponentProps> = props =>
           <div className={settingsPage('sync')}>
             <TextField
               id={'period'}
-              label={'Synchronize every'}
-              placeholder={'5'}
+              label={t('SettingsPage.period.label', { count: periodI18n })}
+              placeholder={t('SettingsPage.period.placeholder')}
               defaultValue={period}
               error={errors.period}
               tabIndex={4}
               data-testid={'settings-page-period'}
             />
-            minutes
+            {t('SettingsPage.period.min', { count: periodI18n })}
           </div>
           <div className={settingsPage('controls')}>
             <Button type={'submit'} kind={'primary'} disabled={!valid} tabIndex={5}>
-              Save
+              {t('SettingsPage.save')}
             </Button>
             <Button kind={'secondary'} onClick={onCancel} tabIndex={6}>
-              Cancel
+              {t('SettingsPage.cancel')}
             </Button>
           </div>
         </form>

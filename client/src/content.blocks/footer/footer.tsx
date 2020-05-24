@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
@@ -13,6 +14,7 @@ export interface FooterProps {
 
 const Footer: React.FC<FooterProps> = props => {
   const { className = '', ...other } = props;
+  const { t } = useTranslation();
   const footer = cn('footer');
   const classes = clsx(footer(), className);
   return (
@@ -20,15 +22,18 @@ const Footer: React.FC<FooterProps> = props => {
       <ContentBox>
         <div className={footer('content')}>
           <Link href={'#'} type={'secondary'}>
-            Support
+            {t('Footer.support')}
           </Link>
           <Link href={'#'} type={'secondary'}>
-            Learning
+            {t('Footer.learning')}
+          </Link>
+          <Link href={'#'} type={'secondary'}>
+            {t('Footer.language')}
           </Link>
         </div>
         <div className={footer('content')}>
           <Link href={'#'} type={'secondary'}>
-            © 2020 Marina Lazarenko
+            {t('Footer.copyright')}
           </Link>
         </div>
       </ContentBox>

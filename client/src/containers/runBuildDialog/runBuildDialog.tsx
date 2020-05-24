@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { MemoryHistory } from 'history';
+import { useTranslation } from 'react-i18next';
 import { cn } from 'utils/bem';
 
 import Dialog from 'content.blocks/dialog/dialog';
@@ -24,6 +25,7 @@ export interface RunBuildDialogProps {
 
 const RunBuildDialog: React.FC<RunBuildDialogProps & RouteComponentProps> = props => {
   const { history, open } = props;
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
   const [valid, setValid] = useState<CommitHashValid>(true);
@@ -65,15 +67,15 @@ const RunBuildDialog: React.FC<RunBuildDialogProps & RouteComponentProps> = prop
     <Dialog
       open={open}
       onClose={onClose}
-      title={'New build'}
+      title={t('RunBuildDialog.title')}
       popupClassName={runBuildDialog()}
       actions={
         <>
           <Button kind={'primary'} type={'submit'} form={'runBuildForm'} disabled={!valid}>
-            Run build
+            {t('RunBuildDialog.runBuild')}
           </Button>
           <Button kind={'secondary'} onClick={onClose}>
-            Cancel
+            {t('RunBuildDialog.cancel')}
           </Button>
         </>
       }
@@ -82,8 +84,8 @@ const RunBuildDialog: React.FC<RunBuildDialogProps & RouteComponentProps> = prop
         <TextField
           id={'commitHash'}
           value={value}
-          label={'Enter the commit hash which you want to build'}
-          placeholder={'Commit hash'}
+          label={t('RunBuildDialog.label')}
+          placeholder={t('RunBuildDialog.placeholder')}
           error={errors.commitHash}
           onChange={onChange}
           onFocus={onFocus}
