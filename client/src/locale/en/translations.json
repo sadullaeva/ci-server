@@ -32,5 +32,8 @@
   "Footer.support": "Support",
   "Footer.learning": "Learning",
   "Footer.language": "Русская версия",
-  "Footer.copyright": "© 2020 Marina Lazarenko"
+  "Footer.copyright": "© 2020 Marina Lazarenko",
+  "duration.hours": "{{count}} h",
+  "duration.minutes": "{{count}} m",
+  "duration.seconds": "{{count}} s"
 }

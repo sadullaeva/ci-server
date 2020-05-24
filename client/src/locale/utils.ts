@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import i18n from './i18n';
 
 enum SupportedLanguages {
@@ -20,7 +21,11 @@ export const changeLanguage = async () => {
   if (!i18n.hasResourceBundle(lang, 'translation')) {
     const translation = await import(`./${lang}/translations.json`);
     i18n.addResourceBundle(lang, 'translation', translation.default);
+
+    await import(`dayjs/locale/${lang}`);
   }
+
+  dayjs.locale(lang);
 
   return await i18n.changeLanguage(lang, err => {
     if (err) {

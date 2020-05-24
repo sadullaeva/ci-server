@@ -36,5 +36,8 @@
   "Footer.support": "Поддержка",
   "Footer.learning": "Обучение",
   "Footer.language": "English version",
-  "Footer.copyright": "© 2020 Марина Лазаренко"
+  "Footer.copyright": "© 2020 Марина Лазаренко",
+  "duration.hours": "{{count}} ч",
+  "duration.minutes": "{{count}} мин",
+  "duration.seconds": "{{count}} с"
 }

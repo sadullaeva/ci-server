@@ -1,10 +1,12 @@
 import React from 'react';
-import prettyMilliseconds from 'pretty-ms';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import { cn } from 'utils/bem';
 
 import IconText from 'base.blocks/iconText/iconText';
+
+import { getLocalizedDuration } from 'utils/duration';
 
 import './build.css';
 
@@ -25,7 +27,8 @@ export interface BuildProps {
 
 const Build: React.FC<BuildProps> = props => {
   const { className = '', size, status, meta } = props;
-  const duration = meta.duration ? prettyMilliseconds(meta.duration) : '';
+  const { t } = useTranslation();
+  const duration = meta.duration ? getLocalizedDuration(meta.duration, t) : '';
   const date = meta.date ? dayjs(meta.date).format('D MMM, HH:mm') : '';
 
   const build = cn('build');
