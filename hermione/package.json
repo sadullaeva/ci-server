@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/sadullaeva/ci-server#readme",
   "devDependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "hermione": "^3.1.0",
     "hermione-custom-commands": "file:hermione-custom-commands",
